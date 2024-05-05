@@ -2,14 +2,14 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "小金鱼的笔记本",
-  description: "这是小金鱼的软工学习笔记",
+  title: "小金魚的筆記本",
+  description: "這是小金魚的軟工學習筆記",
   markdown: {math: true},
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Notes', link: '/简介.md' }
+      { text: '主頁 🖥', link: '/' },
+      { text: '筆記 📒', link: '/简介.md' }
     ],
 
     sidebar: [
@@ -25,6 +25,10 @@ export default defineConfig({
               {
                 text: '安装QEMU',
                 link: '/qemu虚拟机/安装qemu'
+              },
+              {
+                text: '创建并运行虚拟机',
+                link: '/qemu虚拟机/创建qemu虚拟机'
               }
             ]
           },
@@ -41,7 +45,49 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/xing-junyang/xing-junyang.github.io' }
-    ]
-  }
-})
+    ],
 
+    search: {
+      provider: 'local',
+      options: {
+        locales:{
+          root: {
+            translations: {
+              button: {
+                buttonText: '搜尋本站',
+                buttonAriaLabel: '搜尋本站上的內容'
+              },
+              modal: {
+                noResultsText: '無相關內容',
+                resetButtonTitle: '清空搜索條件',
+                footer: {
+                  selectText: '選擇',
+                  navigateText: '切換',
+                  closeText: '關閉此頁面'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    lastUpdated: {
+      text: '最後更新於',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'full',
+      }
+    },
+
+    docFooter: {
+      prev: '上一個頁面',
+      next: '下一個頁面'
+    },
+
+    outline: {
+      level: [1,6],
+      label: '本頁面'
+    }
+  },
+  lastUpdated: true,
+})

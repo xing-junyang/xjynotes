@@ -3,6 +3,6 @@
 layout: home
 
 hero:
-  name: "小金鱼的笔记本 | XJY's Notebook"
-  text: "软工学习笔记"
+  name: "小金魚的筆記本 | XJY's Notebook"
+  text: "軟工學習筆記 📒📕📘"
 ---

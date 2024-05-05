@@ -24,6 +24,7 @@ brew install qemu
 
 ::: details 安装 Homebrew
 可以使用以下指令在 `macOS` 系统的终端下安装 `Homebrew`
+
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
