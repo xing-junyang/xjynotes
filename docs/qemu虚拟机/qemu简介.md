@@ -14,4 +14,4 @@ QEMU 是 Quick Emulator 的缩写。
 
 # 官方网站
 
-这里是 `QEMU` 的[官方网站](https://www.qemu.org)。
+这里是 `QEMU` 的[官方网站](https://www.qemu.org)。所有官方参考文档可以在[此处](https://www.qemu.org/docs/master/index.html)阅读。

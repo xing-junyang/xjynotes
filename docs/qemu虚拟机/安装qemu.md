@@ -1,6 +1,6 @@
 # 安装 QEMU
 
-## 对于 Linux 系统
+## 对于 Linux 系统的安装
 
 `Ubuntu` 发行版可以直接采用下面指令进行安装
 
@@ -14,7 +14,7 @@ apt-get install qemu-system
 yum install qemu-kvm
 ```
 
-## 对于 macOS 系统
+## 对于 macOS 系统的安装
 
 在 `macOS` 平台上可使用 [`Homebrew`](https://brew.sh) 进行安装
 
@@ -30,7 +30,7 @@ brew install qemu
 ```
 :::
 
-## 全平台
+## 从源代码安装
 
 也可使用编译源代码的方式进行安装，这一方式支持多种平台，也支持在无联网条件下进行安装。
 
