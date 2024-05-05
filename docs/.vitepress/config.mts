@@ -21,6 +21,10 @@ export default defineConfig({
             items: [
               { text: 'QEMU虚拟机简介',
                 link: '/qemu虚拟机/qemu简介'
+              },
+              {
+                text: '安装QEMU',
+                link: '/qemu虚拟机/安装qemu'
               }
             ]
           },
