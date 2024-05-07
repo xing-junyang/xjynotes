@@ -72,11 +72,17 @@ export default defineConfig({
       }
     },
     lastUpdated: {
-      text: '最後更新於',
+      text: "最後更新於",
       formatOptions: {
         dateStyle: 'full',
         timeStyle: 'full',
       }
+    },
+    notFound:{
+      title: 'Ah...404',
+      quote: '小金魚不知道您要去向哪裡⋯⋯',
+      linkText: '回到主頁吧',
+      linkLabel: '回到主頁'
     },
 
     docFooter: {
@@ -87,7 +93,8 @@ export default defineConfig({
     outline: {
       level: [1,6],
       label: '本頁面'
-    }
+    },
   },
   lastUpdated: true,
+  
 })
