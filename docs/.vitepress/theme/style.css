@@ -137,3 +137,8 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+.footer{
+  color: gray;
+  font-weight: 600;
+  font-size: 0.9em;
+}
