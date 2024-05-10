@@ -6,7 +6,7 @@ import './style.css'
 
 const MyComponent = {
   setup() {
-    return () => h('div',{class:'footer'}, [h('p', 'This work is licensed under CC BY 4.0'),h('p','XINGJUNYANG © 2024')])
+    return () => h('div',{class:'footer'}, [h('a',{href:'https://creativecommons.org/licenses/by/4.0/', style:"text-decoration: underline; color: darkblue;"}, 'This work is licensed under CC BY 4.0'),h('p','XINGJUNYANG © 2024')])
   }
 }
 

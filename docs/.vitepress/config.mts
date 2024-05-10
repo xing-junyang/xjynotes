@@ -16,6 +16,13 @@ export default defineConfig({
       {
         items: [
           { text: '简介', link: '/简介' },
+          { text: '编译原理', 
+            collapsed: true,
+            items: [
+              { text: '编译原理的一些基本概念', link: '/编译原理/编译原理的一些基本概念.md' },
+              { text: '中间代码生成 LLVM IR', link: '/编译原理/中间代码生成 LLVM IR.md' },
+            ]
+          },
           { text: 'QEMU虚拟机',
             collapsed: true,
             items: [
