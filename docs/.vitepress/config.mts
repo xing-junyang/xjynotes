@@ -20,6 +20,7 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: '编译原理的一些基本概念', link: '/编译原理/编译原理的一些基本概念.md' },
+              { text: '有穷自动机', link: '/编译原理/有穷自动机.md' },
               { text: '中间代码生成 LLVM IR', link: '/编译原理/中间代码生成 LLVM IR.md' },
             ]
           },
