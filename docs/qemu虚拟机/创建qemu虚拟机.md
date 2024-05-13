@@ -56,7 +56,7 @@ qemu-img create [options] filename [size]
 ```shell
 qemu-system-x86_64 -m 2G \
 -hda disk_image.qcow2 \
--cdrom CentOS-7-x86_64-DVD-2009.iso -boot d
+-cdrom CentOS-7-x86_64-DVD-2009.iso -boot order=d
 ```
 
 执行完命令后，将弹出该虚拟机的监视器窗口，你可以在此处运行操作系统光盘映像上的安装程序，并等待系统安装完成。至此，你已经成功创建了一个 `QEMU` 虚拟机！:partying_face::partying_face::partying_face:
@@ -99,7 +99,11 @@ qemu-system-[architecture] [options] [disk_image]
 
 |命令选项 `options`| 描述|
 |------------------|----|
-| `-m <内存大小>`   | 为虚拟机分配内存大小，单位为 `M` 或 `G`。例如，`-m 2G` 代表分配 `2G` 内存。默认为 `128 MiB`。|
+| `-cpu`         | 指定虚拟机的CPU型号。可以用 `-cpu help` 来查看所有可用的 `cpu`。            |
+| `-m <内存大小>`   | 为虚拟机分配内存大小，单位为 `M` 或 `G`（默认为 `M`）。例如，`-m 2G` 代表分配 `2G` 内存。默认为 `128 MiB`。|
+| `-hda <文件>` / `-cdrom <文件>` | 指定虚拟机的硬盘镜像文件或光盘镜像文件。|
+| `-boot order=<顺序>`         | 指定启动顺序，其中顺序为一个字符串：`a`、`b` 代表软盘，`c` 代表硬盘，`d` 代表光盘，`n` 代表网络设备。  |
+| `-net`         | 配置虚拟机的网络选项。                |
 
 :::
 
