@@ -37,6 +37,10 @@ export default defineConfig({
               {
                 text: '创建并运行虚拟机',
                 link: '/qemu虚拟机/创建qemu虚拟机'
+              },
+              {
+                text: '杂项',
+                link: '/qemu虚拟机/一些杂项'
               }
             ]
           },
