@@ -24,6 +24,19 @@ export default defineConfig({
               { text: '中间代码生成 LLVM IR', link: '/编译原理/中间代码生成 LLVM IR.md' },
             ]
           },
+          { text: '操作系统',
+            collapsed: true,
+            items: [
+              { text: '并发',
+                collapsed: true,
+                items: [
+                  { text: '并发的概念', link: '/操作系统/并发/并发的概念.md' },
+                  { text: 'PV操作', link: '/操作系统/并发/PV操作.md' },
+                  { text: '管程', link: '/操作系统/并发/管程.md' }
+                ] 
+              }
+            ]
+          },
           { text: 'QEMU虚拟机',
             collapsed: true,
             items: [
