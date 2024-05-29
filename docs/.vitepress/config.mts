@@ -61,7 +61,8 @@ export default defineConfig({
             text: '数海札记文章',
             collapsed: true,
             items: [
-              {text: '积分视角下的均值不等式', link: '/数海札记/积分视角下的均值不等式'}
+              {text: '积分视角下的均值不等式', link: '/数海札记/积分视角下的均值不等式'},
+              {text: 'Gamma函数的唯一性', link: '/数海札记/Gamma函数的唯一性'}
             ]
           }
         ]
