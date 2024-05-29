@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\begin{document}
+
+\begin{verbatim}
+bool inside[2]    
+inside[0] = false;
+inside[1] = false;
+enum{0, 1} turn;  
+cobegin
+\end{verbatim}
+
+\begin{minipage}{0.45\textwidth}
+\begin{lstlisting}[language=C, basicstyle=\fontfamily{pcr}\selectfont\small, frame=single]
+shared x, y;
+process P0() {
+    inside[0] = true;
+    turn = 1;
+    while 
+    (inside[1] && turn == 1);
+    {Critical Section};
+    inside[0] = false;
+}
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\begin{lstlisting}[language=C, basicstyle=\fontfamily{pcr}\selectfont\small, frame=single]
+
+process P1() {
+    inside[1] = true;
+    turn = 0;
+    while 
+    (inside[0] && turn == 0);
+    {Critical Section};
+    inside[1] = false;
+}
+\end{lstlisting}
+\end{minipage}
+
+\begin{verbatim}
+coend
+\end{verbatim}
+
+\end{document}
