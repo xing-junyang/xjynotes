@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{array}
+
+\begin{document}
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|c|c|c|c|c||c|c|c|}
+        \hline
+        \multicolumn{1}{|c|}{} &\multicolumn{6}{c||}{ACTION} & \multicolumn{3}{c|}{GOTO} \\ \hline
+        State & $\mathbf{id}$ & $+$ & $*$ & $($ & $)$ & $\$$ & $E$ & $T$ & $F$ \\ \hline
+        0 & s5 &  &  & s4 & &  & 1 & 2 & 3 \\ \hline
+        1 &  & s6 &  &  & & acc &  &  &  \\ \hline
+        2 & & r2 & s7 &  & r2 & r2 &  &  &  \\ \hline
+        3 & & r4 & r4 &  & r4 & r4 &  &  &  \\ \hline
+        4 & s5 &  &  & s4 &&  & 8 & 2 & 3 \\ \hline
+        5 & & r6 & r6 & & r6 & r6 &  &  &  \\ \hline
+        6 & s5 &  &  & s4 & & &  & 9 &3  \\ \hline
+        7 & s5 &  &  & s4 & & &  &  & 10 \\ \hline
+        8 & & s6 &  &  & s11 & &  &  &  \\ \hline
+        9 & & r1 & s7 &  & r1 & r1 & &  &  \\ \hline
+        10 & & r3 & r3 &  & r3 & r3 & &  &  \\ \hline
+        11 & & r5 & r5 &  & r5 & r5 & &  &  \\ \hline
+    \end{tabular}
+    \caption{Parsing Table}
+    \label{tab:parsing}
+\end{table}
+
+\end{document}

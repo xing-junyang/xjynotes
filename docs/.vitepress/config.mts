@@ -22,6 +22,7 @@ export default defineConfig({
               { text: '编译原理的一些基本概念', link: '/编译原理/编译原理的一些基本概念.md' },
               { text: '有穷自动机', link: '/编译原理/有穷自动机.md' },
               { text: '中间代码生成 LLVM IR', link: '/编译原理/中间代码生成 LLVM IR.md' },
+              { text: 'LR(0) 语法分析', link: '/编译原理/LR(0) 语法分析.md' },
             ]
           },
           { text: '操作系统',
