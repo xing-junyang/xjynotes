@@ -59,7 +59,7 @@ $$
 
 下面就是一个语法分析表的例子
 
-<img src="/Users/xingjunyang/Documents/School/小金鱼的笔记本/docs/编译原理/语法分析表.png" alt="语法分析表" style="zoom:30%;" />
+<img src="./语法分析表.png" alt="语法分析表" style="zoom:30%;" />
 
 其中，$\mathrm{ACTION}$ 表指明动作, $\mathrm{GOTO}$ 表仅用于归约时的状态转换。$\mathrm{ACTION}[i,a]$ 表示表中的第 $i$ 行上第 $a$ 列的元素，$\mathrm{GOTO}[i,a]$ 与之相同。表内具体的元素含义如下（为了方便，$\mathrm{GOTO}$ 表中的 $gn$ 都直接写作 $n$）：
 
