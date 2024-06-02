@@ -318,6 +318,7 @@ br <B.code.final_bool_tmp_var> <label1> <label2>// [!code warning]
 br <label3>  --> 在此处跳转，否则会执行第二个分支 // [!code error]
 <label2>:
 <S2.code> ----> 这里是 if 语句的第二个分支 // [!code warning]
+br <label3>  --> 在此处跳转
 <label3>: ----> 这里是整个 if 语句的结束，后接之后产生的代码 // [!code warning]
 ```
 
@@ -342,6 +343,7 @@ a = b
 br label3
 label2:
 b = a
+br label3
 label3:
 ```
 
