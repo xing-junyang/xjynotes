@@ -16,6 +16,57 @@ export default defineConfig({
       {
         items: [
           { text: '简介', link: '/简介' },
+          { text: '软件工程基础',
+            collapsed: true, 
+            items: [
+              { text: '概念基础', link: '/软件工程/软件工程基础.md' },
+              { text: '需求分析', 
+                collapsed: true,
+                items: [
+                  { text: '需求基础', link: '/软件工程/需求基础.md' },
+                  { text: '需求分析方法', link: '/软件工程/需求分析方法.md' },
+                  { text: '需求文档化与验证', link: '/软件工程/需求文档化与验证.md' }
+                ]
+              },
+              { text: '体系结构',
+                collapsed: true,
+                items: [
+                  { text: '软件设计基础', link: '/软件工程/软件设计基础.md'},
+                  { text: '软件体系结构基础', link: '/软件工程/软件体系结构基础.md' },
+                  { text: '软件体系结构设计与构建', link: '/软件工程/软件体系结构设计与构建.md' },
+                  { text: '人机交互', link: '/软件工程/人机交互.md' }
+                ]
+              },
+              {
+                text: '详细设计',
+                collapsed: true,
+                items: [
+                  { text: '详细设计基础', link: '/软件工程/详细设计.md' },
+                  { text: '模块化与信息隐藏', link: '/软件工程/模块化与信息隐藏.md' },
+                  { text: '面向对象的模块化', link: '/软件工程/面向对象的模块化.md' },
+                  { text: '面向对象的信息隐藏', link: '/软件工程/面向对象的信息隐藏.md' },
+                  { text: '设计模式', link: '/软件工程/设计模式.md' }
+                ]
+              },
+              {
+                text: '构造测试',
+                collapsed: true,
+                items: [
+                  { text: '软件构造', link: '/软件工程/软件构造.md' },
+                  { text: '代码设计', link: '/软件工程/代码设计.md' },
+                  { text: '软件测试', link: '/软件工程/软件测试.md' }
+                ]
+              },
+              {
+                text: '交付演化',
+                collapsed: true,
+                items: [
+                  { text: '软件维护与演化', link: '/软件工程/软件维护与演化.md' },
+                  { text: '软件开发过程模型', link: '/软件工程/软件开发过程模型.md' },
+                ]
+              }
+            ]
+          },
           { text: '编译原理', 
             collapsed: true,
             items: [
