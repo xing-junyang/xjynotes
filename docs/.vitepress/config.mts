@@ -9,7 +9,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主頁 🖥', link: '/' },
-      { text: '筆記 📒', link: '/简介.md' }
+      { text: '筆記 📒', link: '/简介.md' },
+      { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' }
     ],
 
     sidebar: [
@@ -109,12 +110,17 @@ export default defineConfig({
               }
             ]
           },
-          {
-            text: '数海札记文章',
+          { text: '数海札记文章',
             collapsed: true,
             items: [
               {text: '积分视角下的均值不等式', link: '/数海札记/积分视角下的均值不等式'},
               {text: 'Gamma函数的唯一性', link: '/数海札记/Gamma函数的唯一性'}
+            ]
+          },
+          { text: '兴趣使然的时光小记',
+            collapsed: true,
+            items: [
+              { text: '南京', link: '/兴趣使然的时光小记/南京/南京' },
             ]
           }
         ]
