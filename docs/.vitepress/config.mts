@@ -110,6 +110,16 @@ export default defineConfig({
               }
             ]
           },
+          {
+            text: '数理逻辑',
+            collapsed: true,
+            items: [
+              {
+                text: '集合',
+                link: '/数理逻辑/集合'
+              }
+            ]
+          },
           { text: '数海札记文章',
             collapsed: true,
             items: [
@@ -122,13 +132,20 @@ export default defineConfig({
             items: [
               { text: '南京', link: '/兴趣使然的时光小记/南京/南京' },
             ]
+          },
+          {
+            text: '美雪集',
+            collapsed: true,
+            // items: [
+            //   { text: '恶女', link: '/Miyuki/悪女/悪女' },
+            // ]
           }
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/xing-junyang/xing-junyang.github.io' }
+      { icon: 'github', link: 'https://github.com/xing-junyang' }
     ],
 
     search: {
