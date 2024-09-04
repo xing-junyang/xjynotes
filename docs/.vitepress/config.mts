@@ -110,13 +110,21 @@ export default defineConfig({
               }
             ]
           },
-          {
-            text: '数理逻辑',
+          { text: '数理逻辑',
             collapsed: true,
             items: [
               {
                 text: '集合',
                 link: '/数理逻辑/集合'
+              }
+            ]
+          },
+          { text: '嵌入式系统概论',
+            collapsed: true,
+            items: [
+              {
+                text: '嵌入式开发简述',
+                link: '/嵌入式/嵌入式开发简述'
               }
             ]
           },
