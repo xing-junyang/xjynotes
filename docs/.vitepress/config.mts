@@ -146,6 +146,15 @@ export default defineConfig({
               }
             ]
           },
+          { text: '机器学习',
+            collapsed: true,
+            items: [
+              {
+                text: '机器学习简述',
+                link: '/机器学习/机器学习简述'
+              }
+            ]
+          },
           { text: '数海札记文章',
             collapsed: true,
             items: [
