@@ -128,6 +128,15 @@ export default defineConfig({
               }
             ]
           },
+          { text: 'C++高级程序设计',
+            collapsed: true,
+            items: [
+              {
+                text: 'C++简述',
+                link: '/C++高级程序设计/c++概述'
+              }
+            ]
+          },
           { text: '数海札记文章',
             collapsed: true,
             items: [
