@@ -137,6 +137,15 @@ export default defineConfig({
               }
             ]
           },
+          { text: '形式语言与自动机',
+            collapsed: true,
+            items: [
+              {
+                text: 'Intro',
+                link: '/形式语言与自动机/Intro'
+              }
+            ]
+          },
           { text: '数海札记文章',
             collapsed: true,
             items: [
