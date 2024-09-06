@@ -155,6 +155,15 @@ export default defineConfig({
               }
             ]
           },
+          { text: 'DevOps',
+            collapsed: true,
+            items: [
+              {
+                text: 'DevOps简述',
+                link: '/DevOps/DevOps简述'
+              }
+            ]
+          },
           { text: '数海札记文章',
             collapsed: true,
             items: [
