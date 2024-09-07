@@ -164,6 +164,15 @@ export default defineConfig({
               }
             ]
           },
+          { text: '移动互联网软件工程（鸿蒙开发）',
+            collapsed: true,
+            items: [
+              {
+                text: '移动互联网软件工程（鸿蒙开发）概述',
+                link: '/移动互联网软件工程与鸿蒙开发/概述'
+              }
+            ]
+          },
           { text: '数海札记文章',
             collapsed: true,
             items: [
