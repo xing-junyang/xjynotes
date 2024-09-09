@@ -23,8 +23,8 @@ Software developing is often confronted with the problem of **complexity**. Form
 
 ### Elementary Mathematical Knowledge
 
-- **Basic set theory**: union, intersection, difference, complement, $\mathrm{DeMorgan's}$ Laws, subsets, set cardinality (the size of set), $\mathrm{Cartesian}$ product, power set (the set of all subsets), functions, etc.
-- **Relations**: reflexive, symmetric, transitive, equivalence relations, partial orders, total order, linear order, etc.
+- **Basic set theory**: union, intersection, difference, complement, $\mathrm{DeMorgan's}$ Laws, subsets, set cardinality (the size of set), $\mathrm{Cartesian}$ product, power set (the set of all subsets), etc. (Refer to [Set Theory](../数理逻辑/集合.md) in **mathematical logic**.)
+- **Relations**: reflexive, symmetric, transitive, equivalence relations, functions, partial orders, total order, linear order, etc. (Refer to [Relations](../数理逻辑/集合.md#关系与函数) in **mathematical logic**.)
 - **Complexity**: $\mathrm{O}$ and $\Omega$ notations, etc.
 - **Graph theory**: directed and undirected graphs, reachability, trees, etc.
 - **proof techniques**: proof by induction, proof by contradiction, etc.
@@ -69,7 +69,7 @@ We have the following operations on Languages:
 - **Usual set operations**: union, intersection, difference, complement, etc.
 - **Concatenation**: $L_1L_2 = \{w_1w_2 \mid w_1 \in L_1, w_2 \in L_2\}$. Like concatenation in symbols, we write $L^n$ to denote the concatenation of $n$ copies of $L$.
 ::: warning Note that...
-Suppose that $L = \{a^n b^n|n>0 \}$
-the $L^2$ is **NOT** $\{a^nb^na^nb^n|n>0 \}$, but $\{a^nb^na^mb^m|n,m>0 \}$.
+Suppose that $L = \{a^n b^n|n>0 \}$,
+then the $L^2$ is **NOT** $\{a^nb^na^nb^n|n>0 \}$, but $\{a^nb^na^mb^m|n,m>0 \}$.
 :::
 - **Star-Closure**: $L^* = \bigcup_{i=0}^{\infty}L^i$. It is the set of all strings that can be formed by concatenating zero or more strings from $L$, or may say, the "**dictionary**" of $L$.

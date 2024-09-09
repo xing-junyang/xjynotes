@@ -119,6 +119,19 @@ export default defineConfig({
               }
             ]
           },
+          { text: '软件测试',
+            collapsed: true,
+            items: [
+              {
+                text: '软件测试简述',
+                link: '/软件测试/软件测试简述'
+              },
+              {
+                text: '变异测试',
+                link: '/软件测试/变异测试'
+              }
+            ]
+          },
           { text: '嵌入式系统概论',
             collapsed: true,
             items: [
