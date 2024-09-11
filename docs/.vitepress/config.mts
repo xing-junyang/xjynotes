@@ -116,6 +116,9 @@ export default defineConfig({
               {
                 text: '集合',
                 link: '/数理逻辑/集合'
+              },{
+                text: '集合进阶',
+                link: '/数理逻辑/集合进阶'
               }
             ]
           },
