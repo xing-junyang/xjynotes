@@ -153,12 +153,16 @@ export default defineConfig({
               }
             ]
           },
-          { text: '形式语言与自动机',
+          { text: '形式语言与自动机<br>(In English)',
             collapsed: true,
             items: [
               {
                 text: 'Intro',
                 link: '/形式语言与自动机/Intro'
+              },
+              {
+                text: 'Finite Automata',
+                link: '/形式语言与自动机/Finite Automata'
               }
             ]
           },
