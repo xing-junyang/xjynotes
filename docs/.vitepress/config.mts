@@ -172,6 +172,10 @@ export default defineConfig({
               {
                 text: '机器学习简述',
                 link: '/机器学习/机器学习简述'
+              },
+              {
+                text: '模型评估与选择',
+                link: '/机器学习/模型评估与选择'
               }
             ]
           },
