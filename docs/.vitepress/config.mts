@@ -150,6 +150,10 @@ export default defineConfig({
               {
                 text: 'C++简述',
                 link: '/C++高级程序设计/c++概述'
+              },
+              {
+                text: '结构化编程',
+                link: '/C++高级程序设计/结构化编程'
               }
             ]
           },

@@ -22,7 +22,11 @@
 - 不限制程序员的风格；
 - 注重分划（$\mathrm{compartmentalization }$）；
 - 充分相信程序员，交由程序员全权控制；
-- 在编译时加强安全检查。
+- 在编译时加强安全检查；
+- 问题驱动：$\mathrm{C}++$ 是由解决现实中的问题来驱动的；
+- 简单、高效（$\mathrm{Zero-Overhead}$）、稳定；
+- 不专家化：并不只满足专家的需求；
+- 不模仿、不迷信理论、不轻易变革（即：不随波逐流）。
 
 ##  $\mathrm{C}$ 和 $\mathrm{C}++$ 的关系
 
@@ -52,10 +56,24 @@
 -  $\mathrm{C}++$：继承了 $\mathrm{Simula}$ 的类、继承、多态等特性，同时保持了 $\mathrm{C}$ 语言的效率和灵活性。
 - $\mathrm{Java}$：通过 $\mathrm{Java}$ 虚拟机（$\mathrm{JVM}$）实现了跨平台的应用开发，并推动了规范化的面向对象程序设计。
 
+## $\mathrm{C}++$ 的家谱图
+
+<div style="display: flex; align-items: center; justify-content: center; flex-direction: column">
+<img src='/image/Screen Shot 2024-09-14 at 3.29.43 PM.png' alt="" style="width:80%; margin:20px"></img>
+</div>
+
+## $\mathrm{C}++$ 的诞生
+
+- $1979$ 年（史前）：研究分布式系统的系统软件组织。实现有 $\mathrm{Simula}$ ，可读性与层次性强但性能较差；$\mathrm{BCPL}$，调试和 debug 困难；$\mathrm{C~with~class}$，兼容 $\mathrm{C}$，且由于使用了 $\mathrm{C}$​ 的链接器，效率大大提高。
+- $1983$ 年：$\mathrm{C}++$ 诞生。当时的硬件和 $\mathrm{OS}$ 运行环境以及产业界和大学的用户资源影响了语言设计的因素。
+- $\mathrm{ANSI}$ 和 $\mathrm{ISO}$：抽象类、多重继承、异常和模板加入。
+- $\mathrm{C++}~98$：$\mathrm{C}++$ 的第一个 $\mathrm{ISO}$ 标准。
+- $\mathrm{C++} 14/17/20$：持续进化，更多库的加入，更多常用操作提供语法支持。
+
+
 ## $\mathrm{C}++$ 的语言特性
 
 - **静态、强类型**
 - $\mathrm{OOP}$
 - **泛型编程**
 - **异常处理**
-
