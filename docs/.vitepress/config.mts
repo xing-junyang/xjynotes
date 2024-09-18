@@ -53,17 +53,17 @@ export default defineConfig({
                 text: '构造测试',
                 collapsed: true,
                 items: [
-                  { text: '软件构造', link: '/软件工程/软件构造.md' },
-                  { text: '代码设计', link: '/软件工程/代码设计.md' },
-                  { text: '软件测试', link: '/软件工程/软件测试.md' }
+                  { text: '软件构造 (TODO)', link: '/软件工程/软件构造.md' },
+                  { text: '代码设计 (TODO)', link: '/软件工程/代码设计.md' },
+                  { text: '软件测试 (TODO)', link: '/软件工程/软件测试.md' }
                 ]
               },
               {
                 text: '交付演化',
                 collapsed: true,
                 items: [
-                  { text: '软件维护与演化', link: '/软件工程/软件维护与演化.md' },
-                  { text: '软件开发过程模型', link: '/软件工程/软件开发过程模型.md' },
+                  { text: '软件维护与演化 (TODO)', link: '/软件工程/软件维护与演化.md' },
+                  { text: '软件开发过程模型 (TODO)', link: '/软件工程/软件开发过程模型.md' },
                 ]
               }
             ]
@@ -84,8 +84,8 @@ export default defineConfig({
                 collapsed: true,
                 items: [
                   { text: '并发的概念', link: '/操作系统/并发/并发的概念.md' },
-                  { text: 'PV操作', link: '/操作系统/并发/PV操作.md' },
-                  { text: '管程', link: '/操作系统/并发/管程.md' }
+                  { text: 'PV操作 (TODO)', link: '/操作系统/并发/PV操作.md' },
+                  { text: '管程 (TODO)', link: '/操作系统/并发/管程.md' }
                 ] 
               }
             ]
@@ -117,7 +117,7 @@ export default defineConfig({
                 text: '集合',
                 link: '/数理逻辑/集合'
               },{
-                text: '集合进阶',
+                text: '集合进阶 (TODO)',
                 link: '/数理逻辑/集合进阶'
               }
             ]
@@ -130,7 +130,7 @@ export default defineConfig({
                 link: '/软件测试/软件测试简述'
               },
               {
-                text: '变异测试',
+                text: '变异测试 (TODO)',
                 link: '/软件测试/变异测试'
               }
             ]
@@ -153,7 +153,7 @@ export default defineConfig({
               },
               {
                 text: '结构化编程',
-                link: '/C++高级程序设计/结构化编程'
+                link: '/C++高级程序设计/结构化编程 (TODO)'
               }
             ]
           },
@@ -189,6 +189,10 @@ export default defineConfig({
               {
                 text: 'DevOps简述',
                 link: '/DevOps/DevOps简述'
+              },
+              {
+                text: '云计算 (TODO)',
+                link: '/DevOps/云计算'
               }
             ]
           },
