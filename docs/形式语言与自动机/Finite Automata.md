@@ -166,3 +166,5 @@ If we include $\varepsilon$-transitions in the transition function, the extended
 ## Equivalence of NFAs and DFAs
 
 **A DFA can be converted to an NFA that accepts the same language and vice versa.** $\varepsilon-\mathrm{NFA}$ is also equivalent normal NFA. These equivalences can all be proved by **subset construction**.
+
+NFA are easier to design and often have exponentially fewer states than a DFA. Though, **only DFA can be implemented!**

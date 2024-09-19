@@ -12,6 +12,7 @@ export default defineConfig({
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' }
     ],
+    logo: '/logo.png',
 
     sidebar: [
       {
@@ -182,6 +183,10 @@ export default defineConfig({
               {
                 text: 'Finite Automata',
                 link: '/形式语言与自动机/Finite Automata'
+              },
+              {
+                text: 'Regular Expression',
+                link: '/形式语言与自动机/Regular Expression'
               }
             ]
           },
