@@ -114,3 +114,55 @@ Let us look at some examples of regular languages:
 
 - The language $\{0, 1\}^*$, which accepts all strings of 0's and 1's.
 - $\{w \in \{0,1\}^*| w, \mathrm{viewed~as~a~binary~number,~is~divisible~by~23}\}$.
+
+::: tip Example: A regular Language
+
+Let us consider the language of binary strings that are divisible by $23$, which is described by the following regular expression:
+$$\{w \in \{0,1\}^*| w, \mathrm{viewed~as~a~binary~number,~is~divisible~by~23}\}$$
+
+We are going to construct a DFA that recognizes this language. The DFA will have $23$ states, one for each possible remainder when a binary number is divided by $23$. The states will be named $q_0, q_1, q_2, \ldots, q_{22}$, where $q_i$ is the state corresponding to the remainder $i$.
+
+The start state will be $q_0$, since the empty string corresponds to the number $0$, which is divisible by $23$. The accepting state will also be $q_0$. The transitions will be determined by the binary digits of the input string. For example, if the current state is $q_i$ and the next digit is $0$, the next state will be $q_{2i 
+~\mathrm{mod}~23 }$. If the next digit is $1$, the next state will be $q_{2i+1 
+~\mathrm{mod}~23}$. 
+
+Since we can construct a DFA that recognizes this language, the language is **regular**. This example demonstrates that not all regular languages are simple or easy to describe, but they can still be recognized by a DFA.
+
+:::
+
+## Nondeterministic Finite Automata (NFA)
+
+A **nondeterministic finite automaton (NFA)** is a finite automaton that can be in **several states at once**. The NFA can have **multiple** transitions from a state on the same input symbol. The NFA accepts a string if there is **at least** one path that leads to an accepting state.
+
+Just as DFAs, NFAs can be described by a [5-tuple](#deterministic-finite-automaton-dfa) $(Q, \Sigma, \delta, q_0, F)$. The only difference is that the transition function $\delta$ is defined as $\delta: Q \times \Sigma \rightarrow 2^Q$, where $2^Q$ is the power set of $Q$. In other words, $\delta(q,a)$ is a set of states.
+
+Apperently, the extended transition function $\delta^*$ is also different from that of DFAs. 
+
+### Extended Transition Function
+
+The extended transition function $\delta^*: Q \times \Sigma^* \rightarrow 2^Q$ is defined as follows:
+
+- **Basis**: $\delta^*(q, \epsilon) = \{q\}$ for all $q \in Q$.
+- **Induction**: $\delta^*(q, xa) = \bigcup_{p \in \delta^*(q, x)} \delta(p, a)$ for all $q \in Q$, $x \in \Sigma^*$, and $a \in \Sigma$.
+
+Therefore, we can say the string $w$ is **accepted** by an NFA $A$ iff $\delta^*(q_0, w) \cap F \neq \emptyset$.
+
+### NFA with $\varepsilon$-transitions
+
+An NFA can also have $\varepsilon$-transitions, which are transitions that can be taken without consuming any input. This kind of NFA is called $\varepsilon-\mathrm{NFA}$. The $\varepsilon$-transitions are represented by $\varepsilon$ in the transition function $\delta$.
+
+<div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 0px">
+<img src='/image/NFAexample.svg' alt="" style="width:50%; padding-top:20px;"></img>
+<p style="font-size: 12px; color: gray;">An example of epsilon-transitions</p>
+</div>
+
+Next, we will introduce the concept of $\varepsilon-closure$. $\varepsilon-closure(q)$ is the set of states that can be reached from state $q$ by taking only $\varepsilon$-transitions.
+
+If we include $\varepsilon$-transitions in the transition function, the extended transition function would have a slightly different definition:
+
+- **basis**: $\delta^*(q, \epsilon) = \{q\} \cup \varepsilon-closure(q)$ for all $q \in Q$.
+- **Induction**: $\delta^*(q, xa) = \bigcup_{p \in \delta^*(q, x)} \left ( \delta(p, a) \cup \delta^*(\varepsilon-closure(p), a) \right )$ for all $q \in Q$, $x \in \Sigma^*$, and $a \in \Sigma$.
+
+## Equivalence of NFAs and DFAs
+
+**A DFA can be converted to an NFA that accepts the same language and vice versa.** $\varepsilon-\mathrm{NFA}$ is also equivalent normal NFA. These equivalences can all be proved by **subset construction**.
