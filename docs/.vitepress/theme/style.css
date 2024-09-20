@@ -142,3 +142,27 @@
   font-weight: 600;
   font-size: 0.9em;
 }
+
+/* body{
+  background: url('/logo_sim.svg');
+  background-size: 30%;
+  background-position: right 10px bottom 50px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+} */
+
+body::before {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  background-image: url('/logo_sim.svg');
+  background-size: 60%;
+  background-position: right 20px bottom 50px;
+  background-repeat: no-repeat;
+  opacity: 0.2; /* 透明度 */
+  z-index: -1; /* 确保背景在内容后面 */
+}

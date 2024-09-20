@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "小金魚的筆記本 | XJY's Notebook"
+  name: ""
   text: "軟工學習筆記 📒📕📘"
 
 features:

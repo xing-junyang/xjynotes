@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 175.62 84.88">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Orange_Yellow);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-3 {
+        fill: url(#Fading_Sky);
+      }
+    </style>
+    <linearGradient id="Orange_Yellow" data-name="Orange, Yellow" x1="0" y1="40.39" x2="179.2" y2="40.39" gradientTransform="translate(15.27 -27.23) rotate(21.63)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff33b"/>
+      <stop offset=".04" stop-color="#fee62d"/>
+      <stop offset=".12" stop-color="#fdd51b"/>
+      <stop offset=".2" stop-color="#fdca0f"/>
+      <stop offset=".28" stop-color="#fdc70c"/>
+      <stop offset=".67" stop-color="#f3903f"/>
+      <stop offset=".89" stop-color="#ed683c"/>
+      <stop offset="1" stop-color="#e93e3a"/>
+    </linearGradient>
+    <linearGradient id="Fading_Sky" data-name="Fading Sky" x1="72.09" y1="55.96" x2="111.93" y2="55.96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2484c6"/>
+      <stop offset="1" stop-color="#2484c6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient" x1="25.34" y1="29.54" x2="72.09" y2="29.54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#158040"/>
+      <stop offset="1" stop-color="#6dbe45" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path class="cls-1" d="M150.84,82.34c65.47-50.69-19.49-41.76-19.49-41.76,0,0-180.4,6.05-96.5-19.12,95.45-28.63,93.17,129.9,42.92,29.94-50.25-99.95-136.99-29.13-17.63,4.09"/>
+  <path class="cls-3" d="M111.93,70.84l-14.13-4.18-14.13-4.18c-3.38-6.01-5.22-9.56-6.74-12.51s-2.72-5.29-4.84-8.88l14.63.04,14.63.04c1.34,1.94,3.79,5.78,6,10.93s4.18,11.59,4.58,18.74Z"/>
+  <path class="cls-2" d="M54.28,18s9.55,9.29,17.81,23.08c-21.25,0-82.69-5.62-17.81-23.08Z"/>
+</svg>

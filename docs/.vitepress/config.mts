@@ -12,7 +12,8 @@ export default defineConfig({
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' }
     ],
-    logo: '/logo.png',
+    logo: '/logo.svg',
+    externalLinkIcon: true,
 
     sidebar: [
       {
