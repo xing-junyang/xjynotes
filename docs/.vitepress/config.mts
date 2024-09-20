@@ -131,7 +131,7 @@ export default defineConfig({
                 link: '/软件测试/软件测试简述'
               },
               {
-                text: '变异测试 (TODO)',
+                text: '变异测试',
                 link: '/软件测试/变异测试'
               }
             ]
@@ -200,6 +200,10 @@ export default defineConfig({
               {
                 text: '模型评估与选择',
                 link: '/机器学习/模型评估与选择'
+              },
+              {
+                text: '线性模型 (TODO)',
+                link: '/机器学习/线性模型'
               }
             ]
           },
