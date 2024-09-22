@@ -12,7 +12,7 @@ export default defineConfig({
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' }
     ],
-    logo: '/logo.svg',
+    logo: '/image/logo.svg',
     externalLinkIcon: true,
 
     sidebar: [
@@ -194,6 +194,10 @@ export default defineConfig({
           { text: '机器学习',
             collapsed: true,
             items: [
+              {
+                text: '数学基础补充',
+                link: '/机器学习/数学基础补充'
+              },
               {
                 text: '机器学习简述',
                 link: '/机器学习/机器学习简述'

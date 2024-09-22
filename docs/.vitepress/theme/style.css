@@ -157,12 +157,12 @@ body::before {
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 50%;
+  width: 100%;
   height: 50%;
   background-image: url('/logo_sim.svg');
-  background-size: 60%;
+  background-size: 38%;
   background-position: right 20px bottom 50px;
   background-repeat: no-repeat;
-  opacity: 0.2; /* 透明度 */
+  opacity: 0.231015; /* 透明度 */
   z-index: -1; /* 确保背景在内容后面 */
 }
