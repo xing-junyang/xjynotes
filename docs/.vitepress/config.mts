@@ -210,7 +210,7 @@ export default defineConfig({
                 link: '/机器学习/模型评估与选择'
               },
               {
-                text: '线性模型 (TODO)',
+                text: '线性模型',
                 link: '/机器学习/线性模型'
               }
             ]
@@ -234,6 +234,14 @@ export default defineConfig({
               {
                 text: '移动互联网软件工程（鸿蒙开发）概述',
                 link: '/移动互联网软件工程与鸿蒙开发/概述'
+              },
+              {
+                text: 'ArkTs语言（TODO）',
+                link: '/移动互联网软件工程与鸿蒙开发/ArkTs语言'
+              },
+              {
+                text: 'ArkUI（TODO）',  
+                link: '/移动互联网软件工程与鸿蒙开发/ArkUI'
               }
             ]
           },
