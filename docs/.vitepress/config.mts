@@ -134,6 +134,9 @@ export default defineConfig({
               {
                 text: '变异测试',
                 link: '/软件测试/变异测试'
+              },{
+                text: '模糊测试',
+                link: '/软件测试/模糊测试'
               }
             ]
           },

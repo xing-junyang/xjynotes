@@ -166,3 +166,12 @@ body::before {
   opacity: 0.231015; /* 透明度 */
   z-index: -1; /* 确保背景在内容后面 */
 }
+
+mjx-container[style*="display: block;"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+mjx-container > svg {
+  display: inline-block;
+}
