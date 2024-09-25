@@ -119,8 +119,11 @@ export default defineConfig({
                 text: '集合',
                 link: '/数理逻辑/集合'
               },{
-                text: '集合进阶 (TODO)',
+                text: '集合进阶',
                 link: '/数理逻辑/集合进阶'
+              },{
+                text: '命题逻辑',
+                link: '/数理逻辑/命题逻辑'
               }
             ]
           },
