@@ -164,6 +164,10 @@ export default defineConfig({
                     text: '总线',
                     link: '/嵌入式/基于总线的计算机系统/总线'
                 }]
+              },
+              {
+                text: '嵌入式软件系统概述',
+                link: '/嵌入式/嵌入式软件系统概述（TODO）'
               }
             ]
           },
