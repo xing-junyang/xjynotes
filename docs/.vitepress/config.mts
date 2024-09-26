@@ -223,6 +223,10 @@ export default defineConfig({
               {
                 text: '线性模型',
                 link: '/机器学习/线性模型'
+              },
+              {
+                text: '决策树模型',
+                link: '/机器学习/决策树模型'
               }
             ]
           },
