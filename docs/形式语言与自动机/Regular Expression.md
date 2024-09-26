@@ -67,3 +67,23 @@ The precedence of operators is as follows:
     <img src='/image/Thompson-kleene-star.svg.png' alt="" style="width:50%;"></img>
     <p style="font-size: 12px; color: gray;">R is s*</p>
   </div>
+
+## DFA to $\mathrm{RegEx}$
+
+First, we need to define the concept of $k-$paths. $k-$paths is a path through the graph of the DFA that goes through $k$ intermediate states. It is easy to show that $n-$paths (The number of states in the DFA is $n$) are unrestricted. 
+
+The idea of the algorithm is to find the corresponding regular expression for the $k-$paths for $k = 0, 1, \cdots, n$. The regular expression for the $n-$paths is **exactly** the regular expression for the language of the DFA.
+
+Let $R_{ij}^{(k)}$ be the regular expression for the $k-$paths from state $i$ to state $j$. The algorithm is as follows:
+
+- **Basis**: For $k = 0$, $R_{ij}^{(0)}$ is the sum of symbols of the arc that directly connect state $i$ to state $j$. If there is no arc, then $R_{ij}^{(0)} = \emptyset$. But if $i = j$, then add $\varepsilon$.
+- **Induction**: For $k = 1, 2, \cdots, n$, the regular expression $R_{ij}^{(k)}$ is the sum of the regular expressions $R_{ij}^{(k-1)} + R_{ik}^{(k-1)}(R_{kk}^{(k-1)})^*R_{kj}^{(k-1)}$. We can comprehend this formula as follows:
+  - The $k-$paths from $i$ to $j$ can be divided into two parts: the $k-$paths that do not go through state $k$ and the $k-$paths that go through state $k$.
+  - The $k-$paths that do not go through state $k$ are the same as the $k-$paths from $i$ to $j$, i.e., $R_{ij}^{(k-1)}$.
+  - The $k-$paths that go through state $k$ must visit state $k$ at least once. Thus, the regular expression for these paths is $R_{ik}^{(k-1)}(R_{kk}^{(k-1)})^*R_{kj}^{(k-1)}$. The middle term $(R_{kk}^{(k-1)})^*$ allows the path to loop in state $k$.
+
+Finally, the regular expression for the language of the DFA is $R_{st}^{(n)}$, where $s$ is the start state and $t$ is the final state, $n$ is the number of states in the DFA.
+
+## Summary
+
+Each of the three types of automata (DFA, NFA, $\varepsilon-$NFA) we discussed, along with $\mathrm{RegEx}$, define exactly the same class of languages, which is the class of **regular languages**. What is really interesting is that for a long time in the history of computer science, people believed that regular expressions were more powerful than DFAs. However, it was later proven that they are **equivalent** in power, which makes it a great example of how the study of automata theory can help us understand the limits of computation.

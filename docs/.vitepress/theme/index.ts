@@ -6,7 +6,7 @@ import './style.css'
 
 const MyComponent = {
   setup() {
-    return () => h('div',{class:'footer'}, [h('a',{href:'https://creativecommons.org/licenses/by/4.0/', style:"text-decoration: underline; color: darkblue;"}, 'This work is licensed under CC BY 4.0'),h('p','XINGJUNYANG © 2024')])
+    return () => h('div',{class:'footer', style: "margin-bottom: 10px"}, [h('p',{style:""},[h('a',      {href:'https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1', target:"_blank", rel:"license noopener noreferrer", style:"text-decoration: underline; color: darkblue; font-size: 14px; padding-right: 10px;display: flex; flex-direction: row"}, ['This work is licensed under CC BY-SA 4.0 ', h('img',{style:"height:22px!important;margin-left:3px;vertical-align:text-bottom;padding-left:10px",src:"/image/copyright/cc.svg" ,alt:""}),h('img',{style:"height:22px!important;margin-left:3px;vertical-align:text-bottom;", src:"/image/copyright/by.svg",alt:""}),h('img',{style: "height:22px!important;margin-left:3px;vertical-align:text-bottom;", src: "/image/copyright/sa.svg", alt:""})])]),h('p',{style:"font-size: 14px"},'XJYNOTES © 2024 --- Made with ❤️ by XJY')])
   }
 }
 

@@ -166,8 +166,8 @@ export default defineConfig({
                 }]
               },
               {
-                text: '嵌入式软件系统概述',
-                link: '/嵌入式/嵌入式软件系统概述（TODO）'
+                text: '嵌入式软件系统概述（TODO）',
+                link: '/嵌入式/嵌入式软件系统概述'
               }
             ]
           },
@@ -198,6 +198,10 @@ export default defineConfig({
               {
                 text: 'Regular Expression',
                 link: '/形式语言与自动机/Regular Expression'
+              },
+              {
+                text: 'Decision Properties of Regular Languages',
+                link: '/形式语言与自动机/Decision Properties of RL'
               }
             ]
           },
