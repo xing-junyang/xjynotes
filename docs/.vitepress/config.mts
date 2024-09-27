@@ -240,6 +240,10 @@ export default defineConfig({
               {
                 text: '云计算 (TODO)',
                 link: '/DevOps/云计算'
+              },
+              {
+                text: 'DevOps中的过程方法',
+                link: '/DevOps/DevOps中的过程方法'
               }
             ]
           },
