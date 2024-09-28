@@ -152,13 +152,13 @@
   
 } */
 
-body::before {
+.content-container::before {
   content: "";
   position: fixed;
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 50%;
+  height: 100%;
   background-image: url('/logo_sim.svg');
   background-size: 38%;
   background-position: right 20px bottom 50px;

@@ -26,6 +26,8 @@
 
 ### 典型的 PSP 过程
 
+个人软件过程（Personal Software Process，PSP）是一种可用于控制、管理和改进个人工作方式的自我持续改进过程。
+
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; padding-top:30px">
     <img src='/image/image-20240927120124592 PM.png' alt="" style="width:70%;"></img>
     <p style="font-size: 12px; color: gray;">典型的 PSP 过程</p>
