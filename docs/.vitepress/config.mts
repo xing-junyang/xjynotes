@@ -14,6 +14,10 @@ export default defineConfig({
     ],
     logo: '/image/logo.svg',
     externalLinkIcon: true,
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'XJYNOTES © 2024'
+    },
 
     sidebar: [
       {
