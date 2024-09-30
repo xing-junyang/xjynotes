@@ -4,6 +4,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "小金魚的筆記本",
   description: "這是小金魚的軟工學習筆記",
+  head: [
+    ['link', { rel: 'icon', href: '/logo.svg', sizes: '32x32'}],
+  ],
   markdown: {math: true, image:{lazyLoading: true}},
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
