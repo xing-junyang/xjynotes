@@ -7,7 +7,7 @@ hero:
   text: "軟工學習筆記 📒📕📘"
 
   image:
-      src: "/logo_sim.svg"
+      src: "/image/logo_sim.svg"
       alt: XJYNOTES
   actions:
     - theme: brand
