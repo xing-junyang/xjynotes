@@ -5,7 +5,15 @@ export default defineConfig({
   title: "小金魚的筆記本",
   description: "這是小金魚的軟工學習筆記",
   head: [
-    ['link', { rel: 'icon', href: '/image/logo.png', sizes: '32x32'}],
+    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/image/logo.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/image/logo.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/image/logo.png"}],
+    ['link', { rel: "manifest", href: "/assets/favicons/site.webmanifest"}],
+    ['link', { rel: "mask-icon", href: "/image/logo.png", color: "#3a0839"}],
+    ['link', { rel: "shortcut icon", href: "/image/logo.png"}],
+    ['meta', { name: "msapplication-TileColor", content: "#3a0839"}],
+    ['meta', { name: "msapplication-config", content: "/assets/favicons/browserconfig.xml"}],
+    ['meta', { name: "theme-color", content: "#ffffff"}],
   ],
   markdown: {math: true, image:{lazyLoading: true}},
   themeConfig: {
@@ -13,7 +21,7 @@ export default defineConfig({
     nav: [
       { text: '主頁 🖥', link: '/' },
       { text: '筆記 📒', link: '/简介.md' },
-      { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' }
+      { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' } 
     ],
     logo: '/image/logo.png',
     externalLinkIcon: true,
