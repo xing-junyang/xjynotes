@@ -155,6 +155,9 @@ export default defineConfig({
               },{
                 text: '模糊测试',
                 link: '/软件测试/模糊测试'
+              },{
+                text: '回归测试',
+                link: '/软件测试/回归测试'
               }
             ]
           },
