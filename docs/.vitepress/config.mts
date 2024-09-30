@@ -5,7 +5,7 @@ export default defineConfig({
   title: "小金魚的筆記本",
   description: "這是小金魚的軟工學習筆記",
   head: [
-    ['link', { rel: 'icon', href: '/image/logo.svg', sizes: '32x32'}],
+    ['link', { rel: 'icon', href: '/image/logo.png', sizes: '32x32'}],
   ],
   markdown: {math: true, image:{lazyLoading: true}},
   themeConfig: {
@@ -15,7 +15,7 @@ export default defineConfig({
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' }
     ],
-    logo: '/image/logo.svg',
+    logo: '/image/logo.png',
     externalLinkIcon: true,
     footer: {
       message: 'Released under the MIT License.',
