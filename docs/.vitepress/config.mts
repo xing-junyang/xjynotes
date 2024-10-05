@@ -15,7 +15,7 @@ export default defineConfig({
     ['meta', { name: "msapplication-config", content: "/assets/favicons/browserconfig.xml"}],
     ['meta', { name: "theme-color", content: "#ffffff"}],
   ],
-  markdown: {math: true, image:{lazyLoading: true}},
+  markdown: {math: true, image:{lazyLoading: true}, lineNumbers: true},
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -359,5 +359,6 @@ export default defineConfig({
     },
   },
   lastUpdated: true,
+  
   
 })
