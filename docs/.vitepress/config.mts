@@ -139,6 +139,12 @@ export default defineConfig({
               },{
                 text: '命题逻辑',
                 link: '/数理逻辑/命题逻辑'
+              },{
+                text: '归纳和递归',
+                link: '/数理逻辑/归纳和递归'
+              },{
+                text: '命题联结词',
+                link: '/数理逻辑/命题联结词'
               }
             ]
           },
