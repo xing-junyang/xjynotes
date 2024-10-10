@@ -259,6 +259,14 @@ export default defineConfig({
               {
                 text: '决策树模型',
                 link: '/机器学习/决策树模型'
+              },
+              {
+                text: 'k-近邻',
+                link: '/机器学习/k-近邻'
+              },
+              {
+                text: '支持向量机',
+                link: '/机器学习/支持向量机'
               }
             ]
           },
