@@ -1,9 +1,5 @@
 # Decison Properties of Regular Languages
 
-## Closure Properties
-
-A closure property of a class of languages says that given languages in the class, the operation on the languages results in a language that is also in the class. For example, the class of regular languages is closed under union, concatenation, and Kleene star operations.
-
 ## Decision Properties
 
 A decision property of a class of languages is a property that can be decided by an algorithm that tells whether or not some property holds. It is useful, for example, in designing protocols. We usually want to know whether the protocol is finite, or whether it is possible to reach a certain state.

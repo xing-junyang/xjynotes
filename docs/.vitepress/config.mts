@@ -226,6 +226,14 @@ export default defineConfig({
               {
                 text: 'Decision Properties of Regular Languages',
                 link: '/形式语言与自动机/Decision Properties of RL'
+              },
+              {
+                text: 'Closure Properties of Regular Languages',
+                link: '/形式语言与自动机/Closure Properties of RL'
+              },
+              {
+                text: 'Context-Free Grammar',
+                link: '/形式语言与自动机/Context-Free Grammar'
               }
             ]
           },
