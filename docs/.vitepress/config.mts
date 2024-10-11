@@ -301,6 +301,10 @@ export default defineConfig({
               {
                 text: 'ArkUI（TODO）',  
                 link: '/移动互联网软件工程与鸿蒙开发/ArkUI'
+              },
+              {
+                text: '移动互联网应用需求分析',
+                link: '/移动互联网软件工程与鸿蒙开发/移动互联网应用需求分析'
               }
             ]
           },
