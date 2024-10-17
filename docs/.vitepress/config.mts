@@ -234,6 +234,10 @@ export default defineConfig({
               {
                 text: 'Context-Free Grammar',
                 link: '/形式语言与自动机/Context-Free Grammar'
+              },
+              {
+                text: 'Parse Trees',
+                link: '/形式语言与自动机/Parse Trees'
               }
             ]
           },
