@@ -22,7 +22,7 @@ export default defineConfig({
       { text: '主頁 🖥', link: '/' },
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' },
-      {text: '<text style="color:black; font-weight: 600; border-radius:10px; background-color:rgba(255, 182, 193, 1); padding: 5px 10px;"> Love Anniversary💕 </text>', link:'https://lesliexjy.com'}
+      {text: '<text style="color:black; font-weight: 600; border-radius:16px; background-color:rgba(255, 182, 193, 1); padding: 8px 14px;"> Love Anniversary💕 </text>', link:'https://lesliexjy.com'}
     ],
     logo: '/image/logo.png',
     externalLinkIcon: true,
@@ -272,6 +272,20 @@ export default defineConfig({
               {
                 text: '支持向量机',
                 link: '/机器学习/支持向量机'
+              },
+              {
+                text: '聚类',
+                link: '/机器学习/聚类'
+              },
+              {
+                text: '补充内容',
+                collapsed: true,
+                items: [
+                  {
+                    text: '自然语言处理 NLP',
+                    link: '/机器学习/自然语言处理'
+                  },
+                ]
               }
             ]
           },
