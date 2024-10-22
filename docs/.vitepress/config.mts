@@ -86,116 +86,6 @@ export default defineConfig({
               }
             ]
           },
-          { text: '编译原理', 
-            collapsed: true,
-            items: [
-              { text: '编译原理的一些基本概念', link: '/编译原理/编译原理的一些基本概念.md' },
-              { text: '有穷自动机', link: '/编译原理/有穷自动机.md' },
-              { text: '中间代码生成 LLVM IR', link: '/编译原理/中间代码生成 LLVM IR.md' },
-              { text: 'LR(0) 语法分析', link: '/编译原理/LR(0) 语法分析.md' },
-            ]
-          },
-          { text: '操作系统',
-            collapsed: true,
-            items: [
-              { text: '并发',
-                collapsed: true,
-                items: [
-                  { text: '并发的概念', link: '/操作系统/并发/并发的概念.md' },
-                  { text: 'PV操作 (TODO)', link: '/操作系统/并发/PV操作.md' },
-                  { text: '管程 (TODO)', link: '/操作系统/并发/管程.md' }
-                ] 
-              }
-            ]
-          },
-          { text: 'QEMU虚拟机',
-            collapsed: true,
-            items: [
-              { text: 'QEMU虚拟机简介',
-                link: '/qemu虚拟机/qemu简介'
-              },
-              {
-                text: '安装QEMU',
-                link: '/qemu虚拟机/安装qemu'
-              },
-              {
-                text: '创建并运行虚拟机',
-                link: '/qemu虚拟机/创建qemu虚拟机'
-              },
-              {
-                text: '杂项',
-                link: '/qemu虚拟机/一些杂项'
-              }
-            ]
-          },
-          { text: '数理逻辑',
-            collapsed: true,
-            items: [
-              {
-                text: '集合',
-                link: '/数理逻辑/集合'
-              },{
-                text: '集合进阶',
-                link: '/数理逻辑/集合进阶'
-              },{
-                text: '命题逻辑',
-                link: '/数理逻辑/命题逻辑'
-              },{
-                text: '归纳和递归',
-                link: '/数理逻辑/归纳和递归'
-              },{
-                text: '命题联结词',
-                link: '/数理逻辑/命题联结词'
-              }
-            ]
-          },
-          { text: '软件测试',
-            collapsed: true,
-            items: [
-              {
-                text: '软件测试简述',
-                link: '/软件测试/软件测试简述'
-              },
-              {
-                text: '变异测试',
-                link: '/软件测试/变异测试'
-              },{
-                text: '模糊测试',
-                link: '/软件测试/模糊测试'
-              },{
-                text: '回归测试',
-                link: '/软件测试/回归测试'
-              }
-            ]
-          },
-          { text: '嵌入式系统概论',
-            collapsed: true,
-            items: [
-              {
-                text: '嵌入式开发简述',
-                link: '/嵌入式/嵌入式开发简述'
-              },
-              {
-                text: '存储器架构',
-                link: '/嵌入式/存储器架构'
-              },
-              {
-                text: '基于总线的计算机系统',
-                items: [{
-                    text: 'I/O 接口与设备',
-                    link: '/嵌入式/基于总线的计算机系统/输入输出接口与设备'
-                  },
-                  {
-                    text: '总线',
-                    link: '/嵌入式/基于总线的计算机系统/总线'
-                }]
-              },
-              {
-                text: '嵌入式软件系统概述（TODO）',
-                link: '/嵌入式/嵌入式软件系统概述'
-              }
-            ]
-          },
           { text: 'C++高级程序设计',
             collapsed: true,
             items: [
@@ -204,41 +94,8 @@ export default defineConfig({
                 link: '/C++高级程序设计/c++概述'
               },
               {
-                text: '结构化编程 (TODO)',
+                text: '结构化编程',
                 link: '/C++高级程序设计/结构化编程'
-              }
-            ]
-          },
-          { text: '形式语言与自动机<br>(In English)',
-            collapsed: true,
-            items: [
-              {
-                text: 'Intro',
-                link: '/形式语言与自动机/Intro'
-              },
-              {
-                text: 'Finite Automata',
-                link: '/形式语言与自动机/Finite Automata'
-              },
-              {
-                text: 'Regular Expression',
-                link: '/形式语言与自动机/Regular Expression'
-              },
-              {
-                text: 'Decision Properties of Regular Languages',
-                link: '/形式语言与自动机/Decision Properties of RL'
-              },
-              {
-                text: 'Closure Properties of Regular Languages',
-                link: '/形式语言与自动机/Closure Properties of RL'
-              },
-              {
-                text: 'Context-Free Grammar',
-                link: '/形式语言与自动机/Context-Free Grammar'
-              },
-              {
-                text: 'Parse Trees',
-                link: '/形式语言与自动机/Parse Trees'
               }
             ]
           },
@@ -289,6 +146,86 @@ export default defineConfig({
               }
             ]
           },
+          { text: '形式语言与自动机<br>(In English)',
+            collapsed: true,
+            items: [
+              {
+                text: 'Intro',
+                link: '/形式语言与自动机/Intro'
+              },
+              {
+                text: 'Finite Automata',
+                link: '/形式语言与自动机/Finite Automata'
+              },
+              {
+                text: 'Regular Expression',
+                link: '/形式语言与自动机/Regular Expression'
+              },
+              {
+                text: 'Decision Properties of Regular Languages',
+                link: '/形式语言与自动机/Decision Properties of RL'
+              },
+              {
+                text: 'Closure Properties of Regular Languages',
+                link: '/形式语言与自动机/Closure Properties of RL'
+              },
+              {
+                text: 'Context-Free Grammar',
+                link: '/形式语言与自动机/Context-Free Grammar'
+              },
+              {
+                text: 'Parse Trees',
+                link: '/形式语言与自动机/Parse Trees'
+              }
+            ]
+          },
+          { text: '软件测试',
+            collapsed: true,
+            items: [
+              {
+                text: '软件测试简述',
+                link: '/软件测试/软件测试简述'
+              },
+              {
+                text: '变异测试',
+                link: '/软件测试/变异测试'
+              },{
+                text: '模糊测试',
+                link: '/软件测试/模糊测试'
+              },{
+                text: '回归测试',
+                link: '/软件测试/回归测试'
+              }
+            ]
+          },
+          { text: '嵌入式系统概论',
+            collapsed: true,
+            items: [
+              {
+                text: '嵌入式开发简述',
+                link: '/嵌入式/嵌入式开发简述'
+              },
+              {
+                text: '存储器架构',
+                link: '/嵌入式/存储器架构'
+              },
+              {
+                text: '基于总线的计算机系统',
+                items: [{
+                    text: 'I/O 接口与设备',
+                    link: '/嵌入式/基于总线的计算机系统/输入输出接口与设备'
+                  },
+                  {
+                    text: '总线',
+                    link: '/嵌入式/基于总线的计算机系统/总线'
+                }]
+              },
+              {
+                text: '嵌入式软件系统概述（TODO）',
+                link: '/嵌入式/嵌入式软件系统概述'
+              }
+            ]
+          },
           { text: 'DevOps',
             collapsed: true,
             items: [
@@ -314,19 +251,72 @@ export default defineConfig({
                 link: '/移动互联网软件工程与鸿蒙开发/概述'
               },
               {
-                text: 'ArkTs语言（TODO）',
-                link: '/移动互联网软件工程与鸿蒙开发/ArkTs语言'
-              },
-              {
-                text: 'ArkUI（TODO）',  
-                link: '/移动互联网软件工程与鸿蒙开发/ArkUI'
+                text: 'HarmonyOS 开发',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'HarmonyOS简述',
+                    link: '/移动互联网软件工程与鸿蒙开发/Harmony概述'
+                  },
+                  {
+                    text: 'ArkTs语言（TODO）',
+                    link: '/移动互联网软件工程与鸿蒙开发/ArkTs语言'
+                  },
+                  {
+                    text: 'ArkUI（TODO）',  
+                    link: '/移动互联网软件工程与鸿蒙开发/ArkUI'
+                  },
+                  {
+                    text: '鸿蒙应用框架',
+                    link: '/移动互联网软件工程与鸿蒙开发/鸿蒙应用框架'
+                  }
+                ]
               },
               {
                 text: '移动互联网应用需求分析',
                 link: '/移动互联网软件工程与鸿蒙开发/移动互联网应用需求分析'
-              },{
-                text: '鸿蒙应用框架',
-                link: '/移动互联网软件工程与鸿蒙开发/鸿蒙应用框架'
+              }
+            ]
+          },
+          { text: '编译原理', 
+            collapsed: true,
+            items: [
+              { text: '编译原理的一些基本概念', link: '/编译原理/编译原理的一些基本概念.md' },
+              { text: '有穷自动机', link: '/编译原理/有穷自动机.md' },
+              { text: '中间代码生成 LLVM IR', link: '/编译原理/中间代码生成 LLVM IR.md' },
+              { text: 'LR(0) 语法分析', link: '/编译原理/LR(0) 语法分析.md' },
+            ]
+          },
+          { text: '操作系统',
+            collapsed: true,
+            items: [
+              { text: '并发',
+                collapsed: true,
+                items: [
+                  { text: '并发的概念', link: '/操作系统/并发/并发的概念.md' },
+                  { text: 'PV操作 (TODO)', link: '/操作系统/并发/PV操作.md' },
+                  { text: '管程 (TODO)', link: '/操作系统/并发/管程.md' }
+                ] 
+              }
+            ]
+          },
+          { text: 'QEMU虚拟机',
+            collapsed: true,
+            items: [
+              { text: 'QEMU虚拟机简介',
+                link: '/qemu虚拟机/qemu简介'
+              },
+              {
+                text: '安装QEMU',
+                link: '/qemu虚拟机/安装qemu'
+              },
+              {
+                text: '创建并运行虚拟机',
+                link: '/qemu虚拟机/创建qemu虚拟机'
+              },
+              {
+                text: '杂项',
+                link: '/qemu虚拟机/一些杂项'
               }
             ]
           },
@@ -334,7 +324,28 @@ export default defineConfig({
             collapsed: true,
             items: [
               {text: '积分视角下的均值不等式', link: '/数海札记/积分视角下的均值不等式'},
-              {text: 'Gamma函数的唯一性', link: '/数海札记/Gamma函数的唯一性'}
+              {text: 'Gamma函数的唯一性', link: '/数海札记/Gamma函数的唯一性'},
+              { text: '数理逻辑',
+                collapsed: true,
+                items: [
+                  {
+                    text: '集合',
+                    link: '/数理逻辑/集合'
+                  },{
+                    text: '集合进阶',
+                    link: '/数理逻辑/集合进阶'
+                  },{
+                    text: '命题逻辑',
+                    link: '/数理逻辑/命题逻辑'
+                  },{
+                    text: '归纳和递归',
+                    link: '/数理逻辑/归纳和递归'
+                  },{
+                    text: '命题联结词',
+                    link: '/数理逻辑/命题联结词'
+                  }
+                ]
+              },
             ]
           },
           { text: '兴趣使然的时光小记',
