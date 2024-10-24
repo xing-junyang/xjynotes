@@ -64,12 +64,11 @@ const exit = () => {
 	alert(exitString)
 }
 
-async function avoidAccess() {
-
+function avoidAccess() {
 	const accessToken = sessionStorage.getItem('accessToken')
 	if (accessToken !== 'valid') {
 		console.log(warnString)
-		await router.go('/')
+		router.go('/')
 	}
 }
 
