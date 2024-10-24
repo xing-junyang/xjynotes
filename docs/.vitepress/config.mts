@@ -23,7 +23,7 @@ export default defineConfig({
       { text: '主頁 🖥', link: '/' },
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' },
-      {text: '<text style="color:black; font-weight: 600; border-radius:16px; background-color:rgba(255, 182, 193, 1); padding: 8px 14px;"> Love Anniversary💕 </text>', link:'https://lesliexjy.com'}
+      { text: '<text style="color:black; font-weight: 600; border-radius:16px; background-color:rgba(255, 182, 193, 1); padding: 8px 14px;"> Love Anniversary💕 </text>', link:'https://lesliexjy.com'}
     ],
     logo: '/image/logo.png',
     externalLinkIcon: true,
@@ -31,7 +31,6 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'XJYNOTES © 2024'
     },
-
     sidebar: [
       {
         items: [
