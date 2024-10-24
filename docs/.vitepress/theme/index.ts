@@ -1,5 +1,5 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
+import {h, onBeforeMount} from 'vue'
 import {Theme, useRouter} from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
@@ -21,22 +21,20 @@ export default {
   enhanceApp({app, router}) {
     // ...
     app.component('myLock', myLock);
-    const warnString = '游智伟别看了，没有权限'
-    const homeBlock = document.querySelector('.VPHome');
-    function avoidAccess() {
-      const accessToken = sessionStorage.getItem('accessToken')
-      if (accessToken !== 'valid') {
-        console.log(warnString)
-        router.go('/')
-      }
-    }
-    const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'childList' && !(window.location.pathname==='/')) {
-          avoidAccess();
+    onBeforeMount(() => {
+      const warnString = '游智伟别看了，没有权限'
+      const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.type === 'childList' && !(window.location.pathname==='/')) {
+            const accessToken = sessionStorage.getItem('accessToken')
+            if (accessToken !== 'valid') {
+              console.log(warnString)
+              router.go('/')
+            }
+          }
         }
-      }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    })
   },
 } satisfies Theme

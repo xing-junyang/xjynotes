@@ -1,16 +1,18 @@
 <template>
-	<div class="home">
-		<div class="container">
-			<p class="passwd-title">防 yzw 装置 😋</p>
-			<div class="passwd-div">
-				<input v-show="isLocked" class="passwd-input" placeholder="输入这次的密码" v-model="rawPasswd" :onchange="computeHash" type="password">
-				<button v-show="isLocked" @click="goToMainPage">进入主页</button>
-				<button v-show="!isLocked" @click="exit" style="background-color: darkred">离开</button>
+	<ClientOnly>
+		<div class="home">
+			<div class="container">
+				<p class="passwd-title">防 yzw 装置 😋</p>
+				<div class="passwd-div">
+					<input v-show="isLocked" class="passwd-input" placeholder="输入这次的密码" v-model="rawPasswd" :onchange="computeHash" type="password">
+					<button v-show="isLocked" @click="goToMainPage">进入主页</button>
+					<button v-show="!isLocked" @click="exit" style="background-color: darkred">离开</button>
+				</div>
+				<div class="info" v-show="isLocked">*必须输入给定的密码才可以访问本网站上的内容</div>
+				<div class="info" v-show="!isLocked">*请不使用时及时退出！</div>
 			</div>
-			<div class="info" v-show="isLocked">*必须输入给定的密码才可以访问本网站上的内容</div>
-			<div class="info" v-show="!isLocked">*请不使用时及时退出！</div>
 		</div>
-	</div>
+	</ClientOnly>
 </template>
 
 <script setup>
