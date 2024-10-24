@@ -1,8 +1,10 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
-import type { Theme } from 'vitepress'
+import {Theme, useRouter} from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+// @ts-ignore
+import myLock from "./myLock.vue";
 
 const MyComponent = {
   setup() {
@@ -14,10 +16,28 @@ export default {
   extends: DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'doc-footer-before': () => h(MyComponent)
+      'doc-footer-before': () => h(MyComponent),
     })
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+    app.component('myLock', myLock);
+    const warnString = '游智伟别看了，没有权限'
+    const homeBlock = document.querySelector('.VPHome');
+    function avoidAccess() {
+      const accessToken = sessionStorage.getItem('accessToken')
+      if (accessToken !== 'valid') {
+        console.log(warnString)
+        router.go('/')
+      }
+    }
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList' && !document.body.contains(homeBlock)) {
+          avoidAccess();
+        }
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   },
 } satisfies Theme

@@ -1,9 +1,11 @@
-import { defineConfig } from 'vitepress'
+import {defineConfig, useRoute} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
+// @ts-ignore
 export default defineConfig({
   title: "小金魚的筆記本",
   description: "這是小金魚的軟工學習筆記",
+  mpa: true,
   head: [
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/image/logo.png"}],
     ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/image/logo.png"}],
@@ -36,10 +38,10 @@ export default defineConfig({
         items: [
           { text: '简介', link: '/简介' },
           { text: '软件工程基础',
-            collapsed: true, 
+            collapsed: true,
             items: [
               { text: '概念基础', link: '/软件工程/软件工程基础.md' },
-              { text: '需求分析', 
+              { text: '需求分析',
                 collapsed: true,
                 items: [
                   { text: '需求基础', link: '/软件工程/需求基础.md' },
@@ -176,6 +178,10 @@ export default defineConfig({
               {
                 text: 'Parse Trees',
                 link: '/形式语言与自动机/Parse Trees'
+              },
+              {
+                text: 'Pushdown Automata',
+                link: '/形式语言与自动机/Pushdown Automata'
               }
             ]
           },
@@ -263,7 +269,7 @@ export default defineConfig({
                     link: '/移动互联网软件工程与鸿蒙开发/ArkTs语言'
                   },
                   {
-                    text: 'ArkUI（TODO）',  
+                    text: 'ArkUI（TODO）',
                     link: '/移动互联网软件工程与鸿蒙开发/ArkUI'
                   },
                   {
@@ -278,7 +284,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '编译原理', 
+          { text: '编译原理',
             collapsed: true,
             items: [
               { text: '编译原理的一些基本概念', link: '/编译原理/编译原理的一些基本概念.md' },
@@ -296,7 +302,7 @@ export default defineConfig({
                   { text: '并发的概念', link: '/操作系统/并发/并发的概念.md' },
                   { text: 'PV操作 (TODO)', link: '/操作系统/并发/PV操作.md' },
                   { text: '管程 (TODO)', link: '/操作系统/并发/管程.md' }
-                ] 
+                ]
               }
             ]
           },
@@ -395,10 +401,6 @@ export default defineConfig({
     },
     lastUpdated: {
       text: "最後更新於",
-      formatOptions: {
-        dateStyle: 'full',
-        timeStyle: 'full',
-      }
     },
     notFound:{
       title: 'Ah...404',
@@ -418,6 +420,9 @@ export default defineConfig({
     },
   },
   lastUpdated: true,
-  
-  
+  router: {
+    prefetchLinks: true,
+  }
+
 })
+
