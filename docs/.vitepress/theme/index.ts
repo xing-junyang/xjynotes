@@ -3,8 +3,7 @@ import { h } from 'vue'
 import {Theme, useRouter} from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import './myLock.vue'
-import myLock from "./myLock.vue";
+import myLock from './components/myLock.vue';
 
 const MyComponent = {
   setup() {
@@ -19,7 +18,7 @@ export default {
       'doc-footer-before': () => h(MyComponent),
     })
   },
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({app, router}) {
     // ...
     app.component('myLock', myLock);
     const warnString = '游智伟别看了，没有权限'
@@ -33,7 +32,7 @@ export default {
     }
     const observer = new MutationObserver((mutationsList) => {
       for (const mutation of mutationsList) {
-        if (mutation.type === 'childList' && !document.body.contains(homeBlock)) {
+        if (mutation.type === 'childList' && !(window.location.pathname==='/')) {
           avoidAccess();
         }
       }

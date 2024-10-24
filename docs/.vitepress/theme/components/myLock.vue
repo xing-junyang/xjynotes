@@ -73,10 +73,10 @@ function avoidAccess() {
 }
 
 const homeBlock = document.querySelector('.VPHome');
-
+console.log(window.location.pathname)
 const observer = new MutationObserver((mutationsList) => {
 	for (const mutation of mutationsList) {
-		if (mutation.type === 'childList' && !document.body.contains(homeBlock)) {
+		if (mutation.type === 'childList' && !(window.location.pathname==='/')) {
 			avoidAccess();
 		}
 	}
