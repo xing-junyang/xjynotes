@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import { ElNotification } from 'element-plus'
 import { useRouter } from 'vitepress'
 import CryptoJS from 'crypto-js';
 import {ref} from "vue";
