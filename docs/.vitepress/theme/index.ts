@@ -21,20 +21,18 @@ export default {
   enhanceApp({app, router}) {
     // ...
     app.component('myLock', myLock);
-    // onBeforeMount(() => {
-    //   const warnString = '游智伟别看了，没有权限'
-    //   const observer = new MutationObserver((mutationsList) => {
-    //     for (const mutation of mutationsList) {
-    //       if (mutation.type === 'childList' && !(window.location.pathname==='/')) {
-    //         const accessToken = sessionStorage.getItem('accessToken')
-    //         if (accessToken !== 'valid') {
-    //           console.log(warnString)
-    //           router.go('/')
-    //         }
-    //       }
-    //     }
-    //   });
-    //   observer.observe(document.body, { childList: true, subtree: true });
-    // })
+      const warnString = '游智伟别看了，没有权限'
+      const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.type === 'childList' && !(window.location.pathname==='/')) {
+            const accessToken = sessionStorage.getItem('accessToken')
+            if (accessToken !== 'valid') {
+              console.log(warnString)
+              router.go('/')
+            }
+          }
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
   },
 } satisfies Theme
