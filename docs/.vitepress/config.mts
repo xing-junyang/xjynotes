@@ -5,7 +5,6 @@ import {defineConfig, useRoute} from 'vitepress'
 export default defineConfig({
   title: "小金魚的筆記本",
   description: "這是小金魚的軟工學習筆記",
-  mpa: true,
   head: [
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/image/logo.png"}],
     ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/image/logo.png"}],
