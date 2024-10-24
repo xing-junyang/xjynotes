@@ -3,6 +3,7 @@ import { h } from 'vue'
 import {Theme, useRouter} from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import './myLock.vue'
 import myLock from "./myLock.vue";
 
 const MyComponent = {
@@ -20,13 +21,14 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+    app.component('myLock', myLock);
     const warnString = '游智伟别看了，没有权限'
     const homeBlock = document.querySelector('.VPHome');
     function avoidAccess() {
       const accessToken = sessionStorage.getItem('accessToken')
       if (accessToken !== 'valid') {
         console.log(warnString)
-        router.go('/').then()
+        router.go('/')
       }
     }
     const observer = new MutationObserver((mutationsList) => {
