@@ -5,11 +5,11 @@
 				<p class="passwd-title">防 yzw 装置 😋</p>
 				<div class="passwd-div">
 					<input v-show="isLocked" class="passwd-input" placeholder="输入这次的密码" v-model="rawPasswd" :onchange="computeHash" type="password">
-					<button v-show="isLocked" @click="goToMainPage">进入主页</button>
-					<button v-show="!isLocked" @click="exit" style="background-color: darkred">离开</button>
+					<button v-show="isLocked" @click="goToMainPage">访问</button>
+					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
 				</div>
 				<div class="info" v-show="isLocked">*必须输入给定的密码才可以访问本网站上的内容</div>
-				<div class="info" v-show="!isLocked">*请不使用时及时退出！</div>
+				<div class="info" v-show="!isLocked">*空闲时请及时退出</div>
 			</div>
 		</div>
 	</ClientOnly>
@@ -28,7 +28,7 @@ const exitString = '您已退出，感谢你为了安全做出的贡献'
 const warnString = '游智伟洗洗睡了吧，别学了'
 const rawPasswd = ref();
 const publicKey = '10b086531482541496ab0d077d86e528dd479fe9e379f40b66c91e07fc463be3'
-const isLocked = ref(true);
+const isLocked = ref(sessionStorage.getItem('accessToken') !== 'valid');
 
 const computeHash = () => {
 	const encryptedPasswd = CryptoJS.SHA256(rawPasswd.value).toString(CryptoJS.enc.Hex);
@@ -55,6 +55,14 @@ const goToMainPage = () => {
 	}
 }
 
+const keydown = (e) => {
+	console.log(e.key)
+	if (e.key === 'Enter') {
+		goToMainPage()
+	}
+}
+window.addEventListener('keydown', keydown)
+
 const exit = () => {
 	sessionStorage.setItem('accessToken', 'invalid') // 设置令牌
 	router.go('/')
@@ -74,7 +82,6 @@ function avoidAccess() {
 	}
 }
 
-const homeBlock = document.querySelector('.VPHome');
 console.log(window.location.pathname)
 const observer = new MutationObserver((mutationsList) => {
 	for (const mutation of mutationsList) {
@@ -96,7 +103,6 @@ function checkLocked() {
 
 <style scoped>
 .home {
-	display: block;
 	height: 100%;
 	width: 100%;
 	flex-direction: column;
@@ -119,8 +125,21 @@ button {
 	font-weight: bold;
 }
 
+.exit-button {
+	background-color: darkred;
+}
+
+.exit-button:hover {
+	background-color: #ff4d4d;
+}
+
 button:hover {
-	background-color: #369e6b;
+	background-color: #2dff9b;
+	scale: 1.25;
+	margin: 10px;
+	font-weight: 800;
+	font-size: 18px;
+	transition: all 0.3s ease;
 }
 
 .container{

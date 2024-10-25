@@ -96,6 +96,10 @@ export default defineConfig({
               {
                 text: '结构化编程',
                 link: '/C++高级程序设计/结构化编程'
+              },
+              {
+                text: '泛型编程',
+                link: '/C++高级程序设计/泛型编程'
               }
             ]
           },
