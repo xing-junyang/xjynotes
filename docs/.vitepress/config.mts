@@ -231,6 +231,14 @@ export default defineConfig({
               {
                 text: '嵌入式软件系统概述（TODO）',
                 link: '/嵌入式/嵌入式软件系统概述'
+              },
+              {
+                text: '嵌入式操作系统概述',
+                link: '/嵌入式/嵌入式操作系统概述'
+              },
+              {
+                text: '实时调度（TODO）',
+                link: '/嵌入式/实时调度'
               }
             ]
           },
