@@ -184,6 +184,14 @@ export default defineConfig({
               {
                 text: 'Pushdown Automata',
                 link: '/形式语言与自动机/Pushdown Automata'
+              },
+              {
+                text: 'The Pumping Lemma for Context-Free Languages',
+                link: "/形式语言与自动机/The Pumping Lemma for CFL's"
+              },
+              {
+                text: 'Properties of Context-Free Languages',
+                link: '/形式语言与自动机/Properties of Context-Free Languages'
               }
             ]
           },
