@@ -247,6 +247,10 @@ export default defineConfig({
               {
                 text: '实时调度（TODO）',
                 link: '/嵌入式/实时调度'
+              },
+              {
+                text: 'ROS概述',
+                link: '/嵌入式/ROS概述'
               }
             ]
           },
