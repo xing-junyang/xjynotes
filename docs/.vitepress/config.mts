@@ -100,6 +100,10 @@ export default defineConfig({
               {
                 text: '泛型编程',
                 link: '/C++高级程序设计/泛型编程'
+              },
+              {
+                text: '面向对象编程初步',
+                link: '/C++高级程序设计/面向对象编程初步'
               }
             ]
           },
@@ -211,6 +215,9 @@ export default defineConfig({
               },{
                 text: '回归测试',
                 link: '/软件测试/回归测试'
+              },{
+                text: 'Web 测试概述',
+                link: '/软件测试/Web 测试概述'
               }
             ]
           },
