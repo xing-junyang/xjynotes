@@ -196,6 +196,10 @@ export default defineConfig({
               {
                 text: 'Properties of Context-Free Languages',
                 link: '/形式语言与自动机/Properties of Context-Free Languages'
+              },
+              {
+                text: 'Turing Machines',
+                link: '/形式语言与自动机/Turing Machine'
               }
             ]
           },
