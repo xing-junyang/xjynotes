@@ -143,6 +143,10 @@ export default defineConfig({
                 link: '/机器学习/聚类'
               },
               {
+                text: '神经网络',
+                link: '/机器学习/神经网络'
+              },
+              {
                 text: '补充内容',
                 collapsed: true,
                 items: [

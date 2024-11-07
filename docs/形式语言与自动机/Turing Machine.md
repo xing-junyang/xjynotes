@@ -109,7 +109,7 @@ The transitions are shown on the graph above. Note that the sign $a/b,~R$ on eac
 
 Note that the upper-left corner of the graph is the same as the graph in solution 2, and the lower-right corner is to write the last symbol to the first cell. We can perceive this idea of constructing turing machine as **structured programming**.
 
-**Example 4 (Decider)** Let $L = \{b a^i b\mid i\ge 0\}$, construct a Turing Machine to **decide** $L$. You have to give the result on the tape.
+**Example 4 (Decider)** Let $L = \{b a^i b\mid i\ge 0\}$, construct a Turing Machine to **decide** $L$. You have to give the result on the tape in order to **decide**.
 
 **Solution 4** Trivially, we can construct a Turing machine without decider as follows:
 
@@ -118,9 +118,11 @@ Note that the upper-left corner of the graph is the same as the graph in solutio
   <p style="font-size: 12px; color: gray;">A prototype of solution 4</p>
 </div>
 
-Then, we can add a decider to the Turing machine.
+Then, we can add a decider to the Turing machine as shown below:
 
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
   <img src='/image/Screen Shot 2024-11-07 at 4.49.55 PM.png' alt="" style="width:65%;"></img>
   <p style="font-size: 12px; color: gray;">The graph of solution 4</p>
 </div>
+
+The decider makes its way to the leftmost cell, modifying all the cells to blank symbols along the way, then subsequently writes $y$ or $n$ on the tape to decide whether the input string is in the language.
