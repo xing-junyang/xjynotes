@@ -224,6 +224,9 @@ export default defineConfig({
                 text: '回归测试',
                 link: '/软件测试/回归测试'
               },{
+                text: '测试预言',
+                link: '/软件测试/测试预言'
+              },{
                 text: 'Web 测试概述',
                 link: '/软件测试/Web 测试概述'
               }
