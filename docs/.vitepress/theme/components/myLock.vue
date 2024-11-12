@@ -2,30 +2,44 @@
 	<ClientOnly>
 		<div class="home">
 			<div class="container">
-				<p class="passwd-title">防 yzw 装置 😋</p>
+				<p class="passwd-title">内容保护装置</p>
 				<div class="passwd-div">
-					<input v-show="isLocked" class="passwd-input" placeholder="输入这次的密码" v-model="rawPasswd" :onchange="computeHash" type="password">
+					<input v-show="isLocked" class="passwd-input" placeholder="输入本次口令" v-model="rawPasswd"
+					       :onchange="computeHash" type="password">
 					<button v-show="isLocked" @click="goToMainPage">访问</button>
 					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
+					<button @click="showQrcode" class="show-qrcode"><img src="/icon/qrcode.svg"></button>
+
 				</div>
-				<div class="info" v-show="isLocked">*必须输入给定的密码才可以访问本网站上的内容</div>
+				<div class="info" v-show="isLocked">*必须输入口令才可以访问本网站上的内容</div>
 				<div class="info" v-show="!isLocked">*空闲时请及时退出</div>
 			</div>
+			<transition name="modal-fade">
+				<div v-if="isQrcodePopup" class="modal-overlay" @click="isQrcodePopup = false">
+					<div class="modal-content" @click.stop>
+						<p class="passwd-title">关于获取口令</p>
+						<p>您可以关注下方的公众号</p>
+						<img src="/icon/mp_qrcode.png" alt="公众号二维码" style="width: 405px; height: 150px;">
+						<p>在后台回复“口令”来获取口令</p>
+						<button @click="isQrcodePopup = false">已知晓</button>
+					</div>
+				</div>
+			</transition>
 		</div>
 	</ClientOnly>
 </template>
 
 <script setup>
-import { useRouter } from 'vitepress'
+import {useRouter} from 'vitepress'
 import CryptoJS from 'crypto-js';
 import {ref} from "vue";
 
 const router = useRouter()
 
-const helloString = '您可以继续访问该网站了。\n"希望没有给你带去不适。如果给你造成了影响，那么或许我永远都要欠你一个道歉了。"'
-const wrongPasswdString = '密码错误！\n游智伟别看了，没有权限🤗🤗'
-const exitString = '您已退出，感谢你为了安全做出的贡献'
-const warnString = '游智伟洗洗睡了吧，别学了'
+const helloString = '您已获取本网站的访问权限，欢迎！'
+const wrongPasswdString = '口令错误，您可以关注公众号获取口令'
+const exitString = '您已成功退出，感谢您的使用'
+const warnString = '输入正确的口令才能访问该网站'
 const rawPasswd = ref();
 const publicKey = '10b086531482541496ab0d077d86e528dd479fe9e379f40b66c91e07fc463be3'
 const isLocked = ref(sessionStorage.getItem('accessToken') !== 'valid');
@@ -36,7 +50,7 @@ const computeHash = () => {
 }
 
 const goToMainPage = () => {
-	if(computeHash() === publicKey) {
+	if (computeHash() === publicKey) {
 		sessionStorage.setItem('accessToken', 'valid') // 设置令牌
 		router.go('/')
 		// ElNotification({
@@ -45,7 +59,7 @@ const goToMainPage = () => {
 		// 	type: 'success',
 		// })
 		alert(helloString)
-	}else{
+	} else {
 		// ElNotification({
 		// 	title: '密码错误',
 		// 	message: wrongPasswdString,
@@ -74,6 +88,13 @@ const exit = () => {
 	alert(exitString)
 }
 
+const showQrcode = () => {
+	isQrcodePopup.value = true
+}
+
+const isQrcodePopup = ref(false)
+
+
 function avoidAccess() {
 	const accessToken = sessionStorage.getItem('accessToken')
 	if (accessToken !== 'valid') {
@@ -85,16 +106,17 @@ function avoidAccess() {
 console.log(window.location.pathname)
 const observer = new MutationObserver((mutationsList) => {
 	for (const mutation of mutationsList) {
-		if (mutation.type === 'childList' && !(window.location.pathname==='/')) {
+		if (mutation.type === 'childList' && !(window.location.pathname === '/')) {
 			avoidAccess();
 		}
 	}
 });
 
-observer.observe(document.body, { childList: true, subtree: true });
+observer.observe(document.body, {childList: true, subtree: true});
 
 window.addEventListener('load', checkLocked)
 checkLocked()
+
 function checkLocked() {
 	isLocked.value = sessionStorage.getItem('accessToken') !== 'valid'
 	console.log(isLocked.value)
@@ -141,7 +163,7 @@ button:hover {
 	font-size: 18px;
 }
 
-.container{
+.container {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -150,11 +172,11 @@ button:hover {
 	margin: 20px;
 	padding: 10px;
 	border-radius: 12px;
-	background-color: rgb(246,246,246);
+	background-color: rgb(246, 246, 246);
 	width: fit-content;
 }
 
-:root.dark .container{
+:root.dark .container {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -167,12 +189,12 @@ button:hover {
 	width: fit-content;
 }
 
-.passwd-div{
+.passwd-div {
 	display: flex;
 	flex-direction: row;
 }
 
-.passwd-input{
+.passwd-input {
 	padding: 10px;
 	margin-right: 10px;
 	border-radius: 12px;
@@ -182,7 +204,7 @@ button:hover {
 	font-weight: bold;
 }
 
-.passwd-title{
+.passwd-title {
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: bold;
@@ -190,11 +212,54 @@ button:hover {
 	padding-right: 20px;
 }
 
-.info{
+.info {
 	font-size: 12px;
 	line-height: 16px;
 	color: grey;
 	padding-top: 10px;
 	font-weight: bolder;
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 999;
+	background-color: rgba(255, 255, 255, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+:root.dark .modal-overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	z-index: 999;
+	background-color: rgb(246, 246, 246);
+	padding: 20px;
+	border-radius: 8px;
+	border: solid 2px rgba(183, 183, 183, 0.48);
+	max-width: 500px;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+:root.dark .modal-content {
+	background-color: rgb(32, 33, 38);
+}
+
+.modal-fade-enter-active, .modal-fade-leave-active {
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.modal-fade-enter, .modal-fade-leave-to /* .modal-fade-leave-active in < 2.1.8 */ {
+	opacity: 0;
+	transform: scale(1);
 }
 </style>

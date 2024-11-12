@@ -1,4 +1,4 @@
-import "./chunk-TDUMLE5V.js";
+import "./chunk-BQWMX7FD.js";
 
 // node_modules/minisearch/dist/es/index.js
 var __assign = function() {
