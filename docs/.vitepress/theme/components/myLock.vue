@@ -41,7 +41,7 @@ const wrongPasswdString = '口令错误，您可以关注公众号获取口令'
 const exitString = '您已成功退出，感谢您的使用'
 const warnString = '输入正确的口令才能访问该网站'
 const rawPasswd = ref();
-const publicKey = '10b086531482541496ab0d077d86e528dd479fe9e379f40b66c91e07fc463be3'
+const publicKey = '55f05f240449117394e570fe70d7333ea298027b26b90309bffec27ec6222438'
 const isLocked = ref(sessionStorage.getItem('accessToken') !== 'valid');
 
 const computeHash = () => {
