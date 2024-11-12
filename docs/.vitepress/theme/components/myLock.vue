@@ -8,7 +8,7 @@
 					       :onchange="computeHash" type="password">
 					<button v-show="isLocked" @click="goToMainPage">访问</button>
 					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
-					<button @click="showQrcode" class="show-qrcode"><img src="/icon/qrcode.svg"></button>
+					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="/icon/qrcode.svg"></button>
 
 				</div>
 				<div class="info" v-show="isLocked">*必须输入口令才可以访问本网站上的内容</div>
