@@ -35,7 +35,7 @@ export default defineConfig({
       {
         items: [
           { text: '简介', link: '/简介' },
-          { text: '软件工程基础',
+          { text: '<p style="font-weight: bolder; color: #1e2136">软件工程基础</p>',
             collapsed: true,
             items: [
               { text: '概念基础', link: '/软件工程/软件工程基础.md' },
@@ -86,7 +86,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: 'C++高级程序设计',
+          { text: '<p style="font-weight: bolder; color: #1e2136">C++高级程序设计</p>',
             collapsed: true,
             items: [
               {
@@ -107,7 +107,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '机器学习',
+          { text: '<p style="font-weight: bolder; color: #1e2136">机器学习</p>',
             collapsed: true,
             items: [
               {
@@ -158,7 +158,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '形式语言与自动机<br>(In English)',
+          { text: '<p style="font-weight: bolder; color: #1e2136">形式语言与自动机<br>(In English)</p>',
             collapsed: true,
             items: [
               {
@@ -207,7 +207,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '软件测试',
+          { text: '<p style="font-weight: bolder; color: #1e2136">软件测试</p>',
             collapsed: true,
             items: [
               {

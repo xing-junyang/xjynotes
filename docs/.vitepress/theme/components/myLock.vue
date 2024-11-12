@@ -2,7 +2,7 @@
 	<ClientOnly>
 		<div class="home">
 			<div class="container">
-				<p class="passwd-title">内容保护装置</p>
+				<p class="passwd-title">内容保护装置🔒</p>
 				<div class="passwd-div">
 					<input v-show="isLocked" class="passwd-input" placeholder="输入本次口令" v-model="rawPasswd"
 					       :onchange="computeHash" type="password">
