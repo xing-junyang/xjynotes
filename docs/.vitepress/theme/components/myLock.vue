@@ -121,7 +121,7 @@ button {
 	cursor: pointer;
 	font-size: 16px;
 	border-radius: 20px;
-	transition: background-color 0.3s;
+	transition: all 0.3s ease;
 	font-weight: bold;
 }
 
@@ -135,11 +135,10 @@ button {
 
 button:hover {
 	background-color: #2dff9b;
-	scale: 1.25;
+	transform: scale(1.25);
 	margin: 10px;
 	font-weight: 800;
 	font-size: 18px;
-	transition: all 0.3s ease;
 }
 
 .container{
