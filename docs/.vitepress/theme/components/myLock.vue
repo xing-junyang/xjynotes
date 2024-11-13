@@ -19,8 +19,7 @@
 					<div class="modal-content" @click.stop>
 						<p class="popup-title">关于获取口令</p>
 						<div class="divider"></div>
-						<p>您可以<span style="font-weight: bold">关注</span>下方的<span
-							style="font-weight: bold">微信公众号</span></p>
+						<p>您可以<span style="font-weight: bold">关注</span>微信公众号<span style="font-weight: bold">数海札记</span></p>
 						<img src="./mp_qrcode.png" alt="公众号二维码" style="width: 405px; height: 150px;">
 						<p>并在后台回复“<span style="font-weight: bold">口令</span>”来获取口令</p>
 						<button @click="isQrcodePopup = false">已知晓!</button>
@@ -214,6 +213,7 @@ button:hover {
 	font-size: 16px;
 	line-height: 20px;
 	font-weight: bold;
+	width: 160px;
 	box-shadow: none;
 	transition: box-shadow 1s ease, border-color 1s ease;
 }
