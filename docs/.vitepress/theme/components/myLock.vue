@@ -8,7 +8,8 @@
 					       :onchange="computeHash" type="password">
 					<button v-show="isLocked" @click="goToMainPage">访问</button>
 					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
-					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="/icon/qrcode.svg"></button>
+					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="/icon/qrcode.svg">
+					</button>
 
 				</div>
 				<div class="info" v-show="isLocked">*必须输入口令才可以访问本网站上的内容</div>
@@ -17,15 +18,18 @@
 			<transition name="modal-fade">
 				<div v-if="isQrcodePopup" class="modal-overlay" @click="isQrcodePopup = false">
 					<div class="modal-content" @click.stop>
-						<p class="passwd-title">关于获取口令</p>
-						<p>您可以关注下方的公众号</p>
+						<p class="popup-title">关于获取口令</p>
+						<div class="divider"></div>
+						<p>您可以<span style="font-weight: bold">关注</span>下方的<span
+							style="font-weight: bold">微信公众号</span></p>
 						<img src="/icon/mp_qrcode.png" alt="公众号二维码" style="width: 405px; height: 150px;">
-						<p>在后台回复“口令”来获取口令</p>
-						<button @click="isQrcodePopup = false">已知晓</button>
+						<p>并在后台回复“<span style="font-weight: bold">口令</span>”来获取口令</p>
+						<button @click="isQrcodePopup = false">已知晓!</button>
 					</div>
 				</div>
 			</transition>
 		</div>
+		<Toast ref="toastRef"/>
 	</ClientOnly>
 </template>
 
@@ -33,16 +37,19 @@
 import {useRouter} from 'vitepress'
 import CryptoJS from 'crypto-js';
 import {ref} from "vue";
+import {ElDivider} from "element-plus";
+import Toast from './Toast.vue';
 
 const router = useRouter()
 
 const helloString = '您已获取本网站的访问权限，欢迎！'
 const wrongPasswdString = '口令错误，您可以关注公众号获取口令'
-const exitString = '您已成功退出，感谢您的使用'
+const exitString = '您已成功退出，感谢您的使用！'
 const warnString = '输入正确的口令才能访问该网站'
 const rawPasswd = ref();
 const publicKey = '55f05f240449117394e570fe70d7333ea298027b26b90309bffec27ec6222438'
 const isLocked = ref(sessionStorage.getItem('accessToken') !== 'valid');
+const toastRef = ref(null);
 
 const computeHash = () => {
 	const encryptedPasswd = CryptoJS.SHA256(rawPasswd.value).toString(CryptoJS.enc.Hex);
@@ -51,26 +58,23 @@ const computeHash = () => {
 
 const goToMainPage = () => {
 	if (computeHash() === publicKey) {
+		if (toastRef.value) {
+			toastRef.value.showToast(helloString, '#42b983', 'Validated');
+		}
 		sessionStorage.setItem('accessToken', 'valid') // 设置令牌
-		router.go('/')
-		// ElNotification({
-		// 	title: '欢迎访问～',
-		// 	message: helloString,
-		// 	type: 'success',
-		// })
-		alert(helloString)
+		setTimeout(() => {
+			if (router.route.path === '/') {
+				window.location.reload(); // 刷新页面
+			}
+		}, 3000)
 	} else {
-		// ElNotification({
-		// 	title: '密码错误',
-		// 	message: wrongPasswdString,
-		// 	type: 'error',
-		// })
-		alert(wrongPasswdString)
+		if (toastRef.value) {
+			toastRef.value.showToast(wrongPasswdString, 'darkred', 'Failed');
+		}
 	}
 }
 
 const keydown = (e) => {
-	console.log(e.key)
 	if (e.key === 'Enter') {
 		goToMainPage()
 	}
@@ -79,13 +83,16 @@ window.addEventListener('keydown', keydown)
 
 const exit = () => {
 	sessionStorage.setItem('accessToken', 'invalid') // 设置令牌
-	router.go('/')
-	// ElNotification({
-	// 	title: '已退出',
-	// 	message: exitString,
-	// 	type: 'success',
-	// })
-	alert(exitString)
+	if (router.route.path === '/' && toastRef.value) { // 如果不在主页，不显示退出提示
+		toastRef.value.showToast(exitString, '#42b983', 'Success');
+	}
+	if (router.route.path === '/') {
+		setTimeout(() => {
+			window.location.reload(); // 刷新页面
+		}, 3000)
+	}else{
+		router.go('/')
+	}
 }
 
 const showQrcode = () => {
@@ -93,7 +100,6 @@ const showQrcode = () => {
 }
 
 const isQrcodePopup = ref(false)
-
 
 function avoidAccess() {
 	const accessToken = sessionStorage.getItem('accessToken')
@@ -103,7 +109,6 @@ function avoidAccess() {
 	}
 }
 
-console.log(window.location.pathname)
 const observer = new MutationObserver((mutationsList) => {
 	for (const mutation of mutationsList) {
 		if (mutation.type === 'childList' && !(window.location.pathname === '/')) {
@@ -119,7 +124,6 @@ checkLocked()
 
 function checkLocked() {
 	isLocked.value = sessionStorage.getItem('accessToken') !== 'valid'
-	console.log(isLocked.value)
 }
 </script>
 
@@ -204,6 +208,15 @@ button:hover {
 	font-weight: bold;
 }
 
+.popup-title {
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: bold;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: 0px;
+}
+
 .passwd-title {
 	font-size: 20px;
 	line-height: 24px;
@@ -258,8 +271,18 @@ button:hover {
 	transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.modal-fade-enter, .modal-fade-leave-to /* .modal-fade-leave-active in < 2.1.8 */ {
+.modal-fade-enter, .modal-fade-leave-to /* .modal-fade-leave-active in < 2.1.8 */
+{
 	opacity: 0;
 	transform: scale(1);
 }
+
+.divider {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	width: 100%;
+	height: 1px;
+	background-color: var(--vp-c-divider);
+}
+
 </style>
