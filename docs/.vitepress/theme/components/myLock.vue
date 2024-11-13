@@ -8,7 +8,7 @@
 					       :onchange="computeHash" type="password" :class="{ shake: isShaking, 'error-glow': isShaking }">
 					<button v-show="isLocked" @click="goToMainPage">访问</button>
 					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
-					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="/icon/qrcode.svg">
+					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="./qrcode.svg">
 					</button>
 				</div>
 				<div class="info" v-show="isLocked">*必须输入口令才可以访问本网站上的内容</div>
@@ -21,7 +21,7 @@
 						<div class="divider"></div>
 						<p>您可以<span style="font-weight: bold">关注</span>下方的<span
 							style="font-weight: bold">微信公众号</span></p>
-						<img src="/icon/mp_qrcode.png" alt="公众号二维码" style="width: 405px; height: 150px;">
+						<img src="./mp_qrcode.png" alt="公众号二维码" style="width: 405px; height: 150px;">
 						<p>并在后台回复“<span style="font-weight: bold">口令</span>”来获取口令</p>
 						<button @click="isQrcodePopup = false">已知晓!</button>
 					</div>
