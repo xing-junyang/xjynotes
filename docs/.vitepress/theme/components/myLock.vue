@@ -5,12 +5,11 @@
 				<p class="passwd-title">内容保护装置🔒</p>
 				<div class="passwd-div">
 					<input v-show="isLocked" class="passwd-input" placeholder="输入本次口令" v-model="rawPasswd"
-					       :onchange="computeHash" type="password">
+					       :onchange="computeHash" type="password" :class="{ shake: isShaking, 'error-glow': isShaking }">
 					<button v-show="isLocked" @click="goToMainPage">访问</button>
 					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
 					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="/icon/qrcode.svg">
 					</button>
-
 				</div>
 				<div class="info" v-show="isLocked">*必须输入口令才可以访问本网站上的内容</div>
 				<div class="info" v-show="!isLocked">*空闲时请及时退出</div>
@@ -50,6 +49,7 @@ const rawPasswd = ref();
 const publicKey = '55f05f240449117394e570fe70d7333ea298027b26b90309bffec27ec6222438'
 const isLocked = ref(sessionStorage.getItem('accessToken') !== 'valid');
 const toastRef = ref(null);
+const isShaking = ref(false);
 
 const computeHash = () => {
 	const encryptedPasswd = CryptoJS.SHA256(rawPasswd.value).toString(CryptoJS.enc.Hex);
@@ -71,6 +71,7 @@ const goToMainPage = () => {
 		if (toastRef.value) {
 			toastRef.value.showToast(wrongPasswdString, 'darkred', 'Failed');
 		}
+		triggerShake();
 	}
 }
 
@@ -124,6 +125,13 @@ checkLocked()
 
 function checkLocked() {
 	isLocked.value = sessionStorage.getItem('accessToken') !== 'valid'
+}
+
+function triggerShake() {
+	isShaking.value = true;
+	setTimeout(() => {
+		isShaking.value = false;
+	}, 1500);
 }
 </script>
 
@@ -206,6 +214,8 @@ button:hover {
 	font-size: 16px;
 	line-height: 20px;
 	font-weight: bold;
+	box-shadow: none;
+	transition: box-shadow 1s ease, border-color 1s ease;
 }
 
 .popup-title {
@@ -285,4 +295,19 @@ button:hover {
 	background-color: var(--vp-c-divider);
 }
 
+@keyframes shake {
+	0%, 100% { transform: translateX(0); }
+	10%, 30%, 50%, 70%, 90%{ transform: translateX(-10px); }
+	20%, 40%, 60%, 80%{ transform: translateX(10px); }
+}
+
+.shake {
+	animation: shake 0.8s ease;
+}
+
+.error-glow {
+	border: 2px solid red;
+	box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+	transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
 </style>
