@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "crypto-js": "^4.2.0",
-    "element-plus": "^2.8.6"
+    "element-plus": "^2.8.6",
+    "vitepress-markdown-timeline": "^1.2.1"
   }
 }

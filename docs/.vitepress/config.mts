@@ -1,4 +1,5 @@
 import {defineConfig, useRoute} from 'vitepress'
+import timeline from "vitepress-markdown-timeline";
 
 // https://vitepress.dev/reference/site-config
 // @ts-ignore
@@ -16,26 +17,36 @@ export default defineConfig({
     ['meta', { name: "msapplication-config", content: "/assets/favicons/browserconfig.xml"}],
     ['meta', { name: "theme-color", content: "#ffffff"}],
   ],
-  markdown: {math: true, image:{lazyLoading: true}, lineNumbers: true},
+  markdown: {
+    math: true,
+    image:{lazyLoading: true},
+    lineNumbers: true,
+
+    //时间线
+    config: (md) => {
+      md.use(timeline);
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主頁 🖥', link: '/' },
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' },
+      { text: '关于 🧑‍💻', link: '/about.md'},
       { text: '<text style="color:black; font-weight: 600; border-radius:16px; background-color:rgba(255, 182, 193, 1); padding: 8px 14px;"> Love Anniversary💕 </text>', link:'https://lesliexjy.com'}
     ],
     logo: '/image/logo.png',
     externalLinkIcon: true,
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'XJYNOTES © 2024'
+      message: 'Version 1.0. Released under the MIT License. Using <a href="https://vitepress.dev">VitePress</a> and <a href="https://vuejs.org">Vue.js</a> to build.',
+      copyright: '<p style="font-weight: bolder; color:#3b3b85;">XJYNOTES © 2024 - Present</p>'
     },
     sidebar: [
       {
         items: [
           { text: '简介', link: '/简介' },
-          { text: '<p style="font-weight: bolder; color: #1e2136">软件工程基础</p>',
+          { text: '<p style="font-weight: 900;color:#3b3b85;">软件工程基础</p>',
             collapsed: true,
             items: [
               { text: '概念基础', link: '/软件工程/软件工程基础.md' },
@@ -86,7 +97,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '<p style="font-weight: bolder; color: #1e2136">C++高级程序设计</p>',
+          { text: '<p style="font-weight: 900;color:#3b3b85;">C++高级程序设计</p>',
             collapsed: true,
             items: [
               {
@@ -107,7 +118,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '<p style="font-weight: bolder; color: #1e2136">机器学习</p>',
+          { text: '<p style="font-weight: 900;color:#3b3b85;">机器学习</p>',
             collapsed: true,
             items: [
               {
@@ -158,7 +169,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '<p style="font-weight: bolder; color: #1e2136">形式语言与自动机<br>(In English)</p>',
+          { text: '<p style="font-weight: 900;color:#3b3b85;">形式语言与自动机<br>(In English)</p>',
             collapsed: true,
             items: [
               {
@@ -207,7 +218,7 @@ export default defineConfig({
               }
             ]
           },
-          { text: '<p style="font-weight: bolder; color: #1e2136">软件测试</p>',
+          { text: '<p style="font-weight: 900;color:#3b3b85;">软件测试</p>',
             collapsed: true,
             items: [
               {
@@ -502,4 +513,3 @@ export default defineConfig({
   }
 
 })
-

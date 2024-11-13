@@ -69,6 +69,10 @@ defineExpose({
 	line-height: 24px;
 }
 
+:root.dark .toast-message-content{
+	color: white;
+}
+
 .modal-fade-enter-active, .modal-fade-leave-active {
 	transition: opacity 0.5s ease, transform 0.5s ease;
 }
@@ -84,5 +88,9 @@ defineExpose({
 	width: 100%;
 	height: 1px;
 	background-color: var(--vp-c-divider);
+}
+
+:root.dark .divider {
+	background-color: rgba(183, 183, 183, 0.48);
 }
 </style>
