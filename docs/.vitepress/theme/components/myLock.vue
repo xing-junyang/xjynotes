@@ -156,6 +156,7 @@ button {
 	border-radius: 20px;
 	transition: all 0.3s ease;
 	font-weight: bold;
+	min-height: 44px;
 }
 
 .exit-button {
@@ -181,7 +182,7 @@ button:hover {
 	text-align: center;
 	display: flex;
 	margin: 20px;
-	padding: 10px;
+	padding: 20px;
 	border-radius: 12px;
 	background-color: rgb(246, 246, 246);
 	width: fit-content;
@@ -203,6 +204,8 @@ button:hover {
 .passwd-div {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
+
 }
 
 .passwd-input {
@@ -214,6 +217,7 @@ button:hover {
 	line-height: 20px;
 	font-weight: bold;
 	width: 160px;
+	max-height: 60px;
 	box-shadow: none;
 	transition: box-shadow 1s ease, border-color 1s ease;
 }
@@ -309,5 +313,13 @@ button:hover {
 	border: 2px solid red;
 	box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
 	transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.show-qrcode{
+	min-width: 50px;
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 </style>
