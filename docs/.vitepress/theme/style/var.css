@@ -3,6 +3,10 @@ h1 {
     color: #1e2136;
 }
 
+.dark h1 {
+    color: #edf4ff;
+}
+
 .medium-zoom-overlay {
     z-index: 26;
 }
