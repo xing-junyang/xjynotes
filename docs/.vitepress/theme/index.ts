@@ -6,6 +6,7 @@ import './style.css'
 // @ts-ignore
 import myLock from './components/myLock.vue';
 import "vitepress-markdown-timeline/dist/theme/index.css";
+import "./style/blur.css"
 
 const MyComponent = {
   setup() {
