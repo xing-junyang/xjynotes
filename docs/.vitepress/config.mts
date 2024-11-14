@@ -158,6 +158,10 @@ export default defineConfig({
                 link: '/机器学习/神经网络'
               },
               {
+                text: '卷积神经网络',
+                link: '/机器学习/卷积神经网络'
+              },
+              {
                 text: '补充内容',
                 collapsed: true,
                 items: [
