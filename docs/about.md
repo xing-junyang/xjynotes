@@ -36,5 +36,6 @@ next: false
 
 ::: timeline 2024-11-14
 - Redesigned _Code Block_ style and _Note Block_ style.
+- Added image _zooming_ feature.
 - Released **Version 1.1** of the site *www.xjynotes.com*.
 :::

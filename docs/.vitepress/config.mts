@@ -39,7 +39,7 @@ export default defineConfig({
     logo: '/image/logo.png',
     externalLinkIcon: true,
     footer: {
-      message: 'Version 1.0. Released under the MIT License. Using <a href="https://vuejs.org">Vue.js</a> to build.<br><p style="font-weight: bolder; color:#3b3b85;">XJYNOTES © 2024 - Present</p>',
+      message: 'Version 1.1. Released under the MIT License. Using <a href="https://vuejs.org">Vue.js</a> to build.<br><p style="font-weight: bolder; color:#3b3b85;">XJYNOTES © 2024 - Present</p>',
       copyright: ''
     },
     sidebar: [
@@ -215,6 +215,10 @@ export default defineConfig({
               {
                 text: 'Turing Machines',
                 link: '/形式语言与自动机/Turing Machine'
+              },
+              {
+                text: 'Decidability',
+                link: '/形式语言与自动机/Decidability'
               }
             ]
           },

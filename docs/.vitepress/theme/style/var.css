@@ -2,3 +2,11 @@
 h1 {
     color: #1e2136;
 }
+
+.medium-zoom-overlay {
+    z-index: 26;
+}
+
+.medium-zoom-image {
+    z-index: 26 !important;/* 给的值是21，但是实测盖不住，直接999 */
+}
