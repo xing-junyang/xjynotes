@@ -1,12 +1,11 @@
 // https://vitepress.dev/guide/custom-theme
-import {h, onBeforeMount} from 'vue'
-import {Theme, useRouter} from 'vitepress'
+import {h} from 'vue'
+import {Theme} from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import './style.css'
 // @ts-ignore
 import myLock from './components/myLock.vue';
 import "vitepress-markdown-timeline/dist/theme/index.css";
-import "./style/blur.css"
+import "./style/index.css"
 
 const MyComponent = {
   setup() {

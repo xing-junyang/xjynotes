@@ -31,5 +31,10 @@ next: false
 ::: timeline 2024-11-13
 - Added this *About* page.
 - Added *Notification* component.
-- Deployed **Version 1.0** of the site *www.xjynotes.com*.
+- Released **Version 1.0** of the site *www.xjynotes.com*.
+:::
+
+::: timeline 2024-11-14
+- Redesigned _Code Block_ style and _Note Block_ style.
+- Released **Version 1.1** of the site *www.xjynotes.com*.
 :::
