@@ -11,6 +11,8 @@ import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
 
+import googleAnalytics from 'vitepress-plugin-google-analytics'
+
 const MyComponent = {
   setup() {
     return () => h('div',{class:'footer', style: "margin-bottom: 10px"}, [h('p',{style:""},[h('a',      {href:'https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1', target:"_blank", rel:"license noopener noreferrer", style:"text-decoration: underline; color:#3b3b85; font-size: 14px; padding-right: 10px;display: flex; flex-direction: row"}, ['This work is licensed under CC BY-SA 4.0 ', h('img',{style:"height:22px!important;margin-left:3px;vertical-align:text-bottom;padding-left:10px",src:"/image/copyright/cc.svg" ,alt:""}),h('img',{style:"height:22px!important;margin-left:3px;vertical-align:text-bottom;", src:"/image/copyright/by.svg",alt:""}),h('img',{style: "height:22px!important;margin-left:3px;vertical-align:text-bottom;", src: "/image/copyright/sa.svg", alt:""})])]),h('p',{style:"font-size: 14px"},'XJYNOTES © 2024 --- Made with ❤️ by XJY')])
@@ -28,6 +30,9 @@ export default {
   enhanceApp({app, router}) {
     // ...
     app.component('myLock', myLock);
+    googleAnalytics({
+      id: 'G-5JWWS99K54', //跟踪ID，在analytics.google.com注册即可
+    });
   },
   setup() {
     const route = useRoute();

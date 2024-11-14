@@ -3,12 +3,14 @@
 /* 代码组：tab间距 */
 .vp-code-group .tabs {
     /*padding-top: 20px;*/
+    margin: 16px 0 0 0;
+    border-radius: 10px 10px 0 0px;
 }
 
 /* 代码组：添加样式及阴影 */
 .vp-code-group {
     color: var(--vp-c-black-soft);
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 0 15px 0 rgb(0 0 0 / 20%);
 }
 

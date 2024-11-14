@@ -3,6 +3,12 @@
 /* 代码块：增加留空边距 增加阴影 */
 .vp-doc div[class*=language-] {
     box-shadow: 0 0 15px 0 rgb(0 0 0 / 20%);
+    margin: 16px 0;
+    border-radius: 10px;
+}
+
+.vp-doc li div[class*='language-']{
+    border-radius: 10px;
 }
 
 /*!* 代码块：添加macOS风格的小圆点 *!*/
