@@ -4,12 +4,11 @@
 			<div class="container">
 				<p class="passwd-title">内容保护🔒</p>
 				<div class="passwd-div">
-					<input v-show="isLocked" class="passwd-input" placeholder="输入本次口令" v-model="rawPasswd"
-					       :onchange="computeHash" type="password" :class="{ shake: isShaking, 'error-glow': isShaking }">
+					<input ref="targetInput" id="targetInput" v-show="isLocked" class="passwd-input" placeholder="输入本次口令" v-model="rawPasswd"
+					       :onchange="computeHash" type="password" :class="{ shake: isShaking, 'error-glow': isShaking}" >
 					<button v-show="isLocked" @click="goToMainPage">访问</button>
 					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
-					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="./qrcode.svg">
-					</button>
+					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="./qrcode.svg"></button>
 				</div>
 				<div class="info" v-show="isLocked">*必须输入口令才可以访问本网站上的内容</div>
 				<div class="info" v-show="!isLocked">*空闲时请及时退出</div>
@@ -34,7 +33,7 @@
 <script setup>
 import {useRouter} from 'vitepress'
 import CryptoJS from 'crypto-js';
-import {ref} from "vue";
+import {ref, onMounted, watch, nextTick} from "vue";
 import Toast from './Toast.vue';
 
 const router = useRouter()
@@ -50,8 +49,7 @@ const toastRef = ref(null);
 const isShaking = ref(false);
 
 const computeHash = () => {
-	const encryptedPasswd = CryptoJS.SHA256(rawPasswd.value).toString(CryptoJS.enc.Hex);
-	return encryptedPasswd
+	return CryptoJS.SHA256(rawPasswd.value).toString(CryptoJS.enc.Hex);
 }
 
 const goToMainPage = () => {
@@ -90,7 +88,7 @@ const exit = () => {
 			window.location.reload(); // 刷新页面
 		}, 3000)
 	}else{
-		router.go('/')
+		router.go('/');
 	}
 }
 
@@ -99,12 +97,14 @@ const showQrcode = () => {
 }
 
 const isQrcodePopup = ref(false)
-
+const targetInput = ref(null);
 function avoidAccess() {
 	const accessToken = sessionStorage.getItem('accessToken')
 	if (accessToken !== 'valid') {
-		console.log(warnString)
-		router.go('/')
+		console.log(warnString);
+		router.go('/').then(()=>{
+			toggleInput();
+		})
 	}
 }
 
@@ -131,6 +131,17 @@ function triggerShake() {
 		isShaking.value = false;
 	}, 1500);
 }
+
+// 在页面刷新后定位到密码框
+const toggleInput = async () => {
+	if (isLocked.value) {
+		await nextTick(); // 等待 DOM 更新
+		if(document.getElementById("targetInput")){
+			document.getElementById("targetInput").focus();
+		}else {
+		}
+	}
+};
 </script>
 
 <style scoped>
