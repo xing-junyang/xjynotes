@@ -2,15 +2,22 @@
 	<ClientOnly>
 		<div class="home">
 			<div class="container">
-				<p class="passwd-title">内容保护🔒</p>
+				<div class="passwd-title">内容保护🔒</div>
 				<div class="passwd-div">
 					<input ref="targetInput" id="targetInput" v-show="isLocked" class="passwd-input" placeholder="输入本次口令" v-model="rawPasswd"
 					       :onchange="computeHash" type="password" :class="{ shake: isShaking, 'error-glow': isShaking}" >
-					<button v-show="isLocked" @click="goToMainPage">访问</button>
-					<button v-show="!isLocked" @click="exit" class="exit-button">退出</button>
+					<button v-show="isLocked" @click="goToMainPage" class="show-qrcode"><img src="./chevron_right_circle.svg"></button>
+					<button v-show="!isLocked" @click="exit" class="exit-button show-qrcode"><img src="./power.svg"></button>
 					<button v-show="isLocked" @click="showQrcode" class="show-qrcode"><img src="./qrcode.svg"></button>
 				</div>
-				<div class="info" v-show="isLocked">*必须输入口令才可以访问本网站上的内容</div>
+				<div class="info" v-show="isLocked" @mouseenter="showInfo" @mouseleave="notShowInfo">
+					<transition name="fade">
+						<div v-show="showDetails1">*必须输入口令才可以访问本网站上的内容</div>
+					</transition>
+					<transition name="fade">
+						<div v-show="showDetails2" style="font-size: 10px;">**你也可以尝试破解这个小组件 :)</div>
+					</transition>
+				</div>
 				<div class="info" v-show="!isLocked">*空闲时请及时退出</div>
 			</div>
 			<transition name="modal-fade">
@@ -33,7 +40,7 @@
 <script setup>
 import {useRouter} from 'vitepress'
 import CryptoJS from 'crypto-js';
-import {ref, onMounted, watch, nextTick} from "vue";
+import {ref, nextTick} from "vue";
 import Toast from './Toast.vue';
 
 const router = useRouter()
@@ -47,6 +54,8 @@ const publicKey = '55f05f240449117394e570fe70d7333ea298027b26b90309bffec27ec6222
 const isLocked = ref(sessionStorage.getItem('accessToken') !== 'valid');
 const toastRef = ref(null);
 const isShaking = ref(false);
+const showDetails1 = ref(true);
+const showDetails2 = ref(false);
 
 const computeHash = () => {
 	return CryptoJS.SHA256(rawPasswd.value).toString(CryptoJS.enc.Hex);
@@ -142,6 +151,15 @@ const toggleInput = async () => {
 		}
 	}
 };
+
+// 显示注释
+const showInfo = () => {
+	showDetails2.value = true;
+}
+
+const notShowInfo = () => {
+	showDetails2.value = false;
+}
 </script>
 
 <style scoped>
@@ -163,7 +181,7 @@ button {
 	border: none;
 	cursor: pointer;
 	font-size: 16px;
-	border-radius: 20px;
+	border-radius: 22px;
 	transition: all 0.3s ease;
 	font-weight: bold;
 	min-height: 44px;
@@ -192,7 +210,7 @@ button:hover {
 	text-align: center;
 	display: flex;
 	margin: 20px;
-	padding: 10px 20px;
+	padding: 20px 20px 4px;
 	border-radius: 12px;
 	background-color: rgb(246, 246, 246);
 	width: fit-content;
@@ -205,7 +223,7 @@ button:hover {
 	text-align: center;
 	display: flex;
 	margin: 20px;
-	padding: 10px 20px;
+	padding: 22px 20px 4px;
 	border-radius: 12px;
 	background-color: rgb(32, 33, 38);
 	width: fit-content;
@@ -245,8 +263,10 @@ button:hover {
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: bold;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 8px;
+	//margin-top: 4px;
 }
 
 .info {
@@ -255,6 +275,19 @@ button:hover {
 	color: grey;
 	padding-top: 10px;
 	font-weight: bolder;
+	min-height: 44px;
+}
+
+.fade-enter-active {
+	transition: opacity 5s ease;
+}
+
+.fade-leave-active {
+	transition: opacity 1s ease-in-out;
+}
+
+.fade-enter-from, .fade-leave-to {
+	opacity: 0;
 }
 
 .modal-overlay {
@@ -326,7 +359,7 @@ button:hover {
 }
 
 .show-qrcode{
-	min-width: 50px;
+	min-width: 44px;
 	padding: 5px;
 	display: flex;
 	justify-content: center;
