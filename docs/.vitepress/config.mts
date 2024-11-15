@@ -34,7 +34,7 @@ export default defineConfig({
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' },
       { text: '关于 🧑‍💻', link: '/about.md'},
-      { text: '<text style="color:black; font-weight: 600; border-radius:16px; background-color:rgba(255, 182, 193, 1); padding: 8px 14px;"> Love Anniversary💕 </text>', link:'https://lesliexjy.com'}
+      { text: '<text class="love-anniversary"> Love  Anniversary </text>', link:'https://lesliexjy.com'}
     ],
     logo: '/image/logo.png',
     externalLinkIcon: true,

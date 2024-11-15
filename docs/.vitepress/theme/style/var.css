@@ -19,3 +19,13 @@ h1 {
     z-index: 999 !important;/* 给的值是21，但是实测盖不住，直接999 */
 }
 
+.love-anniversary{
+    color:black;
+    font-weight: 1000;
+    font-size: 22px;
+    line-height: 22px;
+    border-radius:24px;
+    background-color:rgba(255, 182, 193, 1);
+    padding: 6px 16px;
+    font-family: "Cookie", cursive;
+}
