@@ -14,6 +14,9 @@ hero:
       text: 简介
       link: ./简介.md
     - theme: alt
+      text: 导航
+      link: ./nav/navigation.md
+    - theme: alt
       text: View my GitHub
       link: https://github.com/xing-junyang
 features:

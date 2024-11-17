@@ -32,6 +32,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主頁 🖥', link: '/' },
+      { text: '导航 🧭', link: '/nav/navigation.md' },
       { text: '筆記 📒', link: '/简介.md' },
       { text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md' },
       { text: '关于 🧑‍💻', link: '/about.md'},
@@ -40,13 +41,14 @@ export default defineConfig({
     logo: '/image/logo.png',
     externalLinkIcon: true,
     footer: {
-      message: 'Version 1.1. Released under the MIT License. Using <a href="https://vuejs.org">Vue.js</a> to build.<br><span style="font-weight: bolder; color:#3b3b85;">XJYNOTES © 2024 - Present</span>',
-      copyright: ''
+      message: 'This site has been visited <span style="font-weight: bolder; color:#3b3b85;" id="busuanzi_value_site_pv"></span> times.',
+      copyright: 'Released under the MIT License. Version 1.2<br><span style="font-weight: bolder; color:#3b3b85;">XJYNOTES © 2024 - Present</span>'
     },
     sidebar: [
       {
         items: [
           { text: '简介', link: '/简介' },
+          { text: '导航', link: '/nav/navigation' },
           { text: '<p style="font-weight: 900;color:#3b3b85;">软件工程基础</p>',
             collapsed: true,
             items: [

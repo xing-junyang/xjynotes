@@ -1,6 +1,7 @@
 ---
 prev: false
 next: false
+comment: false
 ---
 
 # 本站大事记
@@ -38,4 +39,11 @@ next: false
 - Redesigned _Code Block_ style and _Note Block_ style.
 - Added image _zooming_ feature.
 - Released **Version 1.1** of the site *www.xjynotes.com*.
+:::
+
+::: timeline 2024-11-18
+
+- Added *Comment* component.
+- Added *Site Navigation* page.
+
 :::
