@@ -15,7 +15,7 @@
 						<div v-show="showDetails1">*必须输入口令才可以访问本网站上的内容</div>
 					</transition>
 					<transition name="fade">
-						<div v-show="showDetails2" style="font-size: 10px;">**你也可以尝试破解这个小组件 :)</div>
+						<div v-show="showDetails2" style="font-size: 10px;">**你也可以尝试绕过这个小组件 :)</div>
 					</transition>
 				</div>
 				<div class="info" v-show="!isLocked">*空闲时请及时退出</div>

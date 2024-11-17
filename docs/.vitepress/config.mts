@@ -1,5 +1,6 @@
 import {defineConfig, useRoute} from 'vitepress'
 import timeline from "vitepress-markdown-timeline";
+import vitepressProtectPlugin from "vitepress-protect-plugin"
 
 // https://vitepress.dev/reference/site-config
 // @ts-ignore
@@ -518,6 +519,13 @@ export default defineConfig({
   lastUpdated: true,
   router: {
     prefetchLinks: true,
+  },
+  vite:{
+    plugins:[
+      vitepressProtectPlugin({
+        disableF12: true, // 禁用F12开发者模式
+      }),
+    ]
   }
 
 })
