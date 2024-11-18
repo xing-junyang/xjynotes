@@ -340,8 +340,8 @@ export const NAV_DATA: NavData[] = [
             },
             {
                 title: 'Hugging Face',
-                icon: 'https://huggingface.co/favicon.ico',
-                desc: '一个大型的 NLP 社区',
+                icon: '/icon/hgf.svg',
+                desc: '一个大型 NLP 社区',
                 link: 'https://huggingface.co'
             },
             {
@@ -361,7 +361,7 @@ export const NAV_DATA: NavData[] = [
                 title: '知乎',
                 icon: 'https://static.zhihu.com/heifetz/assets/apple-touch-icon-60.362a8eac.png',
                 desc: '这个也不必解释了',
-                link: 'https://juejin.cn'
+                link: 'https://www.zhihu.com'
             }
         ]
     },
