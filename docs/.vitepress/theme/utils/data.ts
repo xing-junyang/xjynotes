@@ -93,7 +93,7 @@ export const NAV_DATA: NavData[] = [
                 title: 'Coursera',
                 desc: '全球最大的在线课程平台',
                 link: 'https://www.coursera.org',
-                icon: 'https://www.coursera.org/favicon.ico'
+                icon: '/icon/csa.png'
             },
             {
                 title: 'Bilibili',
@@ -103,7 +103,7 @@ export const NAV_DATA: NavData[] = [
                     type: 'tip',
                 },
                 link: 'https://www.bilibili.com',
-                icon: 'https://www.bilibili.com/favicon.ico'
+                icon: '/icon/bli.png'
             },
             {
                 title: 'OI Wiki',
@@ -131,7 +131,7 @@ export const NAV_DATA: NavData[] = [
                     type: 'warning',
                 },
                 link: 'https://www.youtube.com',
-                icon: 'https://www.youtube.com/favicon.ico'
+                icon: '/icon/yt.png'
             },
         ]
     },
@@ -226,7 +226,7 @@ export const NAV_DATA: NavData[] = [
                 link: 'https://developer.mozilla.org/zh-CN'
             },
             {
-                icon: '/icons/nodejs.svg',
+                icon: '/icons/nodejs.png',
                 title: 'Node.js',
                 desc: 'JavaScript 运行环境',
                 link: 'https://nodejs.org/zh-cn'
@@ -238,7 +238,7 @@ export const NAV_DATA: NavData[] = [
                 link: 'https://developers.weixin.qq.com/miniprogram/dev/framework/'
             },
             {
-                icon: 'https://www.tailwindcss.cn/apple-touch-icon.png',
+                icon: '/icon/tail.png',
                 title: 'TailwindCSS 中文网',
                 desc: '一个功能类优先的 CSS 框架',
                 link: 'https://www.tailwindcss.cn'
@@ -273,7 +273,7 @@ export const NAV_DATA: NavData[] = [
                 link: 'https://www.mongodb.com'
             },
             {
-                icon: 'https://redis.io/images/favicon.png',
+                icon: '/icon/redis.png',
                 title: 'Redis',
                 desc: '内存中的数据结构存储',
                 link: 'https://redis.io'
