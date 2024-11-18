@@ -45,5 +45,6 @@ comment: false
 
 - Added *Comment* component.
 - Added *Site Navigation* page.
+- Released **Version 1.2** of the site *www.xjynotes.com*.
 
 :::
