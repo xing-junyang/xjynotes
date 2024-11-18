@@ -159,6 +159,16 @@ export const NAV_DATA: NavData[] = [
                 desc: '汇集了许多模型，Claude 很强'
             },
             {
+                icon: '/icon/lobechat.png',
+                title: 'LobeChat',
+                badge: {
+                    text: 'AI机器人',
+                    type: 'tip',
+                },
+                link: 'https://lobechat.com',
+                desc: '开源的多模态聊天机器人框架'
+            },
+            {
                 icon: '/icon/kimi.ico',
                 title: 'Kimi',
                 badge: {
