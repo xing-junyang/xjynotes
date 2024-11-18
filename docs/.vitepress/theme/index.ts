@@ -20,6 +20,9 @@ import giscusTalk from "vitepress-plugin-comment-with-giscus/lib/giscus";
 import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 
+// @ts-ignore
+import GitAuthor from './components/GitAuthor.vue'
+
 const MyComponent = {
     setup() {
         return () => h('div', {
@@ -72,6 +75,8 @@ export default {
                 busuanzi.fetch()
             }
         }
+
+        app.component('GitAuthor', GitAuthor)
     },
     setup() {
         //添加图像缩放
