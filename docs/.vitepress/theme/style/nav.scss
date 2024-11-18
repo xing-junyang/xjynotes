@@ -1,21 +1,4 @@
 .m-nav-layout {
-  --vp-layout-max-width: 1660px;
-
-  /* layout 样式 */
-  .container {
-    max-width: var(--vp-layout-max-width) !important;
-  }
-  .content-container,
-  .content {
-    max-width: 100% !important;
-  }
-
-  /* aside 样式 */
-  .aside {
-    padding-left: 0;
-    max-width: 224px;
-  }
-
   .content .copyright {
     display: none;
   }
@@ -48,5 +31,5 @@
 }
 
 .vp-doc a{
-  text-decoration: none;
+  text-decoration: none !important;
 }
