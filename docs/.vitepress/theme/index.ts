@@ -60,6 +60,7 @@ export default {
         return h(DefaultTheme.Layout, props, {
             'doc-footer-before': () => h(MyComponent),
             'aside-outline-before': () => h(myLock), // 注册全局锁
+            'doc-before' : () => h(GitAuthor)
         })
     },
     enhanceApp({app, router}) {
