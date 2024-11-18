@@ -41,7 +41,7 @@ export const NAV_DATA: NavData[] = [
                     text: '仍在更新',
                     type: 'tip',
                 },
-                desc: 'NJUSE-面试指南',
+                desc: '有很多计组和计网资料',
                 link: 'https://blog.csdn.net/m0_51691879?spm=1000.2115.3001.5343'
             },
             {

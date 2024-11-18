@@ -517,6 +517,8 @@ export default defineConfig({
       level: [1,6],
       label: '本頁面'
     },
+    darkModeSwitchLabel: '暗夜模式',
+    sidebarMenuLabel: '頁面導航',
   },
   lastUpdated: true,
   router: {
