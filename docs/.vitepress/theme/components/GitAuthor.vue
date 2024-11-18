@@ -2,7 +2,7 @@
 	<div class="authors-list">
 		<div v-if="authors.length > 0">
 			<div v-for="author in authors" :key="author.email" class="author-info">
-				<span class="author">作者</span>
+				<span class="author">贡献者</span>
 				<img :src="author.avatar" alt="Author Avatar" class="avatar"/>
 				<span class="name">{{ author.name }}</span>
 <!--				<span class="count">提交次数: {{ author.count }}</span>-->
