@@ -1,91 +1,101 @@
 <template>
 	<div class="authors-list">
-		<div style="display: flex; flex-direction: row;" v-if="authors.length > 0">
+		<div style="display: flex; flex-direction: row;" v-if="authors.length > 0 && (!isLoading)">
 			<span class="author-info author">贡献者</span>
-			<a v-for="author in authors" :key="author.email" class="author-info" :href="author.url">
-				<img :src="author.avatar" alt="Author Avatar" class="avatar"/>
-				<span class="name">{{ author.name }}</span>
-<!--				<span class="count">提交次数: {{ author.count }}</span>-->
-			</a>
+			<span v-for="author in authors" :key="author.email" class="author-info author">
+				<a :href="author.url"><img :src="author.avatar" alt="Author Avatar" class="avatar"/></a>
+				<a class="name" :href="author.url">{{ author.name }}</a>
+				<span class="count">提交次数: {{ author.count }}</span>
+			</span>
+		</div>
+		<div v-else-if="isLoading">
+			<p class="loading">正在加载贡献者信息...</p>
 		</div>
 		<div v-else>
-			<p class="loading">正在加载贡献者信息...</p>
+			<p class="loading">暂无贡献者信息</p>
 		</div>
 	</div>
 </template>
 
-<script>
+<script setup>
 import {Octokit} from "@octokit/core";
-import {useRoute} from "vitepress";
+import {useRoute, } from "vitepress";
+import {ref, onMounted, watchEffect} from "vue";
 
-export default {
-	data() {
-		return {
-			authors: [], // 存储文件的作者信息
-		};
-	},
-	async mounted() {
-		const octokit = new Octokit({
-			auth: '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'
+const authors = ref([]) // 存储文件的作者信息
+const route = useRoute();
+const isLoading = ref(false);
+
+async function getAuthorsFromGithub() {
+	isLoading.value = true
+	const octokit = new Octokit({
+		auth: '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'
+	})
+	try {
+		const repoOwner = "xing-junyang"; // 替换为你的 GitHub 用户名
+		const repoName = "xjynotes"; // 替换为你的仓库名
+		const perPage = 99; // 每页获取的提交数
+		let page = 1; // 当前页数
+		let allCommits = [];
+
+		const filePath = decodeURIComponent("/docs/" + route.path.replace(/^\//, "").replace(/\/$/, "").replace(".html", ""))+ '.md';
+		console.log('计算路径', filePath);
+
+		// 获取文件的变更记录
+		const response = await octokit.request('GET /repos/{owner}/{repo}/commits', {
+			owner: repoOwner,
+			repo: repoName,
+			headers: {
+				'X-GitHub-Api-Version': '2022-11-28'
+			},
+			path: filePath, // 指定文件路径
+			per_page: perPage,
+			page,
 		})
-		try {
-			const repoOwner = "xing-junyang"; // 替换为你的 GitHub 用户名
-			const repoName = "xjynotes"; // 替换为你的仓库名
-			const perPage = 100; // 每页获取的提交数
-			let page = 1; // 当前页数
-			let allCommits = [];
 
-			console.log('当前路径：', this.filePath)
-			const route = useRoute();
-			const filePath = "/docs/"+route.path.replace(/^\//, "").replace(/\/$/, "").replace(".html","");
-			console.log('计算路径', filePath);
+		const commits = response.data;
+		allCommits = allCommits.concat(commits);
+		console.log('commits', commits)
 
-			// 获取文件的变更记录
-			const response = await octokit.request('GET /repos/{owner}/{repo}/commits', {
-				owner: repoOwner,
-				repo: repoName,
-				headers: {
-					'X-GitHub-Api-Version': '2022-11-28'
-				},
-				params: {
-					path: filePath, // 指定文件路径
-					per_page: perPage,
-					page,
-				},
-			})
+		// 提取唯一的作者信息
+		authors.value = getUniqueAuthors(allCommits);
 
-			const commits = response.data;
-			allCommits = allCommits.concat(commits);
+		console.log('authors', authors)
+	} catch (error) {
+		console.error("获取页面贡献者信息失败：", error);
+	}
+	isLoading.value = false
+}
 
-			// 提取唯一的作者信息
-			this.authors = this.getUniqueAuthors(allCommits);
-		} catch (error) {
-			console.error("获取页面贡献者信息失败：", error);
-		}
-	},
-	methods: {
-		getUniqueAuthors(commits) {
-			const authorsMap = new Map();
-			commits.forEach((commit) => {
-				const author = commit.commit.author;
-				const avatar = commit.author?.avatar_url || null;
-				const url = commit.author?.html_url || null;
+function getUniqueAuthors(commits) {
+	const authorsMap = new Map();
+	commits.forEach((commit) => {
+		const author = commit.commit.author;
+		const avatar = commit.author?.avatar_url || null;
+		const url = commit.author?.html_url || null;
 
-				if (!authorsMap.has(author.email)) {
-					authorsMap.set(author.email, {
-						name: author.name,
-						email: author.email,
-						avatar: avatar || `https://via.placeholder.com/40`, // 默认头像
-						url: url || `https://github.com`, // 默认 GitHub 首页
-						count: 0, // 初始化提交次数
-					});
-				}
-				authorsMap.get(author.email).count++;
+		if (!authorsMap.has(author.name)) {
+			authorsMap.set(author.name, {
+				name: author.name,
+				email: author.email,
+				avatar: avatar || `https://via.placeholder.com/40`, // 默认头像
+				url: url || `https://github.com`, // 默认 GitHub 首页
+				count: 0, // 初始化提交次数
 			});
-			return Array.from(authorsMap.values());
-		},
-	},
-};
+		}
+		authorsMap.get(author.name).count++;
+	});
+
+	return Array.from(authorsMap.values()).sort((a, b) => b.count - a.count);
+}
+
+onMounted(() => {
+	getAuthorsFromGithub();
+});
+
+watchEffect(() => {
+	getAuthorsFromGithub();
+});
 </script>
 
 <style>
@@ -111,19 +121,20 @@ export default {
 	font-weight: bold;
 }
 
-.author{
+.author {
 	font-size: 1em;
 	font-weight: bold;
 	margin-right: 1em;
 }
 
 .count {
-	margin-left: 1em;
-	color: #555;
+	margin-left: 0.5em;
+	color: gray;
 	font-size: 0.8em;
+	font-weight: lighter;
 }
 
-.loading{
+.loading {
 	color: gray;
 	font-size: 0.95em;
 	font-style: italic;
