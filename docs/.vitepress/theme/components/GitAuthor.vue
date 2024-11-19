@@ -1,15 +1,15 @@
 <template>
 	<div class="authors-list">
-		<div v-if="authors.length > 0">
-			<div v-for="author in authors" :key="author.email" class="author-info">
-				<span class="author">贡献者</span>
+		<div style="display: flex; flex-direction: row;" v-if="authors.length > 0">
+			<span class="author-info author">贡献者</span>
+			<a v-for="author in authors" :key="author.email" class="author-info" :href="author.url">
 				<img :src="author.avatar" alt="Author Avatar" class="avatar"/>
 				<span class="name">{{ author.name }}</span>
 <!--				<span class="count">提交次数: {{ author.count }}</span>-->
-			</div>
+			</a>
 		</div>
 		<div v-else>
-			<p>正在加载贡献者信息...</p>
+			<p class="loading">正在加载贡献者信息...</p>
 		</div>
 	</div>
 </template>
@@ -69,12 +69,14 @@ export default {
 			commits.forEach((commit) => {
 				const author = commit.commit.author;
 				const avatar = commit.author?.avatar_url || null;
+				const url = commit.author?.html_url || null;
 
 				if (!authorsMap.has(author.email)) {
 					authorsMap.set(author.email, {
 						name: author.name,
 						email: author.email,
 						avatar: avatar || `https://via.placeholder.com/40`, // 默认头像
+						url: url || `https://github.com`, // 默认 GitHub 首页
 						count: 0, // 初始化提交次数
 					});
 				}
@@ -88,13 +90,13 @@ export default {
 
 <style>
 .authors-list {
-	margin: 1em 0;
+	margin-top: 1em;
+	margin-bottom: 2em;
 }
 
 .author-info {
 	display: flex;
 	align-items: center;
-	margin-bottom: 1em;
 }
 
 .avatar {
@@ -119,5 +121,11 @@ export default {
 	margin-left: 1em;
 	color: #555;
 	font-size: 0.8em;
+}
+
+.loading{
+	color: gray;
+	font-size: 0.95em;
+	font-style: italic;
 }
 </style>
