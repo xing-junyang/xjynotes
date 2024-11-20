@@ -34,4 +34,4 @@ features:
     link: ./形式语言与自动机/Intro.md
 ---
 
-<myLock />
+[//]: # (<myLock />)

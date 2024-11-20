@@ -59,12 +59,12 @@ export default {
         }
         return h(DefaultTheme.Layout, props, {
             'doc-footer-before': () => h(MyComponent),
-            'aside-outline-before': () => h(myLock), // 注册全局锁
+            // 'aside-outline-before': () => h(myLock), // 注册全局锁
             'doc-before' : () => h(GitAuthor)
         })
     },
     enhanceApp({app, router}) {
-        app.component('myLock', myLock); // 注册全局锁
+        // app.component('myLock', myLock); // 注册全局锁
         googleAnalytics({
             id: 'G-5JWWS99K54', //跟踪ID，在analytics.google.com注册即可
         });
