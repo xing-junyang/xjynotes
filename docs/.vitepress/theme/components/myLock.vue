@@ -18,7 +18,7 @@
 						<div v-show="showDetails2" style="font-size: 10px;">**你也可以尝试绕过这个小组件 :)</div>
 					</transition>
 				</div>
-				<div class="info" v-show="!isLocked">*空闲时请及时退出</div>
+				<div class="info" v-show="!isLocked">*点此退出本网站</div>
 			</div>
 			<transition name="modal-fade">
 				<div v-if="isQrcodePopup" class="modal-overlay" @click="isQrcodePopup = false">
