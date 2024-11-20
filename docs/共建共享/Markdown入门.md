@@ -42,7 +42,7 @@ $$
 
 ### 插入图片
 
-如果要插入图片，应该**先把希望插入的图片放到 `docs/public/image` 目录下**，并使用 `git` 来追踪这一图片。然后打开 Markdown 文档，在您希望引入图片的位置上，粘贴下面的代码
+如果要插入图片，应该**先把希望插入的图片 `Upload` 到 `docs/public/image` 目录下**。然后打开 Markdown 文档，在您希望引入图片的位置上，粘贴下面的代码
 
 ```html
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; padding-top:10px">
