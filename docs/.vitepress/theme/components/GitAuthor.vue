@@ -12,7 +12,7 @@
 			<p class="loading">正在加载贡献者信息...</p>
 		</div>
 		<div v-else>
-			<p class="loading">暂无贡献者信息</p>
+			<p class="loading">暂无贡献者信息，您可能已经离线...</p>
 		</div>
 	</div>
 </template>

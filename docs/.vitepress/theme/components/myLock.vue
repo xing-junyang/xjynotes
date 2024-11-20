@@ -311,7 +311,7 @@ button:hover {
 	z-index: 999;
 	background-color: rgb(246, 246, 246);
 	padding: 20px;
-	border-radius: 8px;
+	border-radius: 16px;
 	border: solid 2px rgba(183, 183, 183, 0.48);
 	max-width: 500px;
 	width: 90%;
