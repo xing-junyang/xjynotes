@@ -170,6 +170,10 @@ export default defineConfig({
                                 link: '/机器学习/卷积神经网络'
                             },
                             {
+                                text: '小样本学习',
+                                link: '/机器学习/小样本学习'
+                            },
+                            {
                                 text: '补充内容',
                                 collapsed: true,
                                 items: [
