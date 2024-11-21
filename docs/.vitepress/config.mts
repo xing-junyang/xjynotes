@@ -299,6 +299,16 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: '需求与商业模式创新',
+                        collapsed: true,
+                        items: [
+                            {text: '商业模式部分',link:'/需求与商业模式创新/商业模式.md'},
+                            {text: '需求部分',link:'/需求与商业模式创新/需求.md'},
+                            {text: '往年真题',link:'/需求与商业模式创新/真题.md'},
+
+                        ]
+                    },
+                    {
                         text: '嵌入式系统概论',
                         collapsed: true,
                         items: [
@@ -446,16 +456,6 @@ export default defineConfig({
                                 text: '共建共享',
                                 link: '/qemu虚拟机/一些杂项'
                             }
-                        ]
-                    },
-                    {
-                        text: '需求与商业模式创新',
-                        collapsed: true,
-                        items: [
-                            {text: '商业模式部分',link:'/需求与商业模式创新/商业模式.md'},
-                            {text: '需求部分',link:'/需求与商业模式创新/需求.md'},
-                            {text: '往年真题',link:'/需求与商业模式创新/真题.md'},
-
                         ]
                     },
                     {
