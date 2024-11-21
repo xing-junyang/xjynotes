@@ -45,7 +45,7 @@ const MyComponent = {
             style: "height:22px!important;margin-left:3px;vertical-align:text-bottom;",
             src: "/image/copyright/sa.svg",
             alt: ""
-        })])]), h('p', {style: "font-size: 14px"}, 'XJYNOTES © 2024 --- Made with ❤️ by XJY')])
+        })])]), h('p', {style: "font-size: 14px"}, 'CORRICULA © 2024 --- Made with ❤️ by NJUSEers')])
     }
 }
 

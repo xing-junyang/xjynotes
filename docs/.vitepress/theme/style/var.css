@@ -1,4 +1,8 @@
 /* .vitepress/theme/style/var.css */
+.VPNavBarTitle .title{
+    font-weight: 900 !important;
+}
+
 h1 {
     color: #1e2136;
 }

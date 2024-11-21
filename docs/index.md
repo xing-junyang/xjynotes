@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "小金鱼的"
-  text: "軟工學習筆記 📒📕📘"
+  name: "Co-rricula"
+  text: "<p style='font-size: 36px; color: grey'>軟工學習資料  共建、共享</p>"
 
   image:
       src: "/image/logo_sim.svg"

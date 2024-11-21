@@ -5,8 +5,8 @@ import vitepressProtectPlugin from "vitepress-protect-plugin"
 // https://vitepress.dev/reference/site-config
 // @ts-ignore
 export default defineConfig({
-    title: "小金魚的筆記本",
-    description: "這是小金魚的軟工學習筆記",
+    title: "Co-rricula",
+    description: "軟工學習資料 共建、共享平台",
     head: [
         ['link', {rel: "apple-touch-icon", sizes: "180x180", href: "/image/logo.png"}],
         ['link', {rel: "icon", type: "image/png", sizes: "32x32", href: "/image/logo.png"}],
@@ -42,7 +42,7 @@ export default defineConfig({
         externalLinkIcon: true,
         footer: {
             message: 'This site has been visited <span style="font-weight: bolder; color:#3b3b85;" id="busuanzi_value_site_pv"></span> times.',
-            copyright: 'Released under the MIT License. Version 1.2<br><span style="font-weight: bolder; color:#3b3b85;">XJYNOTES © 2024 - Present</span>'
+            copyright: 'Released under the MIT License. Version 1.2<br><span style="font-weight: bolder; color:#3b3b85;">CORRICULA © 2024 - Present</span>'
         },
         sidebar: [
             {
@@ -486,15 +486,15 @@ export default defineConfig({
                         collapsed: true,
                         items: [
                             {
-                                text: '<p style="font-weight: 900;color:rgba(95,157,109,0.9);">Markdown入门</p>',
+                                text: 'Markdown入门',
                                 link: '/共建共享/Markdown入门'
                             },
                             {
-                                text: '<p style="font-weight: 900;color:rgba(95,157,109,0.9);">加入本项目</p>',
+                                text: '加入本项目',
                                 link: '/共建共享/加入本项目'
                             },
                             {
-                                text: '<p style="font-weight: 900;color:rgba(95,157,109,0.9);">建立你自己的站点</p>',
+                                text: '建立你自己的站点',
                                 link: '/共建共享/建立你自己的站点'
                             }
                         ],
