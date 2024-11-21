@@ -1,6 +1,6 @@
 <template>
-	<div class="authors-list">
-		<div style="display: flex; flex-direction: row;" v-if="authors.length > 0 && (!isLoading)">
+	<div class="authors-list-container">
+		<div class="authors-list" v-if="authors.length > 0 && (!isLoading)">
 			<span class="author-info author">贡献者</span>
 			<span v-for="author in authors" :key="author.email" class="author-info author">
 				<a :href="author.url"><img :src="author.avatar" alt="Author Avatar" class="avatar"/></a>
@@ -99,9 +99,26 @@ watchEffect(() => {
 </script>
 
 <style>
-.authors-list {
+.authors-list-container {
 	margin-top: 1em;
 	margin-bottom: 2em;
+}
+
+.authors-list {
+	display: flex;
+	flex-direction: row;
+}
+
+@media (max-width: 768px) {
+	.authors-list {
+		flex-direction: column;
+	}
+	.author-info{
+		margin-bottom: 1em;
+	}
+	.authors-list-container{
+		margin-bottom: 1em;
+	}
 }
 
 .author-info {
