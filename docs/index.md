@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Co-rricula"
-  text: "<p style='font-size: 36px; color: grey'>軟工學習資料  共建、共享</p>"
+  text: "軟工學習資料  共建、共享"
 
   image:
       src: "/image/logo_sim.svg"

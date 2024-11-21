@@ -3,6 +3,11 @@
     font-weight: 900 !important;
 }
 
+.VPHomeHero .text{
+    font-size: 36px;
+    color: grey;
+}
+
 h1 {
     color: #1e2136;
 }
