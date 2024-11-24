@@ -39,7 +39,7 @@ async function getAuthorsFromGithub() {
 		let allCommits = [];
 
 		const filePath = decodeURIComponent("/docs/" + route.path.replace(/^\//, "").replace(/\/$/, "").replace(".html", ""))+ '.md';
-		console.log('计算路径', filePath);
+		// console.log('计算路径', filePath);
 
 		// 获取文件的变更记录
 		const response = await octokit.request('GET /repos/{owner}/{repo}/commits', {
@@ -55,12 +55,12 @@ async function getAuthorsFromGithub() {
 
 		const commits = response.data;
 		allCommits = allCommits.concat(commits);
-		console.log('commits', commits)
+		// console.log('commits', commits)
 
 		// 提取唯一的作者信息
 		authors.value = getUniqueAuthors(allCommits);
 
-		console.log('authors', authors)
+		// console.log('authors', authors)
 	} catch (error) {
 		console.error("获取页面贡献者信息失败：", error);
 	}
@@ -70,12 +70,12 @@ async function getAuthorsFromGithub() {
 function getUniqueAuthors(commits) {
 	const authorsMap = new Map();
 	commits.forEach((commit) => {
-		const author = commit.commit.author;
-		const avatar = commit.author?.avatar_url || null;
-		const url = commit.author?.html_url || null;
+		const author = commit.commit.committer;
+		const avatar = commit.committer?.avatar_url || null;
+		const url = commit.committer?.html_url || null;
 
-		if (!authorsMap.has(author.name)) {
-			authorsMap.set(author.name, {
+		if (!authorsMap.has(author.login)) {
+			authorsMap.set(author.login, {
 				name: author.name,
 				email: author.email,
 				avatar: avatar || `https://via.placeholder.com/40`, // 默认头像
@@ -83,7 +83,7 @@ function getUniqueAuthors(commits) {
 				count: 0, // 初始化提交次数
 			});
 		}
-		authorsMap.get(author.name).count++;
+		authorsMap.get(author.login).count++;
 	});
 
 	return Array.from(authorsMap.values()).sort((a, b) => b.count - a.count);
