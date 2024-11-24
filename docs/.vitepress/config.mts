@@ -269,6 +269,16 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: '线性代数',
+                        collapsed: true,
+                        items: [
+                            {
+                                text: '行列式',
+                                link: '/线性代数/行列式'
+                            }
+                        ]
+                    },
+                    {
                         text: '人机交互系统',
                         collapsed: true,
                         items: [
