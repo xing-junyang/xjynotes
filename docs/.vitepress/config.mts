@@ -236,6 +236,10 @@ export default defineConfig({
                             {
                                 text: 'Decidability',
                                 link: '/形式语言与自动机/Decidability'
+                            },
+                            {
+                                text: 'Complexity',
+                                link: '/形式语言与自动机/Complexity'
                             }
                         ]
                     },
@@ -392,8 +396,12 @@ export default defineConfig({
                                         link: '/移动互联网软件工程与鸿蒙开发/ArkUI'
                                     },
                                     {
-                                        text: '鸿蒙应用框架',
+                                        text: 'ArkTS应用框架',
                                         link: '/移动互联网软件工程与鸿蒙开发/鸿蒙应用框架'
+                                    },
+                                    {
+                                        text: 'ArkTS进程与线程',
+                                        link: '/移动互联网软件工程与鸿蒙开发/ArkTS进程与线程'
                                     }
                                 ]
                             },
@@ -402,12 +410,16 @@ export default defineConfig({
                                 link: '/移动互联网软件工程与鸿蒙开发/移动互联网应用需求分析'
                             },
                             {
-                                text: '架构设计',
+                                text: '移动互联网应用架构设计',
                                 link: '/移动互联网软件工程与鸿蒙开发/架构设计'
                             },
                             {
                                 text: '高可用和高并发',
                                 link: '/移动互联网软件工程与鸿蒙开发/高可用和高并发'
+                            },
+                            {
+                                text: '移动互联网应用体系结构设计',
+                                link: '/移动互联网软件工程与鸿蒙开发/移动互联网应用体系结构设计'
                             }
                         ]
                     },

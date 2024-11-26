@@ -1,6 +1,6 @@
 # Decidability
 
-Decidability is a property of languages. A language is **decidable** if there exists an **[algorithm](Turing%20Machine.md#recursive-and-recursively-enumerable-languages)** that can determine whether a given string is in the language or not.
+Decidability is a property of languages. A language is **decidable** if there exists an **[algorithm](Turing%20Machine.md#recursive-and-recursively-enumerable-languages)** that can determine whether a given string is in the language or not. Apparently, decidable languages are the same as **recursive languages**.
 
 ## Inclusion Chain
 

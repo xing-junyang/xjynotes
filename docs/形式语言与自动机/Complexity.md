@@ -56,12 +56,43 @@ $$
 \text{NTIME}(t(n))=\{L\mid L\text{ is decided by a non-deterministic TM in }O(t(n))\text{ time}\}
 $$
 
+This means that $\text{NP}$ is the set of languages that can be decided by a **non-deterministic** Turing machine in polynomial time.
+
 Since all deterministic TMs are also non-deterministic TMs, we have $\text{P}\subseteq\text{NP}$. But whether $\text{P}=\text{NP}$ is still an **open question** of [Millennium Prize Problems](https://en.wikipedia.org/wiki/Millennium_Prize_Problems).
 
-> [!NOTE] Poly-time Verifier
-> 
-> 
+$\text{NP}$ is not a model of real computation, but provides a theoretical framework that captures important features of many **exhaustive search problems**. Some examples of $\text{NP}$ problems are:
+
+- [**Hamiltonian Path Problem**](https://en.wikipedia.org/wiki/Hamiltonian_path_problem) (We will show this later.)
+- [**Traveling Salesman Problem**](https://en.wikipedia.org/wiki/Travelling_salesman_problem)
+- [**Clique Problem**](https://en.wikipedia.org/wiki/Clique_problem)
+
+#### Polynomial Time Verifier
+
+We can also define $\text{NP}$ by **polynomial time verifier**. We will show this by using the example of **Hamiltonian Path Problem**.
+
+> [!NOTE] Hamiltonian Path Problem
 >
+> Given a graph $G$, the Hamiltonian Path Problem is to determine whether there is a path that starts from one vertex $s$, passes through all other vertices exactly once, and ends at another vertex $t$. We can define the language $L_{\text{HAMPATH}}$ as
+> 
+> $$
+> L_{\text{HAMPATH}}=\{\langle G, s, t\rangle\mid G\text{ has a Hamiltonian path from }s\text{ to }t\}
+> $$
+
+This problem is apparently $\text{NP}$, for an NTM would always find the valid path. With brute-force search, we can solve the Hamiltonian Path Problem in $O(n!)$ time. The expense of time is mainly due to the **searching stage**, not the **verification stage**. Actually, the time cost of verification is only $O(n)$, which is polynomial. This will lead to one feature of $\text{NP}$: **polynomial time verification**.
+
+A **polynomial verifier** for a language $L$ is an algorithm $R$ such that for **any** string $w$ in $L$, there exists a string $c$ such that $R$ accepts $\langle w, c\rangle$. The verifier $R$ runs in **polynomial** time, and $c$ is called the **certificate**.
+
+The verifier $R$ for $L_{\text{HAMPATH}}$ is:
+
+$$
+R(\langle \langle G, s, t\rangle, p\rangle)= \begin{cases} \begin{array}{ll}
+1 & \text{if } p \text{ is a Hamiltonian path from } s \text{ to } t \text{ in } G\\
+0 & \text{otherwise}
+\end{array}
+\end{cases}
+$$
+
+If we have a polynomial time verifier for a language $L$, then $L$ is in $\text{NP}$.
 
 ### $\text{EXP}$
 

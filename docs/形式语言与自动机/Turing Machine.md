@@ -75,8 +75,8 @@ An algorithm $M$ is a Turing machine, accepting at accept state and rejecting at
 If $L=L(M)$ for some algorithm $M$, we say $L$ is a **recursive language**.
 
 We can conclude that:
-- Recursive: **Accept** or **Reject**.
-- Recursively Enumerable: **Accept**, **Halt without acceptance**, or **Loop**.
+- Recursive: **Accept** (string in the language) or **Reject** (string not in the language). (Or, **Halt** or **Loop**)
+- Recursively Enumerable: **Accept** (string in the language), **Reject** or **Loop** (string not in the language).
 
 ### Closure Properties
 
@@ -90,7 +90,10 @@ Both recursive and recursively enumerable languages have the following closure p
 - **Inverse Homomorphism**: If $L$ is recursive (or recursively enumerable), then $h(L)$ is recursive (or recursively enumerable), where $h$ is a homomorphism.
 
 > [!IMPORTANT] Proof of Closure Properties
-> //TODO
+> 
+> **Concatenation**: For recursive enumerable language $L_1$ and $L_2$, we can construct a Turing machine $M_1$ and $M_2$ to accept $L_1$ and $L_2$ respectively. Then, on one input $x$, we can iterate all possible ways to split $x$ into $x_1$ and $x_2$, and run $M_1$ on $x_1$ and $M_2$ on $x_2$, separately. If one of them both accepts, then accept. (If in one of the iteration, both $M_1$ and $M_2$ loop, then the entire machine loops.) Apparently, **recursive languages**, **Kleene Star** can be proved in a similar way.
+> 
+> **Reverse**: We can first reverse the input string and run the Turing machine on it.
 
 Only recursive languages have the following closure properties:
 
@@ -99,10 +102,17 @@ Only recursive languages have the following closure properties:
 
 > [!IMPORTANT] No complement in RE
 > 
+> If $L$ is recursively enumerable and $\overline{L}$ is also recursively enumerable, then $L$ is recursive. But the set of recursive languages is a **proper** subset of recursively enumerable languages. Thus, RE is not closed under complement.
+> 
+> However, the complement of RE is called $\text{co-RE}$, we will talk about it in the [next section](./Decidability.md#co-re-languages).
 
 But RE is under the closure of **homomorphism**.
 
-> [!IMPORTANT] Proof of Homomorphism in RE
+> [!IMPORTANT] No homomorphism in recursive languages
+> 
+> Consider a Turing machine whose language $L$ is RE. We define a homomorphism $h$, which maps the transition chain of string $s$ on that TM (denoted as a string) to the string $s$ itself. Apparently, all the strings of transition chains (language $L'$) are recursive (easy to decide whether the transition is valid), yet the original language $L$ is RE. Thus, we found a counterexample $h: L' \to L$, where $L'$ is recursive and $L$ is RE.
+> 
+> Read more [here](https://www.cs.cornell.edu/courses/cs381/2003fa/asgn12sol/cs381-02-12.pdf).
 
 ## Turing Machine Programming
 
@@ -119,7 +129,25 @@ Let's have a look at the following example:
   <p style="font-size: 12px; color: gray;">The graph of solution 1</p>
 </div>
 
-The transitions are shown on the graph above. Note that the sign $a/b,~R$ on each transition means that the machine reads $a$ and writes $b$ on the tape, then moves the head to the right cell.  
+The transitions are shown on the graph above. Note that the sign $a/b,~R$ on each transition means that the machine reads $a$ and writes $b$ on the tape, then moves the head to the right cell.
+
+Suppose the input string is $S$, this Turing machine runs as the following pseudocode:
+
+```c++
+while( S != "" ) {
+    if(S[0] == 'a') {
+        S.erase(0, 1);
+    }else{
+        reject;
+    }
+    if(S[S.size()-1] == 'b') {
+        S.erase(S.size()-1, 1);
+    }else{
+        reject;
+    }
+}
+accept;
+```
 
 **Example 2** Construct a Turing Machine to shift each input symbol one cell to the right, while the leftmost symbol is replaced by $\sqcup$.
 
@@ -169,11 +197,8 @@ We can use the symbol $[a, b, c]$ to denote the vector, where $a, b, c$ are the 
 
 ### Marker
 
-//TODO
+Using the trick of multiple tracks, we can make one extra track the **marker** track. Almost all the cells on the marker track are blank symbols, but few are marked with a special symbol (**Marker**) to indicate some information.
 
-### Caching
-
-//TODO
 
 ## Extensions
 
