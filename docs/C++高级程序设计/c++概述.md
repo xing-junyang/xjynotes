@@ -1,5 +1,9 @@
 # $\mathrm{C}++$ 简述
 
+> _I have yet to see a program that can be written better in C than in C++._
+> 
+> —— **Bjarne Stroustrup**, founder of C++.
+
 ## 为何 $\mathrm{C/C++}$ 仍然如此重要
 
 程序开发中存在一些权衡：
