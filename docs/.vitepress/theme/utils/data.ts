@@ -68,11 +68,11 @@ export const NAV_DATA: NavData[] = [
                 icon: '/icon/github.png',
                 title: '保研指南',
                 badge: {
-                    text: '暂不更新',
-                    type: 'warning',
+                    text: '校园网访问',
+                    type: 'tip',
                 },
                 desc: '南大软院学长学姐编写的保研攻略',
-                link: 'https://postgraduate-recommendation.readthedocs.io/zh_CN/latest/'
+                link: 'http://172.19.240.239'
             },
         ],
     },
