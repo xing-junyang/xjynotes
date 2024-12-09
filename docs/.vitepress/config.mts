@@ -269,6 +269,9 @@ export default defineConfig({
                             }, {
                                 text: '移动 GUI 测试',
                                 link: '/软件测试/移动 GUI 测试'
+                            }, {
+                                text: '智能软件自动化测试',
+                                link: '/软件测试/智能软件自动化测试'
                             }
                         ]
                     },
