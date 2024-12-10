@@ -316,6 +316,10 @@ export default defineConfig({
                                         link: '/人机交互系统/用户测试'
                                     }
                                 ]
+                            },
+                            {
+                                text: '交互设计模型',
+                                link: '/人机交互系统/交互设计模型'
                             }
                         ]
                     },
