@@ -29,7 +29,7 @@ const isLoading = ref(false);
 async function getAuthorsFromGithub() {
 	isLoading.value = true
 	const octokit = new Octokit({
-		auth: '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'
+		auth: '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'
 	})
 	try {
 		const repoOwner = "xing-junyang"; // 替换为你的 GitHub 用户名
