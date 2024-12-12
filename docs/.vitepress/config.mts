@@ -174,6 +174,10 @@ export default defineConfig({
                                 link: '/机器学习/小样本学习'
                             },
                             {
+                                text: '持续学习',
+                                link: '/机器学习/持续学习'
+                            },
+                            {
                                 text: '补充内容',
                                 collapsed: true,
                                 items: [
