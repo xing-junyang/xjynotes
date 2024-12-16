@@ -122,6 +122,10 @@ export default defineConfig({
                             {
                                 text: '面向对象编程初步',
                                 link: '/C++高级程序设计/面向对象编程初步'
+                            },
+                            {
+                                text: '杂项',
+                                link: '/C++高级程序设计/杂项'
                             }
                         ]
                     },
@@ -274,7 +278,10 @@ export default defineConfig({
                                 text: '移动 GUI 测试',
                                 link: '/软件测试/移动 GUI 测试'
                             }, {
-                                text: '智能软件自动化测试',
+                                text: '移动应用众包测试',
+                                link: '/软件测试/移动应用众包测试'
+                            }, {
+                                text: '智能软件测试',
                                 link: '/软件测试/智能软件自动化测试'
                             }
                         ]
