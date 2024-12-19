@@ -182,6 +182,10 @@ export default defineConfig({
                                 link: '/机器学习/持续学习'
                             },
                             {
+                                text: '贝叶斯分类器',
+                                link: '/机器学习/贝叶斯分类器'
+                            },
+                            {
                                 text: '补充内容',
                                 collapsed: true,
                                 items: [
