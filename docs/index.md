@@ -20,18 +20,17 @@ hero:
       text: View my GitHub
       link: https://github.com/xing-junyang
 features:
+  - icon: 🚗
+    title: C++高级程序设计
+    details: 介绍 C++ 的结构化编程新特性和面向对象编程的高级特性。
+    link: ./C++高级程序设计/c++概述.md
   - icon: 🖥
     title: 机器学习入门
     details: 机器学习的基本概念、常用算法以及进阶知识，辅以代码实现。
     link: ./机器学习/机器学习简述.md
-  - icon: 🧑‍💻
-    title: 软件工程基础
-    details: 贯穿整个软件开发生命周期的软件工程基础知识，包括需求分析、设计、测试等。
-    link: ./软件工程/软件工程基础.md
   - icon: 🤖
-    title: Formal Languages and Automata
-    details: Classical formal languages, automata, computation theory, and insights into the mainstream of modeling languages.
-    link: ./形式语言与自动机/Intro.md
+    title: 人机交互系统
+    details: 围绕交互设计的整体流程，介绍系统与用户之间的交互关系的研究。
+    link: ./人机交互系统/人机交互系统概述.md
 ---
-
 [//]: # (<myLock />)
