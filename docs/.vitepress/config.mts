@@ -32,10 +32,10 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         nav: [
             {text: '主頁 🖥', link: '/'},
-            {text: '导航 🧭', link: '/nav/navigation.md'},
+            {text: '導航 🧭', link: '/nav/navigation.md'},
             {text: '筆記 📒', link: '/简介.md'},
             {text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md'},
-            {text: '关于 🧑‍💻', link: '/about.md'},
+            {text: '關於 🧑‍💻', link: '/about.md'},
             {text: '<text class="love-anniversary"> Love  Anniversary </text>', link: 'https://lesliexjy.com'}
         ],
         logo: '/image/logo.png',
@@ -291,7 +291,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '人机交互系统',
+                        text: '<p style="font-weight: 900;color:#3b3b85;">人机交互系统</p>',
                         collapsed: true,
                         items: [
                             {
@@ -335,6 +335,10 @@ export default defineConfig({
                             {
                                 text: '交互设计模型',
                                 link: '/人机交互系统/交互设计模型'
+                            },
+                            {
+                                text: '<p style="font-weight: 900;color:#a14c66;">人机交互复习重点</p>',
+                                link: '/人机交互系统/人机交互复习重点'
                             }
                         ]
                     },

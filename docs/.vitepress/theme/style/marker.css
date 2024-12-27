@@ -3,10 +3,11 @@
 .marker-dynamic {
     white-space: nowrap;
     position: relative;
+    text-decoration: none !important;
 }
 
 .marker-dynamic:after {
-
+    text-decoration: none !important;
     content: '';
     position: absolute;
     z-index: -1;
@@ -21,4 +22,5 @@
 .marker-dynamic:hover:after {
     top: 0%;
     text-shadow: none;
+    text-decoration: none !important;
 }
