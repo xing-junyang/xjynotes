@@ -337,7 +337,7 @@ export default defineConfig({
                                 link: '/人机交互系统/交互设计模型'
                             },
                             {
-                                text: '<p style="font-weight: 900;color:#a14c66;">人机交互复习重点</p>',
+                                text: '人机交互复习重点',
                                 link: '/人机交互系统/人机交互复习重点'
                             }
                         ]
