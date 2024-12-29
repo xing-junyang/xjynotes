@@ -343,6 +343,10 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: '大二上复习资料',
+                        link: '/大二上复习资料/课程复习资料'
+                    },
+                    {
                         text: '需求与商业模式创新',
                         collapsed: true,
                         items: [
