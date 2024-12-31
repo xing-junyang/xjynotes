@@ -22,6 +22,7 @@ import busuanzi from 'busuanzi.pure.js'
 
 // @ts-ignore
 import GitAuthor from './components/GitAuthor.vue'
+import Banner from "./components/Banner.vue";
 
 const MyComponent = {
     setup() {
@@ -60,7 +61,8 @@ export default {
         return h(DefaultTheme.Layout, props, {
             'doc-footer-before': () => h(MyComponent),
             // 'aside-outline-before': () => h(myLock), // 注册全局锁
-            'doc-before' : () => h(GitAuthor)
+            'doc-before' : () => h(GitAuthor),
+            'home-hero-before': () => h(Banner)
         })
     },
     enhanceApp({app, router}) {
