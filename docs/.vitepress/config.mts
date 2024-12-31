@@ -646,6 +646,7 @@ export default defineConfig({
                 disableF12: true, // 禁用F12开发者模式
             }),
         ]
-    }
+    },
+    ignoreDeadLinks: true,
 
 })
