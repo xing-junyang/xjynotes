@@ -15,8 +15,22 @@ const tips = [
 	'页面右侧的目录栏显示了当前页面的大纲。',
 	'可以在左侧的导航栏上查看本网站的所有内容。',
 	'对于移动用户，导航栏位于上方横条的左侧 "頁面導航" 菜单中，目录栏位于上方横条的右侧 "本頁面" 下拉菜单中，可以点击最上方的按钮进行搜索。',
-	'站点导航收录了很多优秀学习资料！',
-	'期末周顺利！',
+	'站点导航页收录了很多优秀学习资料！',
+	'期末周顺利🙏',
+	'评论时可以使用 Markdown 语法。',
+	'Co-rricula is for Collaborative Curricula.',
+	'本站（目前）实现了运营零成本。',
+	'欢迎在站点导航页的评论区分享自己认为有用的站点！',
+	'文章的贡献者是从 Git 的提交记录中自动获取的。',
+	'本站使用 Cloudflare 加速访问。',
+	'点击图片可以全屏观看。',
+	'在移动端显示不全的公式、表格或代码块可以左右滑动查看。',
+	'大二上复习资料（2023级）已经更新，感谢 2023 级全体学委的付出！',
+	'如果在页面中发现错误，欢迎在评论区指出。',
+	'代码块支持一键复制功能。',
+	'可以在提交评论前先预览渲染效果。',
+	'搜索时可以点击切换按钮查看具体内容。',
+	'本站的访问量通过路由跳转统计。',
 ]
 
 //randomly select a tip
@@ -26,7 +40,7 @@ const randomTip = ref(tips[Math.floor(Math.random() * tips.length)])
 onMounted(() => {
 	setInterval(() => {
 		randomTip.value = tips[Math.floor(Math.random() * tips.length)]
-	}, 10000)
+	}, 20000)
 })
 </script>
 
@@ -63,8 +77,31 @@ onMounted(() => {
 	padding: 16px;
 	border-radius: 12px;
 	background-color: var(--vp-carbon-ads-bg-color);
+	transition: all 0.5s ease-in-out;
 }
 
+.tips-content {
+	font-size: 14px;
+	color: var(--vp-carbon-ads-poweredby-color);
+	min-height: 20px; /* 设置一个最小高度 */
+}
+
+/* 修改渐变动画 */
+.fade-enter-active,
+.fade-leave-active {
+	transition: all 0.5s ease-in-out;
+	max-height: 100px;
+	opacity: 1;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	max-height: 0;
+	opacity: 0;
+	margin-top: -20px;
+}
+
+/* 其余样式保持不变 */
 .tip-header {
 	display: flex;
 	justify-content: space-between;
@@ -97,18 +134,5 @@ onMounted(() => {
 	font-size: 13px;
 	color: var(--vp-carbon-ads-poweredby-color);
 	font-weight: bold;
-}
-
-.tips-content {
-	font-size: 14px;
-	color: var(--vp-carbon-ads-poweredby-color);
-}
-
-.fade-enter-active, .fade-leave-active {
-	transition: opacity 0.5s;
-}
-
-.fade-enter, .fade-leave-to {
-	opacity: 0;
 }
 </style>
