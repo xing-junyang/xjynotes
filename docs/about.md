@@ -16,7 +16,7 @@ comment: false
 ::: timeline 2024-5-3 $\text{~~Jiaxing, Zhejiang}$
 - Vitepress deployed.
 - Added the first article: *The Mean Inequality from the Perspective of Integral* (《**积分视角下的均值不等式**》).
-- Added $\text{LaTeX}$ support.
+- Added $\LaTeX$ support.
 - Added *Search* component.
 :::
 
