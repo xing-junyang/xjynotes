@@ -5,22 +5,23 @@
 <template>
 	<div class="banner">
 		<div class="banner-content">
-			<span class="banner-title">辞旧迎新，年年新气象。祝大家元旦快乐🎉</span>
+			<span class="banner-title">期末周顺利🙏</span>
 		</div>
 	</div>
 </template>
 
 <style scoped>
 .banner {
-	background-color: #ff2121;
-	color: #fff;
+	background-color: rgb(228, 238, 255);
+	color: rgb(60, 60, 67);
 	padding: 10px 0;
 	text-align: center;
 	position: relative;
 }
 
 :root.dark .banner {
-	background-color: #6c0000;
+	background-color: rgb(0, 19, 54);
+	color: rgb(167, 185, 187);
 }
 
 .banner-content {
