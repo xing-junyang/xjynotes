@@ -89,7 +89,7 @@ onMounted(() => {
 	width: 13px;
 	height: 13px;
 	margin-right: 5px;
-	color: var(--vp-carbon-ads-poweredby-color);
+	fill: var(--vp-carbon-ads-poweredby-color);
 }
 
 .tips-change span {
