@@ -19,7 +19,7 @@ h1 {
 .vp-doc a{
     text-decoration: none;
     border-radius: 12px;
-    padding: 2px 8px;
+    padding: 2px 12px;
     margin: 0 4px;
     background-color: #e6efff;
     transition: background-color 0.3s, color 0.25s, opacity 0.25s;
