@@ -16,6 +16,31 @@ h1 {
     color: #edf4ff;
 }
 
+.vp-doc a{
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 2px 8px;
+    margin: 0 4px;
+    background-color: #e6efff;
+    transition: background-color 0.3s, color 0.25s, opacity 0.25s;
+}
+
+.vp-doc a:hover{
+    background-color: #c5dfff;
+}
+
+:root.dark .vp-doc a{
+    background-color: #28367e;
+}
+
+:root.dark .vp-doc a:hover{
+    background-color: #000962;
+}
+
+.vp-doc .header-anchor{
+    display: none;
+}
+
 .medium-zoom-overlay {
     z-index: 30;
 }
