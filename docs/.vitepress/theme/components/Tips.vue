@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 
 //static tips data
 const tips = [
@@ -23,9 +23,11 @@ const tips = [
 const randomTip = ref(tips[Math.floor(Math.random() * tips.length)])
 
 //refresh tip after 10 seconds
-setInterval(() => {
-	randomTip.value = tips[Math.floor(Math.random() * tips.length)]
-}, 10000)
+onMounted(() => {
+	setInterval(() => {
+		randomTip.value = tips[Math.floor(Math.random() * tips.length)]
+	}, 10000)
+})
 </script>
 
 <template>
