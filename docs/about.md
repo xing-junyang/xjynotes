@@ -48,3 +48,16 @@ comment: false
 - Released **Version 1.2** of the site *www.xjynotes.com*.
 
 :::
+
+::: timeline 2024-11-21
+
+- Changed site name to *Co-rricula*, which denotes *Collaborative Curricula*.
+
+:::
+
+::: timeline 2025-1-1
+
+- Added _Tips_.
+- Added _Link_ style.
+- The number of clicks exceeded 10000.
+- And, Happy New Year!
