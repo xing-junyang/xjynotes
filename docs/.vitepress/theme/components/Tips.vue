@@ -49,7 +49,7 @@ onMounted(() => {
 		<div class="tips-container">
 			<div class="tip-header">
 				<div class="tips-title">
-					使用提示
+					小提示
 				</div>
 				<div class="tips-change" @click="randomTip = tips[Math.floor(Math.random() * tips.length)]">
 					<!--				icon-->
