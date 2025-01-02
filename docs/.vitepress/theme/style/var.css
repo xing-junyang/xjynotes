@@ -29,6 +29,11 @@ h1 {
     background-color: #c5dfff;
 }
 
+.vp-doc a code{
+    background: none;
+    border: none;
+}
+
 :root.dark .vp-doc a{
     background-color: #28367e;
 }
