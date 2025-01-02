@@ -1,11 +1,16 @@
 <script setup>
+import { ref } from 'vue';
+
+const showBanner = ref(sessionStorage.getItem('close_banner') !== 'true');
+
 function close() {
-	document.querySelector('.banner').style.display = 'none';
+	showBanner.value = false;
+	sessionStorage.setItem('close_banner', 'true');
 }
 </script>
 
 <template>
-	<div class="banner">
+	<div class="banner" v-if="showBanner">
 		<div class="banner-content">
 			<span class="banner-title">期末周顺利🙏</span>
 		</div>
