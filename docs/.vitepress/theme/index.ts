@@ -47,7 +47,7 @@ const MyComponent = {
             style: "height:22px!important;margin-left:3px;vertical-align:text-bottom;",
             src: "/image/copyright/sa.svg",
             alt: ""
-        })])]), h('p', {style: "font-size: 14px"}, 'CORRICULA © 2024 --- Made with ❤️ by NJUSEers')])
+        })])]), h('p', {style: "font-size: 14px"}, 'CORRICULA © 2025 --- Made with ❤️ by NJUSEers')])
     }
 }
 
