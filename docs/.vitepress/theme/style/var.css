@@ -68,3 +68,12 @@ h1 {
     padding: 6px 16px;
     font-family: "Cookie", cursive;
 }
+
+.shell{
+    padding: 18px !important;
+    border-radius: 12px !important;
+}
+
+.search-bar{
+    border-radius: 8px !important;
+}
