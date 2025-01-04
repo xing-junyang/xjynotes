@@ -173,7 +173,7 @@ export default defineConfig({
                                 link: '/机器学习/卷积神经网络'
                             },
                             {
-                                text: '小样本学习',
+                                text: '小样本学习（TODO）',
                                 link: '/机器学习/小样本学习'
                             },
                             {
@@ -193,6 +193,10 @@ export default defineConfig({
                                         link: '/机器学习/自然语言处理'
                                     },
                                 ]
+                            },
+                            {
+                                text: '机器学习复习重点',
+                                link: '/机器学习/机器学习复习重点'
                             }
                         ]
                     },
