@@ -64,7 +64,8 @@ export default {
             // 'aside-outline-before': () => h(myLock), // 注册全局锁
             'doc-before' : () => h(GitAuthor),
             'home-hero-before': () => h(Banner),
-            'aside-outline-before': () => h(Tips)
+            'aside-outline-before': () => h(Tips),
+            'sidebar-nav-before': () => h(Banner),
         })
     },
     enhanceApp({app, router}) {
