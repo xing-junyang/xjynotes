@@ -81,6 +81,11 @@ function close() {
 	font-weight: bold;
 }
 
+:root.dark .link {
+	background-color: #0a2e4e;
+	color: #bbdaff;
+}
+
 .close {
 	position: absolute;
 	right: 20px;
