@@ -119,7 +119,13 @@ function close() {
 		display: none;
 	}
 	.banner-title {
-		font-size: 16px;
+		font-size: 14px;
+	}
+	.link{
+		font-size: 12px;
+		line-height: 20px;
+		border-radius: 12px;
+		padding: 0 12px;
 	}
 
 
