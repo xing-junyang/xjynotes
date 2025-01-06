@@ -100,7 +100,7 @@ function close() {
 	fill: var(--vp-c-text-1);
 }
 
-@container banner (max-width: 240px) {
+@container banner (max-width: 400px) {
 	.banner{
 		margin-top: 20px;
 		display: flex;
