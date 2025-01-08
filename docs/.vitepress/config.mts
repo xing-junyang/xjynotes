@@ -536,6 +536,7 @@ export default defineConfig({
                         items: [
                             {text: '积分视角下的均值不等式', link: '/数海札记/积分视角下的均值不等式'},
                             {text: 'Gamma函数的唯一性', link: '/数海札记/Gamma函数的唯一性'},
+                            {text: '高中数学题目与试卷', link: '/数海札记/高中数学题目'},
                             {
                                 text: '数理逻辑',
                                 collapsed: true,
