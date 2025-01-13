@@ -15,11 +15,9 @@ function close() {
 			<div class="banner-content">
 				<div class="banner-content-container">
 			<span class="banner-title">
-				✨机器学习重点已上传✨
+				2025，寒假快乐！！🥳
 			</span>
-					<a class="link"
-					   href="https://xjynotes.top/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%A4%8D%E4%B9%A0%E9%87%8D%E7%82%B9.html">Check
-						it out!</a>
+					<a class="link" @click="close">Got it!</a>
 				</div>
 			</div>
 			<div class="close" @click="close">
