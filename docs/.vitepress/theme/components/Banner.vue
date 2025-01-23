@@ -62,6 +62,10 @@ function close() {
 	gap: 10px;
 }
 
+.banner-content-container a{
+	cursor: pointer;
+}
+
 .banner-title {
 	font-size: 20px;
 	font-weight: bold;
