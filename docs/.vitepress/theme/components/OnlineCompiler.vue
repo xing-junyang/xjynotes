@@ -256,7 +256,7 @@ textarea {
 	tab-size: 4;
 	border-radius: 6px;
 	height: 400px;
-
+	max-height: 500px;
 }
 
 textarea:focus {
@@ -268,6 +268,8 @@ textarea:focus {
 	padding: 15px;
 	background: #f8f9fa;
 	border-top: 1px solid #e9ecef;
+	max-height: 300px;
+	overflow: auto;
 }
 
 pre {
