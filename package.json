@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@octokit/core": "^6.1.2",
+    "@types/prismjs": "^1.26.5",
     "axios": "^1.7.7",
     "busuanzi.pure.js": "^1.0.3",
     "crypto-js": "^4.2.0",
@@ -22,6 +23,7 @@
     "events": "^3.3.0",
     "git-log-parser": "^1.2.1",
     "medium-zoom": "^1.1.0",
+    "prismjs": "^1.29.0",
     "simple-git": "^3.27.0",
     "vitepress-markdown-timeline": "^1.2.1",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",

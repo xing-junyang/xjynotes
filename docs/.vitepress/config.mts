@@ -562,6 +562,13 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: '前端开发',
+                        collapsed: true,
+                        items: [
+
+                        ]
+                    },
+                    {
                         text: '兴趣使然的时光小记',
                         collapsed: true,
                         items: [
