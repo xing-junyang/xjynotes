@@ -5,22 +5,20 @@
 			<div class="toolbar">
 				<div class="left-group">
 					<button
-						@click="toggleEdit"
-						:class="{ active: editable }"
-						class="icon-button"
-						title="Toggle edit mode"
-						:disabled="isRunning"
-					>
-						<span v-if="!editable">Edit</span>
-						<span v-else>Save</span>
-					</button>
-					<button
-						@click="showInputDialog = true"
+						@click="showInputDialog = true; showConfigDialog = false"
 						class="icon-button"
 						title="Set input"
 						:disabled="isRunning"
 					>
 						<span>Input</span>
+					</button>
+					<button
+						@click="showConfigDialog = true; showInputDialog = false"
+						class="icon-button"
+						title="Set compiler options"
+						:disabled="isRunning"
+					>
+						<span>Config</span>
 					</button>
 					<button
 						@click="runCode"
@@ -29,19 +27,58 @@
 					>
 						<span>▶ Run</span>
 					</button>
+					<button
+						@click="code = defaultCode"
+						:disabled="isRunning"
+						class="reset"
+					>
+						<img src="/icon/redo.svg" alt="Reset">
+						<span>Reset</span>
+					</button>
 				</div>
 
 				<div class="right-group">
-					<select v-model="language" class="language-select">
-						<option value="cpp">C++</option>
-						<option value="c">C</option>
-					</select>
+					<div class="relative">
+						<button
+							class="select-btn"
+							@click="isOpen = !isOpen"
+						>
+							<img
+								:src="selectedLanguage.icon"
+								:alt="selectedLanguage.label"
+								class="w-5 h-5"
+							>
+							<span class="lang">{{ selectedLanguage.label }}</span>
+							<span class="arrow" :class="{ 'arrow-up': isOpen }">▼</span>
+						</button>
+
+						<transition name="fade">
+							<div
+								v-if="isOpen"
+								class="dropdown-menu"
+							>
+								<div
+									v-for="lang in languages"
+									:key="lang.value"
+									class="dropdown-item"
+									@click="selectLanguage(lang)"
+								>
+									<img
+										:src="lang.icon"
+										:alt="lang.label"
+										class="w-5 h-5"
+									>
+									<span class="lang">{{ lang.label }}</span>
+								</div>
+							</div>
+						</transition>
+					</div>
 				</div>
 			</div>
 
 			<div v-if="showInputDialog" class="input-container">
 				<span class="input-title">Program Input</span>
-				<textarea v-model="userInput" rows="5"></textarea>
+				<textarea v-model="userInput" rows="5" class="code-textarea"></textarea>
 				<div class="dialog-buttons">
 					<button @click="showInputDialog = false" class="icon-button">
 						<span>Cancel</span>
@@ -52,13 +89,26 @@
 				</div>
 			</div>
 
+			<div v-if="showConfigDialog" class="input-container">
+				<span class="input-title">Compiler Options</span>
+				<input v-model="config" class="code-text" placeholder="Enter your compile option here.">
+				<div class="dialog-buttons">
+					<button @click="showConfigDialog = false" class="icon-button">
+						<span>Cancel</span>
+					</button>
+					<button @click="showConfigDialog = false" class="icon-button">
+						<span>Save</span>
+					</button>
+				</div>
+			</div>
+
 			<!-- 代码编辑器 -->
 			<div class="editor-container">
 			<textarea
 				ref="editor"
 				v-model="code"
-				:readonly="!editable"
 				@keydown.tab="handleTab"
+				class="code-textarea"
 			></textarea>
 			</div>
 
@@ -77,17 +127,41 @@
 </template>
 
 <script setup lang="ts">
-import {ref, onMounted} from 'vue'
+import {ref, onMounted, computed} from 'vue'
 
 // 状态管理
-const editable = ref(false)
+const editable = ref(true)
 const isRunning = ref(false)
-const code = ref(defaultCode)
+const code = ref('')
 const output = ref('')
-const language = ref<'cpp' | 'c'>('cpp')
+const selected = ref<'cpp' | 'c'>('cpp')
 const showInputDialog = ref(false)
 const userInput = ref('')
 const editor = ref<HTMLTextAreaElement | null>(null)
+const showConfigDialog = ref(false)
+const config = ref('-std=c++17')
+
+const isOpen = ref(false)
+const languages = [
+	{
+		value: 'cpp',
+		label: 'C++',
+		icon: '/icon/cpp.png'
+	},
+	{
+		value: 'c',
+		label: 'C',
+		icon: '/icon/c.png'
+	}
+]
+const selectedLanguage = computed(() =>
+	languages.find(lang => lang.value === selected.value)
+)
+const selectLanguage = (lang) => {
+	selected.value = lang.value
+	isOpen.value = false
+	config.value = lang.value === 'cpp' ? '-std=c++17' : ''
+}
 
 // 默认代码
 const defaultCode = `#include <iostream>
@@ -104,9 +178,9 @@ const runCode = async () => {
 		const input = userInput.value
 
 		// add input to the command
-		const cmd = language.value === 'cpp'
-			? `g++ -std=c++17 main.cpp && echo "${input}" | ./a.out`
-			: `gcc main.cpp && echo "${input}" | ./a.out`
+		const cmd = selectedLanguage.value.value === 'cpp'
+			? `g++ ${config.value} main.cpp && echo "${input}" | ./a.out`
+			: `gcc ${config.value} main.cpp && echo "${input}" | ./a.out`
 
 		const response = await fetch('https://coliru.stacked-crooked.com/compile', {
 			method: 'POST',
@@ -121,14 +195,6 @@ const runCode = async () => {
 		output.value = `Error: ${error instanceof Error ? error.message : 'Unknown error'}`
 	} finally {
 		isRunning.value = false
-	}
-}
-
-// 切换编辑模式
-const toggleEdit = () => {
-	editable.value = !editable.value
-	if (editable.value && editor.value) {
-		editor.value.focus()
 	}
 }
 
@@ -150,9 +216,18 @@ const saveInput = () => {
 }
 
 onMounted(() => {
+	code.value = defaultCode
+
 	if (editor.value) {
 		editor.value.style.height = '400px'
 	}
+
+	document.addEventListener('click', (e) => {
+		const el = document.querySelector('.relative')
+		if (el && !el.contains(e.target)) {
+			isOpen.value = false
+		}
+	})
 })
 </script>
 
@@ -176,20 +251,27 @@ onMounted(() => {
 	border-bottom: 1px solid #e9ecef;
 }
 
+@media screen and (max-width: 600px) {
+	.toolbar {
+		flex-direction: column;
+		align-items: start;
+		gap: 10px;
+	}
+
+	.reset span{
+		display: none;
+	}
+
+	.reset img {
+		padding-right: 0 !important;
+	}
+}
+
 .left-group, .right-group {
 	display: flex;
 	gap: 10px;
 	align-items: center;
 	width: fit-content;
-}
-
-.language-select {
-	padding: 1px 10px;
-	border-radius: 8px;
-	border: 2px solid #ddd;
-	font-size: 12px;
-	font-weight: bold;
-
 }
 
 .language-select option {
@@ -226,6 +308,40 @@ onMounted(() => {
 	font-weight: bold;
 }
 
+.reset{
+	padding: 2px 13px;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	background: #ebedef;
+	transition: all 0.2s;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 29px;
+}
+
+.reset:hover {
+	background: #d8dce0;
+}
+
+.reset:disabled {
+	background: #f1f3f4;
+	cursor: not-allowed;
+}
+
+.reset span {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.reset img {
+	object-fit: contain;
+	height: 10px;
+	padding-right: 4px;
+	fill: rgb(60, 60, 67);
+}
+
 .run-button {
 	background: #4CAF50;
 	color: white;
@@ -244,7 +360,19 @@ onMounted(() => {
 	position: relative;
 }
 
-textarea {
+.code-text{
+	width: 100%;
+	padding: 10px;
+	font-family: 'Fira Code', monospace;
+	font-size: 14px;
+	resize: vertical;
+	background: #ffffff;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	margin: 10px 0;
+}
+
+.code-textarea {
 	width: 100%;
 	padding: 15px;
 	font-family: 'Fira Code', monospace;
@@ -259,7 +387,7 @@ textarea {
 	max-height: 500px;
 }
 
-textarea:focus {
+.code-textarea:focus {
 	outline: none;
 	background: white;
 }
@@ -308,6 +436,77 @@ pre {
 	text-align: right;
 	font-size: 10px;
 	color: #666;
+}
+
+.relative {
+	position: relative;
+}
+
+.select-btn {
+	display: flex;
+	align-items: center;
+	width: 80px;
+	padding: 1px 8px;
+	background: white;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.arrow {
+	margin-left: auto;
+	font-size: 12px;
+	transition: transform 0.2s;
+}
+
+.arrow-up {
+	transform: rotate(180deg);
+}
+
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 80px;
+	margin-top: 4px;
+	background: white;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	z-index: 100;
+}
+
+.fade-enter-active, .fade-leave-active {
+	transition: opacity 0.2s;
+}
+
+.fade-enter, .fade-leave-to {
+	opacity: 0;
+}
+
+.dropdown-item {
+	display: flex;
+	align-items: center;
+	padding: 4px 10px;
+	margin: 2px;
+	cursor: pointer;
+	border-radius: 6px;
+	transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+	background-color: #f5f5f5;
+}
+
+.lang {
+	margin-left: 4px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+img {
+	object-fit: contain;
+	height: 16px;
 }
 
 :root.dark .online-compiler {
@@ -364,7 +563,34 @@ pre {
 	color: #999;
 }
 
-:root.dark .language-select {
+:root.dark .select-btn {
+	background: #282828;
 	border: 2px solid #555;
+}
+
+:root.dark .dropdown-menu {
+	background: #282828;
+	border: 1px solid #555;
+}
+
+:root.dark .reset img {
+	filter: invert(1);
+}
+
+:root.dark .reset span {
+	color: #ddd;
+}
+
+:root.dark .reset{
+	background: #555;
+}
+
+:root.dark .reset:hover {
+	background: #666;
+}
+
+:root.dark .code-text{
+	background: #282828;
+	border: 1px solid #555;
 }
 </style>
