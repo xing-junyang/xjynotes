@@ -78,7 +78,7 @@
 
 			<div v-if="showInputDialog" class="input-container">
 				<span class="input-title">Program Input</span>
-				<textarea v-model="userInput" rows="5" class="code-textarea"></textarea>
+				<textarea v-model="userInput" rows="5" class="input-textarea"></textarea>
 				<div class="dialog-buttons">
 					<button @click="showInputDialog = false" class="icon-button">
 						<span>Cancel</span>
@@ -104,12 +104,22 @@
 
 			<!-- 代码编辑器 -->
 			<div class="editor-container">
-			<textarea
-				ref="editor"
-				v-model="code"
-				@keydown.tab="handleTab"
-				class="code-textarea"
-			></textarea>
+				<!-- 真实的输入框 -->
+				<textarea
+					ref="editor"
+					v-model="code"
+					@keydown.tab.prevent="handleTab"
+					@input="handleInput"
+					@scroll="syncScroll"
+					class="code-textarea"
+				></textarea>
+
+				<!-- 用于显示高亮的pre元素 -->
+				<pre
+					ref="highlight"
+					class="code-highlight"
+					@scroll="syncScroll"
+				><code v-html="highlightedCode"></code></pre>
 			</div>
 
 			<!-- 输出结果 -->
@@ -128,9 +138,14 @@
 
 <script setup lang="ts">
 import {ref, onMounted, computed} from 'vue'
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css';
+import 'prismjs/components/prism-c'
+import 'prismjs/components/prism-cpp'
+
+Prism.plugins.matchBrackets = false;
 
 // 状态管理
-const editable = ref(true)
 const isRunning = ref(false)
 const code = ref('')
 const output = ref('')
@@ -138,6 +153,7 @@ const selected = ref<'cpp' | 'c'>('cpp')
 const showInputDialog = ref(false)
 const userInput = ref('')
 const editor = ref<HTMLTextAreaElement | null>(null)
+const highlight = ref(null);
 const showConfigDialog = ref(false)
 const config = ref('-std=c++17')
 
@@ -171,6 +187,20 @@ int main() {
     return 0;
 }`
 
+const highlightedCode = computed(() => {
+	// 对特殊字符进行转义
+	const escapedCode = code.value
+
+	// 显示行号
+
+	// 使用Prism进行高亮
+	return Prism.highlight(
+		escapedCode,
+		Prism.languages.cpp,
+		'cpp'
+	);
+});
+
 // 运行代码
 const runCode = async () => {
 	isRunning.value = true
@@ -199,15 +229,26 @@ const runCode = async () => {
 }
 
 // 处理Tab键
-const handleTab = (e: KeyboardEvent) => {
-	if (e.key === 'Tab' && editable.value) {
-		e.preventDefault()
-		const start = editor.value!.selectionStart
-		const end = editor.value!.selectionEnd
-		code.value = code.value.substring(0, start) + '    ' + code.value.substring(end)
-		editor.value!.selectionStart = editor.value!.selectionEnd = start + 4
-	}
-}
+const handleTab = (e) => {
+	const start = e.target.selectionStart;
+	const end = e.target.selectionEnd;
+
+	// 插入两个空格作为缩进
+	code.value = code.value.substring(0, start) + '    ' + code.value.substring(end);
+
+	// 将光标移动到插入位置之后
+	nextTick(() => {
+		editor.value.selectionStart = editor.value.selectionEnd = start + 4;
+	});
+};
+
+// 同步滚动
+const syncScroll = (e) => {
+	const target = e.target;
+	const other = target === editor.value ? highlight.value : editor.value;
+	other.scrollTop = target.scrollTop;
+	other.scrollLeft = target.scrollLeft;
+};
 
 // 保存输入
 const saveInput = () => {
@@ -356,10 +397,6 @@ onMounted(() => {
 	cursor: not-allowed;
 }
 
-.editor-container {
-	position: relative;
-}
-
 .code-text{
 	width: 100%;
 	padding: 10px;
@@ -372,24 +409,64 @@ onMounted(() => {
 	margin: 10px 0;
 }
 
-.code-textarea {
+.editor-container {
+	position: relative;
+	height: 400px;
+	max-height: 500px;
 	width: 100%;
-	padding: 15px;
+	font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.input-textarea{
+	width: 100%;
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid #ddd;
+	height: 100px;
+	border-radius: 6px;
 	font-family: 'Fira Code', monospace;
+	font-size: 14px;
+}
+
+.code-textarea,
+.code-highlight{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 15px;
+	font-family: inherit;
 	font-size: 14px;
 	border: none;
 	resize: vertical;
-	background: #ffffff;
-	line-height: 1.5;
-	tab-size: 4;
 	border-radius: 6px;
-	height: 400px;
-	max-height: 500px;
+	line-height: 1.5;
+	box-sizing: border-box;
+	overflow: auto;
+	white-space: pre;
+	word-wrap: normal;
+	tab-size: 4;
 }
 
-.code-textarea:focus {
-	outline: none;
-	background: white;
+.code-textarea{
+	color: transparent;
+	background: transparent;
+	caret-color: #000000; /* 光标颜色 */
+	resize: none;
+	z-index: 1;
+}
+
+.code-highlight{
+	pointer-events: none;
+	background: #ffffff; /* 深色背景 */
+	z-index: 0;
+}
+
+.code-highlight code *{
+	font-family: inherit;
+	font-size: 14px;
+	background: none !important;
 }
 
 .output-container {
@@ -538,11 +615,6 @@ img {
 	background: #282828;
 }
 
-:root.dark textarea {
-	background: #282828;
-	color: #ddd;
-}
-
 :root.dark .output-container {
 	background: #444;
 	border-top: 1px solid #555;
@@ -592,5 +664,22 @@ img {
 :root.dark .code-text{
 	background: #282828;
 	border: 1px solid #555;
+}
+
+:root.dark .dropdown-item {
+	background: #282828;
+}
+
+:root.dark .dropdown-item:hover {
+	background: #333;
+}
+
+:root.dark .code-textarea {
+	border: none;
+	caret-color: #ffffff;
+}
+
+:root.dark .code-highlight {
+	background: #282828;
 }
 </style>
