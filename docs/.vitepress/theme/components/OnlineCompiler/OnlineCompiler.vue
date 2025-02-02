@@ -5,7 +5,7 @@
 			<div class="toolbar">
 				<div class="left-group">
 					<button
-						@click="showInputDialog = true; showConfigDialog = false"
+						@click="showInputDialog = true; showConfigDialog = false; lastUserInput = userInput;"
 						class="icon-button"
 						title="Set input"
 						:disabled="isRunning"
@@ -13,7 +13,7 @@
 						<span>Input</span>
 					</button>
 					<button
-						@click="showConfigDialog = true; showInputDialog = false"
+						@click="showConfigDialog = true; showInputDialog = false; lastConfig = config;"
 						class="icon-button"
 						title="Set compiler options"
 						:disabled="isRunning"
@@ -78,12 +78,12 @@
 
 			<div v-if="showInputDialog" class="input-container">
 				<span class="input-title">Program Input</span>
-				<textarea v-model="userInput" rows="5" class="input-textarea"></textarea>
+				<textarea v-model="userInput" rows="5" class="input-textarea" spellcheck="false" placeholder="Enter runtime input here."></textarea>
 				<div class="dialog-buttons">
-					<button @click="showInputDialog = false" class="icon-button">
+					<button @click="showInputDialog = false; userInput = lastUserInput" class="icon-button">
 						<span>Cancel</span>
 					</button>
-					<button @click="saveInput" class="icon-button">
+					<button @click="showInputDialog = false;" class="icon-button">
 						<span>Save</span>
 					</button>
 				</div>
@@ -91,9 +91,9 @@
 
 			<div v-if="showConfigDialog" class="input-container">
 				<span class="input-title">Compiler Options</span>
-				<input v-model="config" class="code-text" placeholder="Enter your compile option here.">
+				<input v-model="config" class="code-text" spellcheck="false" placeholder="Enter your compile option here.">
 				<div class="dialog-buttons">
-					<button @click="showConfigDialog = false" class="icon-button">
+					<button @click="showConfigDialog = false; config = lastConfig" class="icon-button">
 						<span>Cancel</span>
 					</button>
 					<button @click="showConfigDialog = false" class="icon-button">
@@ -109,9 +109,9 @@
 					ref="editor"
 					v-model="code"
 					@keydown.tab.prevent="handleTab"
-					@input="handleInput"
 					@scroll="syncScroll"
 					class="code-textarea"
+					spellcheck="false"
 				></textarea>
 
 				<!-- 用于显示高亮的pre元素 -->
@@ -137,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, onMounted, computed} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 import 'prismjs/components/prism-c'
@@ -156,6 +156,18 @@ const editor = ref<HTMLTextAreaElement | null>(null)
 const highlight = ref(null);
 const showConfigDialog = ref(false)
 const config = ref('-std=c++17')
+
+// 上次用户输入，用于撤销
+const lastUserInput = ref('')
+const lastConfig = ref('')
+
+// 默认代码
+let defaultCode = `#include <iostream>
+
+int main() {
+    std::cout << "Hello World!\\n";
+    return 0;
+}`
 
 const isOpen = ref(false)
 const languages = [
@@ -177,15 +189,19 @@ const selectLanguage = (lang) => {
 	selected.value = lang.value
 	isOpen.value = false
 	config.value = lang.value === 'cpp' ? '-std=c++17' : ''
-}
-
-// 默认代码
-const defaultCode = `#include <iostream>
+	defaultCode = lang.value === 'cpp' ? `#include <iostream>
 
 int main() {
-    std::cout << "Hello World!\\n";
-    return 0;
+	std::cout << "Hello World!\\n";
+	return 0;
+}` : `#include <stdio.h>
+
+int main() {
+	printf("Hello World!\\n");
+	return 0;
 }`
+	code.value = defaultCode
+}
 
 const highlightedCode = computed(() => {
 	// 对特殊字符进行转义
@@ -230,16 +246,65 @@ const runCode = async () => {
 
 // 处理Tab键
 const handleTab = (e) => {
-	const start = e.target.selectionStart;
-	const end = e.target.selectionEnd;
+	const textarea = e.target;
+	const start = textarea.selectionStart;
+	const end = textarea.selectionEnd;
+	console.log(start, end)
 
-	// 插入两个空格作为缩进
-	code.value = code.value.substring(0, start) + '    ' + code.value.substring(end);
+	const isMultiLine = textarea.value.substring(start, end).includes('\n');
 
-	// 将光标移动到插入位置之后
-	nextTick(() => {
-		editor.value.selectionStart = editor.value.selectionEnd = start + 4;
-	});
+	if(isMultiLine){
+		const selectedText = textarea.value.substring(start, end);
+		const lines = selectedText.split('\n');
+
+		const newLines = lines.map((line) => {
+			if (line.startsWith('\t')) {
+				return line.substring(1); // 删除一个制表符
+			} else if (line.startsWith(' ')) {
+				return line.replace(/^ {1,4}/, ''); // 删除最多 4 个空格
+			}
+			return line;
+		});
+		const newText = newLines.join('\n');
+
+		code.value = code.value.substring(0, start) + newText + code.value.substring(end);
+		textarea.value = code.value;
+		textarea.focus();
+		textarea.selectionStart = start;
+		textarea.selectionEnd = start + newText.length;
+	}
+
+	if(e.shiftKey){
+		const beforeCursor = textarea.value.substring(0, start);
+		const lines = beforeCursor.split('\n');
+		const currentLine = lines[lines.length - 1];
+		const currentLineStart = beforeCursor.lastIndexOf('\n') + 1;
+
+		// 如果当前行以制表符或空格开头，则删除一个缩进
+		// 获取当前行的空格数
+		const spaces = currentLine.match(/^(    )+/);
+		const spaceCount = spaces ? spaces[0].length: 0;
+		if (spaceCount > 0) {
+			const newSpaceCount = Math.max(spaceCount - 4, 0);
+			console.log('newSpaceCount', newSpaceCount)
+			console.log('currentLineStart', currentLineStart)
+			code.value = code.value.substring(0, currentLineStart + newSpaceCount) + code.value.substring(currentLineStart + spaceCount);
+			textarea.value = code.value;
+			textarea.focus();
+			// 将光标移动到插入位置之前
+			textarea.selectionStart = textarea.selectionEnd = currentLineStart + newSpaceCount;
+		}
+	}else{
+		// 插入空格作为缩进
+		code.value = code.value.substring(0, start) + '    ' + code.value.substring(end);
+		textarea.value = code.value;
+		textarea.focus();
+		// 将光标移动到插入位置之后
+		textarea.selectionStart = textarea.selectionEnd = start + 4;
+	}
+
+
+	console.log(textarea.selectionStart, textarea.selectionEnd)
 };
 
 // 同步滚动
@@ -249,12 +314,6 @@ const syncScroll = (e) => {
 	other.scrollTop = target.scrollTop;
 	other.scrollLeft = target.scrollLeft;
 };
-
-// 保存输入
-const saveInput = () => {
-	showInputDialog.value = false
-	// 这里可以添加处理用户输入的逻辑
-}
 
 onMounted(() => {
 	code.value = defaultCode
@@ -447,6 +506,7 @@ onMounted(() => {
 	white-space: pre;
 	word-wrap: normal;
 	tab-size: 4;
+
 }
 
 .code-textarea{
@@ -474,6 +534,7 @@ onMounted(() => {
 	background: #f8f9fa;
 	border-top: 1px solid #e9ecef;
 	max-height: 300px;
+	border-radius: 0 0 6px 6px;
 	overflow: auto;
 }
 
