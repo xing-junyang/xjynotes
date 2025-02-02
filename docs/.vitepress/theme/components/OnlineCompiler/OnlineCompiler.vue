@@ -32,7 +32,7 @@
 						:disabled="isRunning"
 						class="reset"
 					>
-						<img src="/icon/redo.svg" alt="Reset">
+						<img class="icon-img" src="/icon/redo.svg" alt="Reset">
 						<span>Reset</span>
 					</button>
 				</div>
@@ -46,7 +46,7 @@
 							<img
 								:src="selectedLanguage.icon"
 								:alt="selectedLanguage.label"
-								class="w-5 h-5"
+								class="icon-img"
 							>
 							<span class="lang">{{ selectedLanguage.label }}</span>
 							<span class="arrow" :class="{ 'arrow-up': isOpen }">▼</span>
@@ -66,7 +66,7 @@
 									<img
 										:src="lang.icon"
 										:alt="lang.label"
-										class="w-5 h-5"
+										class="icon-img"
 									>
 									<span class="lang">{{ lang.label }}</span>
 								</div>
@@ -581,7 +581,7 @@ pre {
 	font-weight: bold;
 }
 
-img {
+.icon-img {
 	object-fit: contain;
 	height: 16px;
 }
