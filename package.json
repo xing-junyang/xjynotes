@@ -28,6 +28,7 @@
     "vitepress-markdown-timeline": "^1.2.1",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",
     "vitepress-plugin-google-analytics": "^1.0.2",
-    "vitepress-protect-plugin": "^1.0.6"
+    "vitepress-protect-plugin": "^1.0.6",
+    "vue-prism-component": "^2.0.0"
   }
 }
