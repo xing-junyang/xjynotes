@@ -24,6 +24,7 @@
 						@click="runCode"
 						:disabled="isRunning"
 						class="icon-button run-button"
+						title="Run code"
 					>
 						<span>▶ Run</span>
 					</button>
@@ -31,6 +32,7 @@
 						@click="code = defaultCode"
 						:disabled="isRunning"
 						class="reset"
+						title="Reset code"
 					>
 						<img class="icon-img" src="/icon/redo.svg" alt="Reset">
 						<span>Reset</span>
@@ -42,6 +44,7 @@
 						<button
 							class="select-btn"
 							@click="isOpen = !isOpen"
+							title="Select language"
 						>
 							<img
 								:src="selectedLanguage.icon"
@@ -108,7 +111,7 @@
 				<textarea
 					ref="editor"
 					v-model="code"
-					@keydown.tab.prevent="handleTab"
+					@keydown="handleInput"
 					@scroll="syncScroll"
 					class="code-textarea"
 					spellcheck="false"
@@ -249,31 +252,39 @@ const handleTab = (e) => {
 	const textarea = e.target;
 	const start = textarea.selectionStart;
 	const end = textarea.selectionEnd;
-	console.log(start, end)
-
 	const isMultiLine = textarea.value.substring(start, end).includes('\n');
 
+	// 多行缩进
 	if(isMultiLine){
-		const selectedText = textarea.value.substring(start, end);
+		const realStart = textarea.value.lastIndexOf('\n', start) + 1;
+		const realEnd = textarea.value.indexOf('\n', end) === -1 ? textarea.value.length : textarea.value.indexOf('\n', end);
+		const selectedText = textarea.value.substring(realStart, realEnd);
 		const lines = selectedText.split('\n');
-
-		const newLines = lines.map((line) => {
-			if (line.startsWith('\t')) {
-				return line.substring(1); // 删除一个制表符
-			} else if (line.startsWith(' ')) {
-				return line.replace(/^ {1,4}/, ''); // 删除最多 4 个空格
-			}
-			return line;
-		});
-		const newText = newLines.join('\n');
-
-		code.value = code.value.substring(0, start) + newText + code.value.substring(end);
+		let newText = '';
+		if(e.shiftKey){
+			const newLines = lines.map((line) => {
+				if (line.startsWith(' ')) {
+					return line.replace(/^ {1,4}/, ''); // 删除最多 4 个空格
+				}
+				return line;
+			});
+			newText = newLines.join('\n');
+		}else{
+			const newLines = lines.map((line) => {
+				return '    ' + line;
+			});
+			newText = newLines.join('\n');
+		}
+		code.value = code.value.substring(0, realStart) + newText + code.value.substring(realEnd);
 		textarea.value = code.value;
 		textarea.focus();
-		textarea.selectionStart = start;
-		textarea.selectionEnd = start + newText.length;
+		textarea.selectionStart = realStart;
+		textarea.selectionEnd = realStart + newText.length;
+
+		return;
 	}
 
+	// 单行缩进
 	if(e.shiftKey){
 		const beforeCursor = textarea.value.substring(0, start);
 		const lines = beforeCursor.split('\n');
@@ -281,30 +292,97 @@ const handleTab = (e) => {
 		const currentLineStart = beforeCursor.lastIndexOf('\n') + 1;
 
 		// 如果当前行以制表符或空格开头，则删除一个缩进
-		// 获取当前行的空格数
-		const spaces = currentLine.match(/^(    )+/);
+		// 获取当前行开头的空格数
+		const spaces = currentLine.match(/^[ \t]*/);
 		const spaceCount = spaces ? spaces[0].length: 0;
 		if (spaceCount > 0) {
-			const newSpaceCount = Math.max(spaceCount - 4, 0);
-			console.log('newSpaceCount', newSpaceCount)
-			console.log('currentLineStart', currentLineStart)
+			const newSpaceCount = (spaceCount % 4 === 0 ? spaceCount - 4 : spaceCount - spaceCount % 4);
 			code.value = code.value.substring(0, currentLineStart + newSpaceCount) + code.value.substring(currentLineStart + spaceCount);
 			textarea.value = code.value;
 			textarea.focus();
-			// 将光标移动到插入位置之前
 			textarea.selectionStart = textarea.selectionEnd = currentLineStart + newSpaceCount;
 		}
 	}else{
-		// 插入空格作为缩进
-		code.value = code.value.substring(0, start) + '    ' + code.value.substring(end);
+		code.value = code.value.substring(0, start) + '    ' + code.value.substring(start);
 		textarea.value = code.value;
 		textarea.focus();
-		// 将光标移动到插入位置之后
 		textarea.selectionStart = textarea.selectionEnd = start + 4;
 	}
+};
 
+//处理输入
+const handleInput = (e) => {
+	if (e.key === 'Tab') {
+		e.preventDefault();
+		handleTab(e);
+	} else if (['{', '[', '"', "'", '('].includes(e.key)) {
+		e.preventDefault();
+		const textarea = e.target;
+		const { selectionStart: start, selectionEnd: end } = textarea;
+		if (textarea.value.substring(start, end) === '') {
+			const pairs = {
+				'{': '{}',
+				'[': '[]',
+				'"': '""',
+				"'": "''",
+				'(': '()',
+			};
 
-	console.log(textarea.selectionStart, textarea.selectionEnd)
+			let insertion = '';
+			let bias = 0;
+			if(e.key === '{' && (textarea.value[end] === '\n'||end === textarea.value.length)){
+				//获取start这一行，注意是这一行开头的空格数(不包括制表符）
+				const beforeCursor = textarea.value.substring(0, start);
+				const lines = beforeCursor.split('\n');
+				const currentLine = lines[lines.length - 1];
+				const spaceCount = currentLine.match(/^[ \t]*/)[0].length;
+				insertion = '{' + '\n' + ' '.repeat(spaceCount + 4) + '\n' + ' '.repeat(spaceCount) + '}';
+				bias = 6 + spaceCount;
+			}else{
+				insertion = pairs[e.key];
+				bias = 1
+			}
+			textarea.value = textarea.value.slice(0, start) + insertion + textarea.value.slice(end);
+			code.value = textarea.value;
+			textarea.setSelectionRange(start + bias, start + bias);
+			textarea.focus();
+		}
+	} else if(e.key == 'Enter'){
+		e.preventDefault()
+		const textarea = e.target;
+		const { selectionStart: start, selectionEnd: end } = textarea;
+		const beforeCursor = textarea.value.substring(0, start);
+		const lines = beforeCursor.split('\n');
+		const currentLine = lines[lines.length - 1];
+		// 如果当前行以制表符或空格开头，则自动缩进
+		const spaces = currentLine.match(/^[ \t]*/);
+		const spaceCount = spaces ? spaces[0].length: 0;
+		const insertion = '\n' + ' '.repeat(spaceCount);
+		textarea.value = textarea.value.slice(0, start) + insertion + textarea.value.slice(end);
+		code.value = textarea.value;
+		textarea.setSelectionRange(start + insertion.length, start + insertion.length);
+		textarea.focus();
+	} else if(e.key == 'Backspace'){
+		console.log('delete')
+		const textarea = e.target;
+		const pairs = {
+			'{': '}',
+			'[': ']',
+			'"': '"',
+			"'": "'",
+			'(': ')',
+		};
+		const { selectionStart: start, selectionEnd: end } = textarea;
+		console.log(textarea.value[start - 1], textarea.value[start])
+		if (start === end && start != 0 && pairs[textarea.value[start - 1]] === textarea.value[start]) {
+
+			e.preventDefault();
+			textarea.value = textarea.value.substring(0, start - 1) + textarea.value.substring(start + 1);
+			code.value = textarea.value;
+			textarea.setSelectionRange(start - 1, start - 1);
+			textarea.focus();
+		}
+	}
 };
 
 // 同步滚动
