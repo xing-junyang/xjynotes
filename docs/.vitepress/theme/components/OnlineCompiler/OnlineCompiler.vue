@@ -40,6 +40,17 @@
 				</div>
 
 				<div class="right-group">
+					<div class="state-container">
+						<Transition name="state" mode="out-in">
+							<span
+							  :key="state"
+							  class="state-indicator"
+							  :class="state"
+							>
+							{{ stateText(state) }}
+							</span>
+						</Transition>
+					</div>
 					<div class="relative">
 						<button
 							class="select-btn"
@@ -81,7 +92,8 @@
 
 			<div v-if="showInputDialog" class="input-container">
 				<span class="input-title">Program Input</span>
-				<textarea v-model="userInput" rows="5" class="input-textarea" spellcheck="false" placeholder="Enter runtime input here."></textarea>
+				<textarea v-model="userInput" rows="5" class="input-textarea" spellcheck="false"
+				          placeholder="Enter runtime input here."></textarea>
 				<div class="dialog-buttons">
 					<button @click="showInputDialog = false; userInput = lastUserInput" class="icon-button">
 						<span>Cancel</span>
@@ -94,7 +106,8 @@
 
 			<div v-if="showConfigDialog" class="input-container">
 				<span class="input-title">Compiler Options</span>
-				<input v-model="config" class="code-text" spellcheck="false" placeholder="Enter your compile option here.">
+				<input v-model="config" class="code-text" spellcheck="false"
+				       placeholder="Enter your compile option here.">
 				<div class="dialog-buttons">
 					<button @click="showConfigDialog = false; config = lastConfig" class="icon-button">
 						<span>Cancel</span>
@@ -164,6 +177,21 @@ const config = ref('-std=c++17')
 const lastUserInput = ref('')
 const lastConfig = ref('')
 
+//运行状态
+const state = ref<'idle' | 'running' | 'done' | 'error'>('idle')
+function stateText(state: string) {
+	switch (state) {
+		case 'idle':
+			return 'Idle'
+		case 'running':
+			return 'Running...'
+		case 'done':
+			return 'Done'
+		case 'error':
+			return 'Error'
+	}
+}
+
 // 默认代码
 let defaultCode = `#include <iostream>
 
@@ -220,12 +248,18 @@ const highlightedCode = computed(() => {
 	);
 });
 
+const timerId = ref(null);
+
 // 运行代码
 const runCode = async () => {
 	isRunning.value = true
+	//清除定时器
+	if (timerId.value) {
+		clearTimeout(timerId.value)
+	}
+	state.value = 'running'
 	try {
 		const input = userInput.value
-
 		// add input to the command
 		const cmd = selectedLanguage.value.value === 'cpp'
 			? `g++ ${config.value} main.cpp && echo "${input}" | ./a.out`
@@ -238,10 +272,14 @@ const runCode = async () => {
 				src: code.value
 			})
 		})
-
 		output.value = await response.text()
+		state.value = 'done'
+		timerId.value = setTimeout(() => {
+			state.value = 'idle'
+		}, 3000)
 	} catch (error) {
 		output.value = `Error: ${error instanceof Error ? error.message : 'Unknown error'}`
+		state.value = 'error'
 	} finally {
 		isRunning.value = false
 	}
@@ -255,13 +293,13 @@ const handleTab = (e) => {
 	const isMultiLine = textarea.value.substring(start, end).includes('\n');
 
 	// 多行缩进
-	if(isMultiLine){
+	if (isMultiLine) {
 		const realStart = textarea.value.lastIndexOf('\n', start) + 1;
 		const realEnd = textarea.value.indexOf('\n', end) === -1 ? textarea.value.length : textarea.value.indexOf('\n', end);
 		const selectedText = textarea.value.substring(realStart, realEnd);
 		const lines = selectedText.split('\n');
 		let newText = '';
-		if(e.shiftKey){
+		if (e.shiftKey) {
 			const newLines = lines.map((line) => {
 				if (line.startsWith(' ')) {
 					return line.replace(/^ {1,4}/, ''); // 删除最多 4 个空格
@@ -269,7 +307,7 @@ const handleTab = (e) => {
 				return line;
 			});
 			newText = newLines.join('\n');
-		}else{
+		} else {
 			const newLines = lines.map((line) => {
 				return '    ' + line;
 			});
@@ -285,7 +323,7 @@ const handleTab = (e) => {
 	}
 
 	// 单行缩进
-	if(e.shiftKey){
+	if (e.shiftKey) {
 		const beforeCursor = textarea.value.substring(0, start);
 		const lines = beforeCursor.split('\n');
 		const currentLine = lines[lines.length - 1];
@@ -294,7 +332,7 @@ const handleTab = (e) => {
 		// 如果当前行以制表符或空格开头，则删除一个缩进
 		// 获取当前行开头的空格数
 		const spaces = currentLine.match(/^[ \t]*/);
-		const spaceCount = spaces ? spaces[0].length: 0;
+		const spaceCount = spaces ? spaces[0].length : 0;
 		if (spaceCount > 0) {
 			const newSpaceCount = (spaceCount % 4 === 0 ? spaceCount - 4 : spaceCount - spaceCount % 4);
 			code.value = code.value.substring(0, currentLineStart + newSpaceCount) + code.value.substring(currentLineStart + spaceCount);
@@ -302,7 +340,7 @@ const handleTab = (e) => {
 			textarea.focus();
 			textarea.selectionStart = textarea.selectionEnd = currentLineStart + newSpaceCount;
 		}
-	}else{
+	} else {
 		code.value = code.value.substring(0, start) + '    ' + code.value.substring(start);
 		textarea.value = code.value;
 		textarea.focus();
@@ -318,7 +356,7 @@ const handleInput = (e) => {
 	} else if (['{', '[', '"', "'", '('].includes(e.key)) {
 		e.preventDefault();
 		const textarea = e.target;
-		const { selectionStart: start, selectionEnd: end } = textarea;
+		const {selectionStart: start, selectionEnd: end} = textarea;
 		if (textarea.value.substring(start, end) === '') {
 			const pairs = {
 				'{': '{}',
@@ -330,7 +368,7 @@ const handleInput = (e) => {
 
 			let insertion = '';
 			let bias = 0;
-			if(e.key === '{' && (textarea.value[end] === '\n'||end === textarea.value.length)){
+			if (e.key === '{' && (textarea.value[end] === '\n' || end === textarea.value.length)) {
 				//获取start这一行，注意是这一行开头的空格数(不包括制表符）
 				const beforeCursor = textarea.value.substring(0, start);
 				const lines = beforeCursor.split('\n');
@@ -338,7 +376,7 @@ const handleInput = (e) => {
 				const spaceCount = currentLine.match(/^[ \t]*/)[0].length;
 				insertion = '{' + '\n' + ' '.repeat(spaceCount + 4) + '\n' + ' '.repeat(spaceCount) + '}';
 				bias = 6 + spaceCount;
-			}else{
+			} else {
 				insertion = pairs[e.key];
 				bias = 1
 			}
@@ -347,22 +385,22 @@ const handleInput = (e) => {
 			textarea.setSelectionRange(start + bias, start + bias);
 			textarea.focus();
 		}
-	} else if(e.key == 'Enter'){
+	} else if (e.key == 'Enter') {
 		e.preventDefault()
 		const textarea = e.target;
-		const { selectionStart: start, selectionEnd: end } = textarea;
+		const {selectionStart: start, selectionEnd: end} = textarea;
 		const beforeCursor = textarea.value.substring(0, start);
 		const lines = beforeCursor.split('\n');
 		const currentLine = lines[lines.length - 1];
 		// 如果当前行以制表符或空格开头，则自动缩进
 		const spaces = currentLine.match(/^[ \t]*/);
-		const spaceCount = spaces ? spaces[0].length: 0;
+		const spaceCount = spaces ? spaces[0].length : 0;
 		const insertion = '\n' + ' '.repeat(spaceCount);
 		textarea.value = textarea.value.slice(0, start) + insertion + textarea.value.slice(end);
 		code.value = textarea.value;
 		textarea.setSelectionRange(start + insertion.length, start + insertion.length);
 		textarea.focus();
-	} else if(e.key == 'Backspace'){
+	} else if (e.key == 'Backspace') {
 		console.log('delete')
 		const textarea = e.target;
 		const pairs = {
@@ -372,7 +410,7 @@ const handleInput = (e) => {
 			"'": "'",
 			'(': ')',
 		};
-		const { selectionStart: start, selectionEnd: end } = textarea;
+		const {selectionStart: start, selectionEnd: end} = textarea;
 		console.log(textarea.value[start - 1], textarea.value[start])
 		if (start === end && start != 0 && pairs[textarea.value[start - 1]] === textarea.value[start]) {
 
@@ -436,7 +474,7 @@ onMounted(() => {
 		gap: 10px;
 	}
 
-	.reset span{
+	.reset span {
 		display: none;
 	}
 
@@ -486,7 +524,7 @@ onMounted(() => {
 	font-weight: bold;
 }
 
-.reset{
+.reset {
 	padding: 2px 13px;
 	border: none;
 	border-radius: 6px;
@@ -534,7 +572,7 @@ onMounted(() => {
 	cursor: not-allowed;
 }
 
-.code-text{
+.code-text {
 	width: 100%;
 	padding: 10px;
 	font-family: 'Fira Code', monospace;
@@ -554,7 +592,7 @@ onMounted(() => {
 	font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.input-textarea{
+.input-textarea {
 	width: 100%;
 	margin: 10px 0;
 	padding: 10px;
@@ -566,7 +604,7 @@ onMounted(() => {
 }
 
 .code-textarea,
-.code-highlight{
+.code-highlight {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -587,7 +625,7 @@ onMounted(() => {
 
 }
 
-.code-textarea{
+.code-textarea {
 	color: transparent;
 	background: transparent;
 	caret-color: #000000; /* 光标颜色 */
@@ -595,13 +633,13 @@ onMounted(() => {
 	z-index: 1;
 }
 
-.code-highlight{
+.code-highlight {
 	pointer-events: none;
 	background: #ffffff; /* 深色背景 */
 	z-index: 0;
 }
 
-.code-highlight code *{
+.code-highlight code * {
 	font-family: inherit;
 	font-size: 14px;
 	background: none !important;
@@ -725,6 +763,36 @@ pre {
 	height: 16px;
 }
 
+.state-container {
+	display: flex;
+	align-items: center;
+}
+
+.state-indicator {
+	transition: color 0.3s ease;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* 进入前和离开后的样式 */
+.state-enter-from,
+.state-leave-to {
+	opacity: 0;
+	transform: translateY(-10px);
+}
+
+/* 进入和离开时的过渡 */
+.state-enter-active,
+.state-leave-active {
+	transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+/* 状态颜色 */
+.idle { color: #666; }
+.running { color: #09f; }
+.done { color: #45a049; }
+.error { color: #f43; }
+
 :root.dark .online-compiler {
 	background: #333;
 }
@@ -792,7 +860,7 @@ pre {
 	color: #ddd;
 }
 
-:root.dark .reset{
+:root.dark .reset {
 	background: #555;
 }
 
@@ -800,7 +868,7 @@ pre {
 	background: #666;
 }
 
-:root.dark .code-text{
+:root.dark .code-text {
 	background: #282828;
 	border: 1px solid #555;
 }
