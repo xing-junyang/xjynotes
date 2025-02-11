@@ -125,6 +125,10 @@ export default defineConfig({
                             {
                                 text: '杂项',
                                 link: '/C++高级程序设计/杂项'
+                            },
+                            {
+                                text: '在线编译器',
+                                link: '/C++高级程序设计/在线编译器'
                             }
                         ]
                     },

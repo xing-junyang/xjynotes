@@ -84,15 +84,3 @@ $\mathrm{C}$ 的出发点是，只要程序员在开发过程中足够精细 ，
 - **泛型编程**
 - **异常处理**
 
-## 在线编译器
-
-<OnlineCompiler></OnlineCompiler>
-
-<script>
-import OnlineCompiler from '../.vitepress/theme/components/OnlineCompiler/OnlineCompiler.vue'
-export default {
-  components: {
-    OnlineCompiler
-  }
-}
-</script>
