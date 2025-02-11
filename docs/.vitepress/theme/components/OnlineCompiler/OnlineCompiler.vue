@@ -34,7 +34,6 @@
 						class="reset"
 						title="Reset code"
 					>
-						<img class="icon-img" src="/icon/redo.svg" alt="Reset">
 						<span>Reset</span>
 					</button>
 				</div>
@@ -473,14 +472,6 @@ onMounted(() => {
 		align-items: start;
 		gap: 10px;
 	}
-
-	.reset span {
-		display: none;
-	}
-
-	.reset img {
-		padding-right: 0 !important;
-	}
 }
 
 .left-group, .right-group {
@@ -551,11 +542,19 @@ onMounted(() => {
 	font-weight: bold;
 }
 
-.reset img {
+.reset:disabled span{
+	color: #666;
+}
+
+.reset svg {
 	object-fit: contain;
 	height: 10px;
 	padding-right: 4px;
 	fill: rgb(60, 60, 67);
+}
+
+.reset:disabled svg {
+	filter: grayscale(1);
 }
 
 .run-button {
@@ -612,17 +611,16 @@ onMounted(() => {
 	left: 0;
 	padding: 15px;
 	font-family: inherit;
-	font-size: 14px;
+	font-size: 0.875em;
 	border: none;
-	resize: vertical;
 	border-radius: 6px;
-	line-height: 1.5;
+	line-height: 1.7;
 	box-sizing: border-box;
 	overflow: auto;
 	white-space: pre;
 	word-wrap: normal;
 	tab-size: 4;
-
+	resize: none;
 }
 
 .code-textarea {
@@ -640,8 +638,6 @@ onMounted(() => {
 }
 
 .code-highlight code * {
-	font-family: inherit;
-	font-size: 14px;
 	background: none !important;
 }
 
@@ -889,4 +885,9 @@ pre {
 :root.dark .code-highlight {
 	background: #282828;
 }
+
+:root.dark .idle { color: #c2c2c2; }
+:root.dark .running { color: #09f; }
+:root.dark .done { color: #00794f; }
+:root.dark .error { color: #f43; }
 </style>
