@@ -103,6 +103,16 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: '经验软件工程',
+                        collapsed: true,
+                        items: [
+                            {
+                                text: '经验软件工程概述',
+                                link: '/经验软件工程/经验软件工程概述'
+                            }
+                        ]
+                    },
+                    {
                         text: '<p style="font-weight: 900;color:#3b3b85;">C++高级程序设计</p>',
                         collapsed: true,
                         items: [
