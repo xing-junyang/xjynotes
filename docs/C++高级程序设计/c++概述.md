@@ -18,9 +18,9 @@ $\mathrm{C}$ 的出发点是，只要程序员在开发过程中足够精细 ，
  $\mathrm{C}++$ 的**宗旨**（$\mathrm{Zero-Overhead}$）：
 
 - 你不用的就不用为此付出代价；
-  $\mathrm{What~you~don't~use, ~you~ don't~ pay~ for.}$
+  `What you don't use, you don't pay for.`
 - 你用的就不可能自己手写出更好的。
-  $\mathrm{What~you~do~use,~you~couldn't~hand-code~any~better.}$​
+  `What you do use, you couldn't hand-code any better.`
 
 更详细地， $\mathrm{C}++$ 的宗旨还包括：
 - 不限制程序员的风格；
