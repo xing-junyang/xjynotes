@@ -123,6 +123,16 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: '数据库开发',
+                        collapsed: true,
+                        items: [
+                            {
+                                text: '数据库开发课程概述',
+                                link: '/数据库开发/数据库开发概述'
+                            }
+                        ]
+                    },
+                    {
                         text: '<p style="font-weight: 900;color:#3b3b85;">C++高级程序设计</p>',
                         collapsed: true,
                         items: [
