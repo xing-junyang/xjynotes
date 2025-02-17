@@ -113,6 +113,16 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: 'Linux 系统编程',
+                        collapsed: true,
+                        items: [
+                            {
+                                text: 'Linux 系统编程概述',
+                                link: '/Linux系统编程/Linux系统编程概述'
+                            }
+                        ]
+                    },
+                    {
                         text: '<p style="font-weight: 900;color:#3b3b85;">C++高级程序设计</p>',
                         collapsed: true,
                         items: [
@@ -367,9 +377,9 @@ export default defineConfig({
                         text: '需求与商业模式创新',
                         collapsed: true,
                         items: [
-                            {text: '商业模式部分',link:'/需求与商业模式创新/商业模式.md'},
-                            {text: '需求部分',link:'/需求与商业模式创新/需求.md'},
-                            {text: '往年真题',link:'/需求与商业模式创新/真题.md'},
+                            {text: '商业模式部分', link: '/需求与商业模式创新/商业模式.md'},
+                            {text: '需求部分', link: '/需求与商业模式创新/需求.md'},
+                            {text: '往年真题', link: '/需求与商业模式创新/真题.md'},
 
                         ]
                     },
@@ -510,9 +520,9 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text:'马克思主义基本原理',
+                        text: '马克思主义基本原理',
                         collapsed: true,
-                        items:[
+                        items: [
                             {text: '导论', link: '/马克思主义基本原理/导论'},
                             {text: '世界的物质性及发展规律', link: '/马克思主义基本原理/世界的物质性及发展规律'},
                             {text: '实践与认知及其发展规律', link: '/马克思主义基本原理/实践与认知及其发展规律'},
@@ -578,9 +588,7 @@ export default defineConfig({
                     {
                         text: '前端开发',
                         collapsed: true,
-                        items: [
-
-                        ]
+                        items: []
                     },
                     {
                         text: '兴趣使然的时光小记',
