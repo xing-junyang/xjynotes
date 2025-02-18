@@ -103,6 +103,16 @@ export default defineConfig({
                         ]
                     },
                     {
+                        text: '软件质量与管理',
+                        collapsed: true,
+                        items: [
+                            {
+                                text: '软件质量与管理概述',
+                                link: '/软件质量与管理/软件质量与管理概述'
+                            }
+                        ],
+                    },
+                    {
                         text: '经验软件工程',
                         collapsed: true,
                         items: [
