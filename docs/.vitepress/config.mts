@@ -49,7 +49,7 @@ export default defineConfig({
                     {text: '简介', link: '/简介'},
                     {text: '导航', link: '/nav/navigation'},
                     {
-                        text: '<p style="font-weight: 900;color:#3b3b85;">软件工程基础</p>',
+                        text: '软件工程基础',
                         collapsed: true,
                         items: [
                             {text: '概念基础', link: '/软件工程/软件工程基础.md'},
@@ -103,7 +103,18 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '软件质量与管理',
+                        text: '<p style="font-weight: 900;color:#3b3b85;">软件系统设计</p>',
+                        collapsed: true,
+                        items: [
+                            {
+                                text: '软件系统设计概述',
+                                link: '/软件系统设计/软件设计原则'
+
+                            }
+                        ]
+                    },
+                    {
+                        text: '<p style="font-weight: 900;color:#3b3b85;">软件质量与管理</p>',
                         collapsed: true,
                         items: [
                             {
@@ -113,7 +124,7 @@ export default defineConfig({
                         ],
                     },
                     {
-                        text: '经验软件工程',
+                        text: '<p style="font-weight: 900;color:#3b3b85;">经验软件工程</p>',
                         collapsed: true,
                         items: [
                             {
@@ -123,7 +134,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: 'Linux 系统编程',
+                        text: '<p style="font-weight: 900;color:#3b3b85;">Linux 系统编程</p>',
                         collapsed: true,
                         items: [
                             {
@@ -133,7 +144,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '数据库开发',
+                        text: '<p style="font-weight: 900;color:#3b3b85;">数据库开发</p>',
                         collapsed: true,
                         items: [
                             {
@@ -143,7 +154,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '<p style="font-weight: 900;color:#3b3b85;">C++高级程序设计</p>',
+                        text: 'C++高级程序设计',
                         collapsed: true,
                         items: [
                             {
@@ -173,7 +184,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '<p style="font-weight: 900;color:#3b3b85;">机器学习</p>',
+                        text: '机器学习',
                         collapsed: true,
                         items: [
                             {
@@ -245,7 +256,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '<p style="font-weight: 900;color:#3b3b85;">形式语言与自动机<br>(In English)</p>',
+                        text: '形式语言与自动机<br>(In English)',
                         collapsed: true,
                         items: [
                             {
@@ -303,7 +314,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '<p style="font-weight: 900;color:#3b3b85;">软件测试</p>',
+                        text: '软件测试',
                         collapsed: true,
                         items: [
                             {
@@ -338,7 +349,7 @@ export default defineConfig({
                         ]
                     },
                     {
-                        text: '<p style="font-weight: 900;color:#3b3b85;">人机交互系统</p>',
+                        text: '人机交互系统',
                         collapsed: true,
                         items: [
                             {
