@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, onMounted, computed} from 'vue';
 
 const showBanner = ref(sessionStorage.getItem('close_banner') !== 'true');
 
@@ -7,6 +7,26 @@ function close() {
 	showBanner.value = false;
 	sessionStorage.setItem('close_banner', 'true');
 }
+
+function jumpToDetails() {
+	// jump to details page: /简介.html
+	window.location.href = '/简介.html';
+	open('/简介.html#校园网镜像', '_blank');
+}
+
+function getURLPath() {
+	console.log('Now at: ', window.location.href);
+	return window.location.href;
+}
+
+onMounted(() => {
+	console.log('Banner mounted');
+	getURLPath();
+});
+
+const isInnerNetwork = computed(() => {
+	return getURLPath().includes('172.29.4.26:4173');
+});
 </script>
 
 <template>
@@ -14,13 +34,16 @@ function close() {
 		<div class="banner" v-if="showBanner">
 			<div class="banner-content">
 				<div class="banner-content-container">
-			<span class="banner-title">
-				2025，寒假快乐！！🥳
-			</span>
-					<a class="link" @click="close">Got it!</a>
+					<span class="banner-title" v-if="!isInnerNetwork">
+						由于外网加载缓慢，现可用校园网访问镜像网站 <span class="ip-address"><a href="http://172.29.4.26:4173">172.29.4.26:4173</a></span>
+					</span>
+					<span class="banner-title" v-else>
+						您现在正在访问校园网镜像网站
+					</span>
+					<a class="link" @click="jumpToDetails">View Details</a>
 				</div>
 			</div>
-			<div class="close" @click="close">
+			<div class="close" @click="jumpToDetails">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
 					<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
 					<path
@@ -69,6 +92,10 @@ function close() {
 .banner-title {
 	font-size: 20px;
 	font-weight: bold;
+}
+
+.ip-address {
+	color: var(--vp-c-brand-1);
 }
 
 .link {
