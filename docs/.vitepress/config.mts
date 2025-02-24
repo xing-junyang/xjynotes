@@ -140,6 +140,10 @@ export default defineConfig({
                             {
                                 text: 'Linux 系统编程概述',
                                 link: '/Linux系统编程/Linux系统编程概述'
+                            },
+                            {
+                                text: '初步使用 Linux',
+                                link: '/Linux系统编程/初步使用Linux'
                             }
                         ]
                     },
