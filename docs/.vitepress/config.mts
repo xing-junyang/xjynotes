@@ -110,6 +110,10 @@ export default defineConfig({
                                 text: '软件系统设计概述',
                                 link: '/软件系统设计/软件设计原则'
 
+                            },
+                            {
+                                text: '设计模式',
+                                link: '/软件系统设计/设计模式'
                             }
                         ]
                     },
