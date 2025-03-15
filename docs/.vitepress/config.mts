@@ -639,6 +639,10 @@ export default defineConfig({
                             {
                                 text: 'JavaScript Object 方法',
                                 link: '/前端开发/JS对象方法'
+                            },
+                            {
+                                text: 'JavaScript 原型链与继承',
+                                link: '/前端开发/JS原型链与继承'
                             }
                         ]
                     },
