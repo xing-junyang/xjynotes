@@ -32,17 +32,17 @@ function myObjectEntries(obj) {
 
 如果对属性进行修改，执行时并**不会报错**，**只是不起作用**而已。但是如果**增删属性，执行时会报错**。
 
-**如果对象中某个属性实际上还是一个对象，那么对这个对象内部的修改是允许的（会产生效果）。**如果希望完全锁住对象，应当**递归调用**。（有点像默认为浅拷贝，需要自己手写深拷贝）
+**如果对象中某个属性实际上还是一个对象（引用类型属性），那么对这个对象内部的修改是允许的（会产生效果）。**如果希望完全锁住对象，应当**递归调用**。（有点像默认为浅拷贝，需要自己手写深拷贝）
 
 ## 读写属性类
 
 对对象内属性进行读写的操作主要有三种：`Object.hasOwnProperty()`、`Object.defineProperty()` 以及 `Object.defineProperties()`。
 
-`a.hasOwnProperty(str)` 用于检查对象 `a` 是否含有名称为 `str` 的属性，返回**布尔值**。这一检查是**不考虑原型链**且**不关心为对象的属性中的属性**。
+`a.hasOwnProperty(str)` 用于检查对象 `a` 是否含有名称为 `str` 的属性，返回**布尔值**。这一检查是**不考虑原型链**且**不关心为引用类型属性中的属性**。
 
 `Object.defineProperty(obj, 'a', {value: 1, writable: false})` 将为对象 `obj` 增加一个名为 `a` 的属性，其值为 `1`。
 
-- 可以设置 `writable: false` 来**禁止对这一属性**进行更改。（显然，这一禁止也是没办法对为对象的属性中的属性进行限制的）
+- 可以设置 `writable: false` 来**禁止对这一属性**进行更改。（显然，这一禁止也是没办法对为引用类型属性中的属性进行限制的）
 - 可以设置 `enumerable: true` 来使这一属性**可枚举**。（例如，不设置的话， `for(let key in obj) `或者 `console.log(obj)` 时不会出现这个属性。）
 
 > [!NOTE] 可枚举
@@ -63,6 +63,10 @@ Object.defineProperties(obj, {
 涉及原型操作的主要有三种：`Object.create()` 、`Object.getPrototypeOf()` 和 `Object.setPrototypeOf()`。
 
 `Object.create(proto)` 返回一个**新对象**，这一对象的原型对象为 `proto`。这一方法还可以接受**第二个参数** `propertiesObject`，用于定义新对象的属性。(类似于 `Object.defineProperties` 中的第二个参数)。
+
+> [!TIP] 小技巧
+> 
+> `Object.create(null)` 可以创建一个**没有原型链的对象**，这样的对象**不会继承任何属性**。很适合作为**哈希表**（字典）。
 
 `Object.getPrototypeOf(obj)` 返回 `obj` 的原型对象，而 `Object.setPrototypeOf(obj, proto)` 可以将它的原型对象设置为 `proto`。
 

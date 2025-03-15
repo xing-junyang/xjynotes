@@ -46,6 +46,23 @@ h1 {
     display: none;
 }
 
+.vp-doc :not(pre) > code{
+    background-color: rgba(27, 31, 35, 0.03);
+    border-radius: 6px;
+    border: 1px solid rgba(27, 31, 35, 0.06);
+    padding: 1px 4px;
+}
+
+.dark .vp-doc :not(pre) > code{
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.vp-doc a code{
+    background: transparent !important;
+    border: none !important;
+}
+
 .custom-block.warning a{
     color: #ab8800;
     background-color: rgba(255, 221, 0, 0.13);
@@ -59,6 +76,7 @@ h1 {
 .custom-block.warning code{
     background-color: rgba(255, 221, 0, 0.13);
     border-radius: 6px;
+    border: none;
     padding: 2px 4px;
     color: #ab8800;
     font-weight: bold;
@@ -81,6 +99,7 @@ h1 {
 .custom-block.tip code {
     background-color: rgba(24, 231, 0, 0.13);
     border-radius: 6px;
+    border: none;
     padding: 2px 4px;
     color: #1d7925;
     font-weight: bold;
@@ -88,6 +107,75 @@ h1 {
 
 .dark .custom-block.tip code{
     color: #00e312;
+}
+
+.custom-block.note a{
+    color: #0091be;
+    background-color: rgba(0, 184, 212, 0.13);
+}
+
+.dark .custom-block.note a{
+    color: #00b8d4;
+    background-color: rgba(0, 184, 212, 0.13);
+}
+
+.custom-block.note code{
+    background-color: rgba(0, 184, 212, 0.13);
+    border-radius: 6px;
+    border: none;
+    padding: 2px 4px;
+    color: #0091be;
+    font-weight: bold;
+}
+
+.dark .custom-block.note code{
+    color: #00b8d4;
+}
+
+.custom-block.important a{
+    color: #9900ff;
+    background-color: rgba(153, 0, 255, 0.13);
+}
+
+.dark .custom-block.important a{
+    color: #b400ff;
+    background-color: rgba(153, 0, 255, 0.13);
+}
+
+.custom-block.important code{
+    background-color: rgba(153, 0, 255, 0.13);
+    border-radius: 6px;
+    border: none;
+    padding: 2px 4px;
+    color: #9900ff;
+    font-weight: bold;
+}
+
+.dark .custom-block.important code{
+    color: #b400ff;
+}
+
+.custom-block.danger a{
+    color: #ff0000;
+    background-color: rgba(255, 0, 0, 0.13);
+}
+
+.dark .custom-block.danger a{
+    color: #ff0000;
+    background-color: rgba(255, 0, 0, 0.13);
+}
+
+.custom-block.danger code{
+    background-color: rgba(255, 0, 0, 0.13);
+    border-radius: 6px;
+    border: none;
+    padding: 2px 4px;
+    color: #b90000;
+    font-weight: bold;
+}
+
+.dark .custom-block.danger code{
+    color: #ff0000;
 }
 
 .medium-zoom-overlay {
