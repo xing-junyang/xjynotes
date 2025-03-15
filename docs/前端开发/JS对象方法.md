@@ -44,6 +44,27 @@ function myObjectEntries(obj) {
 
 - 可以设置 `writable: false` 来**禁止对这一属性**进行更改。（显然，这一禁止也是没办法对为引用类型属性中的属性进行限制的）
 - 可以设置 `enumerable: true` 来使这一属性**可枚举**。（例如，不设置的话， `for(let key in obj) `或者 `console.log(obj)` 时不会出现这个属性。）
+- 可以设置 `configurable: false` 来**禁止删除这一属性**。（但是可以对这一属性进行修改）
+- 可以设置 `get` 和 `set` 来定义**属性的读写行为**。**`Vue 2` 就是这样实现响应式的**。例如
+    
+```js
+let obj = {
+    a: 1,
+    b: 2
+}
+Object.defineProperty(obj, 'c', {
+    get: function() {
+        return this.a + this.b;
+    },
+    set: function(value) {
+        this.a = value;
+        this.b = value;
+    }
+})
+console.log(obj.c); // 3
+obj.c = 3;
+console.log(obj.c); // 6
+```
 
 > [!NOTE] 可枚举
 > 
