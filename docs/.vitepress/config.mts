@@ -635,7 +635,12 @@ export default defineConfig({
                     {
                         text: '前端开发',
                         collapsed: true,
-                        items: []
+                        items: [
+                            {
+                                text: 'JavaScript Object 方法',
+                                link: '/前端开发/JS对象方法'
+                            }
+                        ]
                     },
                     {
                         text: '兴趣使然的时光小记',
