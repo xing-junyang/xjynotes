@@ -62,7 +62,7 @@ Object.defineProperties(obj, {
 
 涉及原型操作的主要有三种：`Object.create()` 、`Object.getPrototypeOf()` 和 `Object.setPrototypeOf()`。
 
-`Object.create(proto)` 返回一个**新对象**，这一对象的原型对象为 `proto`。
+`Object.create(proto)` 返回一个**新对象**，这一对象的原型对象为 `proto`。这一方法还可以接受**第二个参数** `propertiesObject`，用于定义新对象的属性。(类似于 `Object.defineProperties` 中的第二个参数)。
 
 `Object.getPrototypeOf(obj)` 返回 `obj` 的原型对象，而 `Object.setPrototypeOf(obj, proto)` 可以将它的原型对象设置为 `proto`。
 
