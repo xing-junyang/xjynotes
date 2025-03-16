@@ -643,6 +643,14 @@ export default defineConfig({
                             {
                                 text: 'JavaScript 原型链与继承',
                                 link: '/前端开发/JS原型链与继承'
+                            },
+                            {
+                                text: 'Vue 常考点',
+                                link: '/前端开发/Vue常考点'
+                            },
+                            {
+                                text: '跨域问题',
+                                link: '/前端开发/跨域问题'
                             }
                         ]
                     },
