@@ -655,6 +655,10 @@ export default defineConfig({
                             {
                                 text: '打包工具',
                                 link: '/前端开发/打包工具'
+                            },
+                            {
+                                text: '一些八股',
+                                link: '/前端开发/八股'
                             }
                         ]
                     },
