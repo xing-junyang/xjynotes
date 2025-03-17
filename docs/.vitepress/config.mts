@@ -651,6 +651,10 @@ export default defineConfig({
                             {
                                 text: '跨域问题',
                                 link: '/前端开发/跨域问题'
+                            },
+                            {
+                                text: '打包工具',
+                                link: '/前端开发/打包工具'
                             }
                         ]
                     },
