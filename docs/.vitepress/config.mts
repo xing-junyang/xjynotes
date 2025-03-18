@@ -5,7 +5,7 @@ import timeline from "vitepress-markdown-timeline";
 // @ts-ignore
 export default defineConfig({
     title: "Co-rricula",
-    description: "軟工學習資料 共建、共享平台",
+    description: "软工学习资料 共建、共享平台",
     head: [
         ['link', {rel: "apple-touch-icon", sizes: "180x180", href: "/image/logo.png"}],
         ['link', {rel: "icon", type: "image/png", sizes: "32x32", href: "/image/logo.png"}],
@@ -30,11 +30,11 @@ export default defineConfig({
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
-            {text: '主頁 🖥', link: '/'},
-            {text: '導航 🧭', link: '/nav/navigation.md'},
-            {text: '筆記 📒', link: '/简介.md'},
+            {text: '主页 🖥', link: '/'},
+            {text: '导航 🧭', link: '/nav/navigation.md'},
+            {text: '笔记 📒', link: '/简介.md'},
             {text: '照片 🎞', link: '/兴趣使然的时光小记/南京/南京.md'},
-            {text: '關於 🧑‍💻', link: '/about.md'},
+            {text: '关于 🧑‍💻', link: '/about.md'},
             {text: '<text class="love-anniversary"> Love  Anniversary </text>', link: 'https://lesliexjy.com'}
         ],
         logo: '/image/logo.png',
@@ -702,16 +702,16 @@ export default defineConfig({
                     root: {
                         translations: {
                             button: {
-                                buttonText: '搜尋本站',
-                                buttonAriaLabel: '搜尋本站上的內容'
+                                buttonText: '搜索本站',
+                                buttonAriaLabel: '搜索本站上的內容'
                             },
                             modal: {
-                                noResultsText: '無相關內容',
-                                resetButtonTitle: '清空搜索條件',
+                                noResultsText: '无相关內容',
+                                resetButtonTitle: '清空搜索条件',
                                 footer: {
-                                    selectText: '選擇',
-                                    navigateText: '切換',
-                                    closeText: '關閉此頁面'
+                                    selectText: '选择',
+                                    navigateText: '切换',
+                                    closeText: '关闭此页面'
                                 }
                             }
                         }
@@ -720,26 +720,26 @@ export default defineConfig({
             }
         },
         lastUpdated: {
-            text: "最後更新於",
+            text: "最后更新于",
         },
         notFound: {
             title: 'Ah...404',
-            quote: '小金魚不知道您要去向哪裡⋯⋯',
-            linkText: '回到主頁吧',
-            linkLabel: '回到主頁'
+            quote: '小金魚不知道您要去向哪里⋯⋯',
+            linkText: '回到主页吧',
+            linkLabel: '回到主页'
         },
 
         docFooter: {
-            prev: '上一個頁面',
-            next: '下一個頁面'
+            prev: '上一个页面',
+            next: '下一个页面'
         },
 
         outline: {
             level: [1, 6],
-            label: '本頁面'
+            label: '本页面'
         },
         darkModeSwitchLabel: '暗夜模式',
-        sidebarMenuLabel: '頁面導航',
+        sidebarMenuLabel: '页面导航',
     },
     lastUpdated: true,
     router: {
