@@ -21,6 +21,10 @@ h1 {
     color: #edf4ff;
 }
 
+code > span{
+    margin-left: 10px;
+}
+
 .vp-doc a{
     text-decoration: none;
     border-radius: 12px;
