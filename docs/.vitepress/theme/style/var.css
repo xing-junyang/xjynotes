@@ -8,6 +8,11 @@
     color: grey;
 }
 
+.dark strong{
+    color: white;
+    text-decoration: underline grey;
+}
+
 h1 {
     color: #1e2136;
 }
