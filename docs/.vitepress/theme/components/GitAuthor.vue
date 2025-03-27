@@ -30,9 +30,9 @@ async function getAuthorsFromGithub() {
 	isLoading.value = true
 
 	// 读取环境变量中的 GitHub Token
-	const token = import.meta.env.GITHUB_KEY;
+	const token = context.env.GITHUB_KEY;
 	if (!token) {
-		console.error("请在 .env 文件中配置 GITHUB_KEY 环境变量");
+		// console.error("请在 .env 文件中配置 GITHUB_KEY 环境变量");
 		return;
 	}
 
