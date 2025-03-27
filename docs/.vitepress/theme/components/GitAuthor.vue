@@ -28,8 +28,16 @@ const isLoading = ref(false);
 
 async function getAuthorsFromGithub() {
 	isLoading.value = true
+
+	// 读取环境变量中的 GitHub Token
+	const token = import.meta.env.GITHUB_KEY;
+	if (!token) {
+		console.error("请在 .env 文件中配置 GITHUB_KEY 环境变量");
+		return;
+	}
+
 	const octokit = new Octokit({
-		auth: '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'
+		auth: token
 	})
 	try {
 		const repoOwner = "xing-junyang"; // 替换为你的 GitHub 用户名
