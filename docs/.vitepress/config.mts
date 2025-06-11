@@ -114,6 +114,10 @@ export default defineConfig({
                             {
                                 text: '设计模式',
                                 link: '/软件系统设计/设计模式'
+                            },
+                            {
+                                text: '软件架构',
+                                link: '/软件系统设计/软件架构'
                             }
                         ]
                     },
