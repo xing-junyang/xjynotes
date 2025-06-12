@@ -118,6 +118,10 @@ export default defineConfig({
                             {
                                 text: '软件架构',
                                 link: '/软件系统设计/软件架构'
+                            },
+                            {
+                                text: '微服务架构',
+                                link: '/软件系统设计/微服务架构'
                             }
                         ]
                     },
