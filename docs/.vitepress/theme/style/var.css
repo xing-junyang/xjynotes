@@ -187,6 +187,22 @@ code > span{
     color: #ff0000;
 }
 
+.vp-doc table {
+    max-width: 100%;
+}
+
+.vp-doc table th {
+    background-color: #dadada;
+    color: #333;
+    font-weight: bold;
+    min-width: 150px;
+}
+
+.dark .vp-doc table th {
+    background-color: #444444;
+    color: #fff;
+}
+
 .medium-zoom-overlay {
     z-index: 30;
 }
