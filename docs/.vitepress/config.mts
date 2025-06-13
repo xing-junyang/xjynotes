@@ -667,6 +667,10 @@ export default defineConfig({
                             {
                                 text: '一些八股',
                                 link: '/前端开发/八股'
+                            },
+                            {
+                                text: '实习经验分享',
+                                link: '/前端开发/实习经验分享'
                             }
                         ]
                     },
