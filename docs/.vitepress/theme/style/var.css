@@ -21,6 +21,11 @@ h1 {
     color: #edf4ff;
 }
 
+code, .vp-doc .custom-block div[class*='language-'] code {
+    font-weight: 600;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
 code > span{
     margin-left: 10px;
 }
