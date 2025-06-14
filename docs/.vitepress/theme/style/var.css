@@ -208,16 +208,16 @@ code > span{
     color: #fff;
 }
 
+.medium-zoom-image--opened {
+    z-index: 999 !important;/* 给的值是21，但是实测盖不住，直接999 */
+}
+
 .medium-zoom-overlay {
     z-index: 30;
 }
 
 .medium-zoom-image{
-    z-index: 1 !important;
-}
-
-.medium-zoom-image--opened {
-    z-index: 999 !important;/* 给的值是21，但是实测盖不住，直接999 */
+    z-index: 1;
 }
 
 .love-anniversary{
