@@ -30,11 +30,7 @@ async function getAuthorsFromGithub() {
 	isLoading.value = true
 
 	// 读取环境变量中的 GitHub Token
-	const token = import.meta.env.GITHUB_KEY;
-	if (!token) {
-		// console.error("请在 .env 文件中配置 GITHUB_KEY 环境变量");
-		return;
-	}
+	const token = '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';
 
 	const octokit = new Octokit({
 		auth: token
