@@ -77,9 +77,9 @@ function getUniqueAuthors(commits) {
 		const author = commit.commit.committer;
 		const avatar = commit.committer?.avatar_url || null;
 		const url = commit.committer?.html_url || null;
-
-		if (!authorsMap.has(author.login)) {
-			authorsMap.set(author.login, {
+		console.log("author", author)
+		if (!authorsMap.has(author.email)) {
+			authorsMap.set(author.email, {
 				name: author.name,
 				email: author.email,
 				avatar: avatar || `https://via.placeholder.com/40`, // 默认头像
@@ -87,8 +87,10 @@ function getUniqueAuthors(commits) {
 				count: 0, // 初始化提交次数
 			});
 		}
-		authorsMap.get(author.login).count++;
+		authorsMap.get(author.email).count++;
 	});
+
+	console.log('authorsMap', authorsMap)
 
 	return Array.from(authorsMap.values()).sort((a, b) => b.count - a.count);
 }
